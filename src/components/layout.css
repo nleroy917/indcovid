@@ -1,0 +1,25 @@
+/*
+
+Step 1: Define initial sizing scale, for example:
+  4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px, 128px, 192px, 256px, 384px, 512px, 640px, 768px
+
+Step 2: Define initial font scale, for example:
+  12px, 14px, 16px, 18px, 20px, 24px, 30px, 36px, 48px, 60px, 72px
+
+Step 3: Define initial color scales, one for color, one for black and white.
+
+Step 4: Select typefaces. Favor sans-serif for UI components, and try to select typefaces with a
+ minimum of 5 weights. That said, you generally really only need heavy (600, 700) and normal (400, 500) weights in your UI.
+
+*/
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
