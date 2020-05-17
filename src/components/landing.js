@@ -14,6 +14,10 @@ const LandingWrapper = styled.div`
     height: 100vh;
     padding: 50px;
     margin: 10px;
+    @media (max-width: 768px) {
+    padding:10px;
+    margin:2px;
+  }
 `
 
 const TitleWrapper = styled.div`

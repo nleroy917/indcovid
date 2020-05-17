@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import {
+    isMobile
+} from 'react-device-detect'
 
 import { Line } from 'react-chartjs-2';
 
@@ -7,6 +10,10 @@ const ChartWrapper = styled.div`
     height:100%;
     padding:50px;
     align-items: center;
+    @media (max-width: 768px) {
+        padding:10px;
+        margin:0;
+    }
 `
 
 const LandingChart = ({data}) => {
@@ -15,7 +22,7 @@ const LandingChart = ({data}) => {
     <ChartWrapper>
             <Line
                 width={80}
-                height={50}
+                height={isMobile ? 100 : 50}
                 options={{
                     legend: {
                             labels: {
@@ -53,10 +60,10 @@ const LandingChart = ({data}) => {
                                                 },
                                     ticks: {
                                         
-                                        maxTicksLimit: 20,
+                                        maxTicksLimit: isMobile ? 10 : 20,
                                         autoSkip: true,
                                         fontColor: "white",
-                                        fontSize: 12,
+                                        fontSize: isMobile ? 10 : 12
                                     }
 
                                 }],
