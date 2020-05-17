@@ -1,13 +1,15 @@
-# Gatsby Minimalist Starter
+# indcovid
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c2aefebe-fe83-4368-b45e-1af736c6b173/deploy-status)](https://app.netlify.com/sites/serene-heisenberg-89c553/deploys)
 
-This starter is for developers who prefer a more blank slate than the `gatsby-default-starter` provides, but has some additional helpers when it comes to making initial design decisions. Features include:
+Simple site dedicated to tracking the COVID-19 pandemic in the state of Indiana. It looks at various metrics to see how demographic data can be used to predict one's risk of virus contraction.
 
--Initial setup for [Emotion](https://emotion.sh/docs/introduction)
+In progress
 
--A leaner `layout.css` that also has a small checklist to assist with initial scales for whatever design system you're implementing.
+# Authors
+Nathan LeRoy
+Barnabas Obeng-Gyasi
 
-# Getting Started
-
-- `git clone git@github.com:dylanesque/Gatsby-Minimalist-Starter.git`
-- `cd Gatsby-Minimalist-Starter`
-- `yarn install && gatsby develop`
+# Data Sources
+[1] https://covidtracking.com/api
+[2] The Polis Center at IUPUI, US Census American Community Survey 2014-2018
+Indiana State Department of Health
