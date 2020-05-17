@@ -11,5 +11,6 @@ In progress
 
 # Data Sources
 [1] https://covidtracking.com/api
+
 [2] The Polis Center at IUPUI, US Census American Community Survey 2014-2018
 Indiana State Department of Health
