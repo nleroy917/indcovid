@@ -12,12 +12,16 @@ Step 4: Select typefaces. Favor sans-serif for UI components, and try to select 
  minimum of 5 weights. That said, you generally really only need heavy (600, 700) and normal (400, 500) weights in your UI.
 
 */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap');
 
 html,
 body {
+  background: #242424;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #FFF;
 }
 
 body {

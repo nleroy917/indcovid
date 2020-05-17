@@ -1,13 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Minimalist Starter`,
-    description: `This starter is for more advanced Gatsby developers who desire less initial boilerplate code than the
-    default starter currently provides. Added is a checklist of design decisions to make at the outset of the
-    project!`,
-    author: `Michael S Caveney`,
+    title: `COVID-19 in Indiana`,
+    description: `Analytics site examining COVID-19 trends in the hoosier state`,
+    author: `Nathan LeRoy`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Montserrat`,
+            variants: [`200`,`300`,`400`,`700`]
+          }
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -19,6 +28,7 @@ module.exports = {
     `gatsby-plugin-playground`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
