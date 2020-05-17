@@ -6,8 +6,8 @@ Simple site dedicated to tracking the COVID-19 pandemic in the state of Indiana.
 In progress
 
 # Authors
-Nathan LeRoy
-Barnabas Obeng-Gyasi
+- Nathan LeRoy
+- Barnabas Obeng-Gyasi
 
 # Data Sources
 [1] https://covidtracking.com/api
