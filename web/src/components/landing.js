@@ -103,7 +103,7 @@ const Landing = () => {
               COVID-19 in Indiana
             </Title>
             <SubTitle>
-              How are SARS-CoV-2 cases disproportionately affecting people?
+              How are SARS-CoV-2 cases affecting people Indiana?
             </SubTitle>
           </TitleWrapper>
              <LandingChart log={logSwitch} smooth={styleSwitch} grids={gridLineSwitch} data={data}/>
