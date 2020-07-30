@@ -1,20 +1,21 @@
-import React, {useState, useEffect} from 'react'
-import styled from 'styled-components'
+import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
 
 import axios from 'axios';
 
-import test_data from "../utils/test_data"
-import * as Utils from "../utils/parse_data"
+import test_data from "../utils/test_data";
+import * as Utils from "../utils/parse_data";
 
 import {
     Grid
-} from '@material-ui/core'
+} from '@material-ui/core';
 import Switch from "react-switch";
 
-import Loader from './loader'
-import LandingChart from './landingchart'
+import Loader from './loader';
+import LandingChart from './landingchart';
 
-const API_URL = "https://covidtracking.com/api/v1/"
+const API_URL = "https://covidtracking.com/api/v1/";
+const IND_URL = "https://www.coronavirus.in.gov/map/covid-19-indiana-daily-report-current.topojson"
 
 const LandingWrapper = styled.div`
     height: 100vh;
@@ -62,10 +63,11 @@ const Label = styled.label`
 `
 
 const Landing = () => {
-    const [data, setData] = useState(null)
-    const [logSwitch, setLogSwitch] = useState(true)
-    const [styleSwitch, setStyleSwitch] = useState(true)
-    const [gridLineSwitch, setGridLineSwitch] = useState(false)
+    const [data, setData] = useState(null);
+    const [IND, setIND] = useState(null);
+    const [logSwitch, setLogSwitch] = useState(true);
+    const [styleSwitch, setStyleSwitch] = useState(true);
+    const [gridLineSwitch, setGridLineSwitch] = useState(false);
 
     const handleLogSwitch = () => {
         setLogSwitch(!logSwitch)
@@ -89,8 +91,20 @@ const Landing = () => {
         
     }
 
+    const fetchIND = async () => {
+      const endpoint = IND_URL
+      const res = await axios.get(endpoint)
+      if (res.status === 200) {
+        const data = await res.data
+        setIND(data)
+        console.log(data)
+      }
+
+    }
+
     useEffect(() => {
         fetchData()
+        fetchIND()
     },[])
 
     return(
