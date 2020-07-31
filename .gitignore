@@ -2,3 +2,5 @@ env/
 .cache/
 aws/
 config/
+indcovid.db
+data/
