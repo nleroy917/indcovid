@@ -1,5 +1,6 @@
 import requests
 import time
+import pandas
 
 class DataFetcher():
     """
@@ -25,13 +26,16 @@ class DataFetcher():
         self.api_base = 'https://hub.mph.in.gov/dataset/'
         self.timeout = timeout
         self.sleep_time = sleep_time
+        self._data_sources = {
+            'covid-19-demographics': '62ddcb15-bbe8-477b-bb2e-175ee5af8629/resource/2538d7f1-391b-4733-90b3-9e95cd5f3ea6/download/covid_report_demographics.xlsx'
+        }
 
     def get_data(self,dataset):
         """
         Make a call to the url to get the data we want
         """
 
-        uri = self.api_base + dataset
+        uri = self.api_base + self._data_sources.get(dataset)
         try:
             response = self._session.get(uri)
         except requests.Timeout as e:
@@ -45,6 +49,29 @@ class DataFetcher():
         time.sleep(max(self._SLEEP_MIN, self.sleep_time))
 
         return response
+    
+    def generate_url(self,dataset):
+        """
+        Generate a url link to an excel file that can be downloaded or passed to pandas to create dataframes
+        """
+        return self.api_base + self._data_sources.get(dataset)
+
+
+if __name__ == '__main__':
+
+    # create datafetcher object
+    fetcher = DataFetcher()
+
+    # download the excel file to local storage
+    res = fetcher.get_data('covid-19-demographics')
+    with open('covid_19_demographics.xlsx','wb') as xl:
+        xl.write(res.content)
+
+    # open file and read/print data 10 times to assess speed
+    for i in range(10):
+        df = pandas.read_excel('covid_19_demographics.xlsx','Race')
+        print(df)
+
 
 
 
