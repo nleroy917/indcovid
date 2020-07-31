@@ -1,10 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Minimalist Starter`,
-    description: `This starter is for more advanced Gatsby developers who desire less initial boilerplate code than the
-    default starter currently provides. Added is a checklist of design decisions to make at the outset of the
-    project!`,
-    author: `Michael S Caveney`,
+    title: `Indiana Covid`,
+    description: `In this research, we take the time to analyze and invstigate how people from under-privileged communities are disproportionately affected by the COVID-19 pandemic.`,
+    author: `Nathan LeRoy`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
