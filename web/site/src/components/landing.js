@@ -27,7 +27,10 @@ const MapWrapper = styled.div`
   position: relative; 
   padding-bottom: 80%; 
   height: 0; 
-  max-width: 100%;  small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style>
+  max-width: 100%;  
+  z-index: 40; 
+  bottom: 0; 
+  margin-bottom: -15px;
 `
 
 const IFrame = styled.iframe`
