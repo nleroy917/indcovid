@@ -131,7 +131,7 @@ const Landing = () => {
             />
           </Grid>
           <Grid item lg={6} md={6} s={5} xs={10}>
-          <MapWrapper class="embed-container">
+          {/* <MapWrapper class="embed-container">
             <IFrame 
               width="500" 
               height="400" 
@@ -143,7 +143,7 @@ const Landing = () => {
               src="//nleroy917.maps.arcgis.com/apps/Embed/index.html?webmap=2478c23728f24575a659ff0f8037a1a2&extent=-94.3558,36.4918,-76.0306,43.277&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=dark">
 
             </IFrame>
-          </MapWrapper>
+          </MapWrapper> */}
           </Grid>
           </Grid>
           <Grid container
