@@ -1,7 +1,13 @@
 import sys
+import os
 sys.path.append('../')
 
-CONFIG_FILE = '../config/config.ini'
+from dotenv import load_dotenv
+load_dotenv()
+
+MYSQL_URL = os.environ['MYSQL_URL']
+MYSQL_USER = os.environ['MYSQL_USER']
+MYSQL_PASS = os.environ['MYSQL_PASS']
 
 # import custom classes
 from lib.mysqlclient import MySQL
@@ -25,11 +31,11 @@ def api_base():
     return jsonify(return_package)
 
 @app.route('/data/indiana/county-hospitals', methods=['GET'])
-"""
-Get county hospital inpatient v outpatient statistics
-"""
 def get_county_hospitals():
-    mysql = MySQL.MySQL(CONFIG_FILE)
+    """
+    Get county hospital inpatient v outpatient statistics
+    """
+    mysql = MySQL.MySQL(MYSQL_URL, MYSQL_USER, MYSQL_PASS)
     data = mysql.get_county_hospitals()
     return_package = {
         'data': data
@@ -38,11 +44,11 @@ def get_county_hospitals():
     return jsonify(return_package)
 
 @app.route('/data/indiana/education-geographic', methods=['GET'])
-"""
-Get education statistics by geographic region in Indiana
-"""
 def get_education_geographic():
-    mysql = MySQL.MySQL(CONFIG_FILE)
+    """
+    Get education statistics by geographic region in Indiana
+    """
+    mysql = MySQL.MySQL(MYSQL_URL, MYSQL_USER, MYSQL_PASS)
     data = mysql.get_education_geographic()
     return_package = {
         'data': data
@@ -51,11 +57,11 @@ def get_education_geographic():
     return jsonify(return_package)
 
 @app.route('/data/indiana/expenditure', methods=['GET'])
-"""
-Get all expenditure data - WARNING! THIS IS VERY NON PERFORMANT RIGHT NOW!
-"""
 def get_expenditure():
-    mysql = MySQL.MySQL(CONFIG_FILE)
+    """
+    Get all expenditure data - WARNING! THIS IS VERY NON PERFORMANT RIGHT NOW!
+    """
+    mysql = MySQL.MySQL(MYSQL_URL, MYSQL_USER, MYSQL_PASS)
     data = mysql.get_expenditure()
     return_package = {
         'data': data
@@ -64,10 +70,11 @@ def get_expenditure():
     return jsonify(return_package)
 
 @app.route('/data/indiana/demographics', methods=['GET'])
-"""
-Get the most recent demographic data for Indiana
-"""
-    mysql = MySQL.MySQL(CONFIG_FILE)
+def get_demographics():
+    """
+    Get the most recent demographic data for Indiana
+    """
+    mysql = MySQL.MySQL(MYSQL_URL, MYSQL_USER, MYSQL_PASS)
     data = mysql.get_demographics()
     return_package = {
         'data': data
@@ -76,10 +83,11 @@ Get the most recent demographic data for Indiana
     return jsonify(return_package)
 
 @app.route('/data/indiana/median-house-income', methods=['GET'])
-"""
-Get the median household income statisistic for Indiana. It is organized by county and year.
-"""
-    mysql = MySQL.MySQL(CONFIG)
+def get_median_house_income():
+    """
+    Get the median household income statisistic for Indiana. It is organized by county and year.
+    """
+    mysql = MySQL.MySQL(MYSQL_URL, MYSQL_USER, MYSQL_PASS)
     data = mysql.get_median_income()
     return_package = {
         'data': data
@@ -88,14 +96,18 @@ Get the median household income statisistic for Indiana. It is organized by coun
     return jsonify(return_package)
 
 @app.route('/data/indiana/medicaid-funding-source', methods=['GET'])
-"""
-Get the most common medicaid funding soruces for all medicaid claims
-"""
-    mysql = MySQL.MySQL(CONFIG)
+def get_medicaid_funding_source():
+    """
+    Get the most common medicaid funding soruces for all medicaid claims
+    """
+    mysql = MySQL.MySQL(MYSQL_URL, MYSQL_USER, MYSQL_PASS)
     data = mysql.get_medicaid_funding()
     return_package = {
         'data': data
     }
     del mysql
     return jsonify(return_package)
+
+if __name__ =='__main__':
+    app.run()
 
