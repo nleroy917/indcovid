@@ -30,7 +30,7 @@ const LandingChart = ({ data, dates }) => {
         legend: {
             display: false
          },
-        aspectRatio: 2,
+        aspectRatio: 1,
         maintainAspectRatio: true,
         scales: {
             xAxes: [{scaleLabel: { display: true, labelString: ''}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white', maxTicksLimit: 8}}],
