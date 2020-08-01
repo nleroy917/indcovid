@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 `
 
 const LandingTitle = styled(Typography)`
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     font-size: 2.2rem !important;
 
 `
@@ -56,6 +56,8 @@ const Landing = () => {
           cases: [],
           deaths: [],
           recovered: [],
+          hospitalized: [],
+          tests: []
         }
         for(let i = 0; i < data_rev.length; i++) {
 
@@ -67,13 +69,19 @@ const Landing = () => {
 
           dates.push(`${monthNames[date.getMonth()]} ${date.getDate()}`)
           historic_data_full.cases.push(
-             data_point.positive
+             data_point.positiveIncrease
           )
           historic_data_full.deaths.push(
-             data_point.death
+             data_point.deathIncrease
           )
           historic_data_full.recovered.push(
              data_point.recovered
+          )
+          historic_data_full.hospitalized.push(
+            data_point.hospitalized
+          )
+          historic_data_full.tests.push(
+            data_point.totalTestResultsIncrease
           )
         }
         setCovidHistoric(historic_data_full)

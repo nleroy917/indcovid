@@ -32,24 +32,34 @@ const LandingChart = ({ data, dates }) => {
          },
         maintainAspectRatio: false,
         scales: {
-            xAxes: [{scaleLabel: { display: true, labelString: ''}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}],
-            yAxes: [{scaleLabel: { display: true, labelString: `Total`, fontColor: 'white'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
+            xAxes: [{scaleLabel: { display: true, labelString: ''}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white', maxTicksLimit: 8}}],
+            yAxes: [{scaleLabel: { display: false, labelString: ``, fontColor: 'white', fontSize: '18'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
         }
     })
     const selectOps = [
         {
-            label: "Cases",
+            label: "New Cases",
             value: "cases",
             selectedBackgroundColor: "#005fb8",
         },
         {
-            label: "Deaths",
+            label: "New Deaths",
             value: "deaths",
             selectedBackgroundColor: "#005fb8"
         },
         {
             label: "Recovered",
             value: "recovered",
+            selectedBackgroundColor: "#005fb8"
+        },
+        {
+            label: "Hospitalized",
+            value: "hospitalized",
+            selectedBackgroundColor: "#005fb8"
+        },
+        {
+            label: "Total Tests",
+            value: "tests",
             selectedBackgroundColor: "#005fb8"
         }
     ];
@@ -88,10 +98,11 @@ const LandingChart = ({ data, dates }) => {
                         label: metric,
                         data: data[metric],
                         fill: true,
+                        borderWidth: 0,
                         backgroundColor: "rgba(75,192,192,0.2)",
                         borderColor: "rgba(75,192,192,1)",
                         pointRadius: 0,
-                        lineTension: 1
+                        lineTension: 0
                     }
                 ]
             }}
