@@ -5,7 +5,9 @@ import { Link } from 'gatsby';
 
 import { 
   IconButton,
-  Grid
+  Grid,
+  Button,
+  useMediaQuery
 } from '@material-ui/core';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
@@ -13,7 +15,27 @@ const HeaderWrapper = styled.header`
   min-height: 100px;
 `
 
-const Header = ({ siteTitle }) => (
+const SquareButton = styled(Button)`
+  border-radius: 0px !important;
+`
+
+const ALink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+`
+
+const Header = ({ siteTitle }) => {
+  const matches = useMediaQuery('(max-width:768px)');
+  return(
   <HeaderWrapper
   >
     <div
@@ -26,25 +48,30 @@ const Header = ({ siteTitle }) => (
     <Grid container 
       direction="row" 
       alignItems="center"
-      justify="flex-end"
+      justify={matches ? "center" : "flex-end"}
       style={{width: '100%'}}
+      spacing={2}
     >
       <Grid item>
-      <Link to="/about">
-        <IconButton
-         href="/about"
-        >
-          <InfoOutlinedIcon 
-            style={{fill: 'white'}}
-          />
-        </IconButton>
-        </Link>
+      <ALink to="/about">
+        <SquareButton variant="outlined" color="inherit" size="small">
+          More Information
+        </SquareButton>
+        </ALink>
+      </Grid>
+      <Grid item>
+      <ALink to="/about">
+        <SquareButton variant="outlined" color="inherit" size="small">
+          Stay Healthy
+        </SquareButton>
+        </ALink>
       </Grid>
     </Grid>
 
     </div>
   </HeaderWrapper>
 )
+    }
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

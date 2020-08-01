@@ -1,26 +1,29 @@
 module.exports = {
   siteMetadata: {
-    title: `Indiana Covid`,
+    title: `Indiana COVID-19`,
     description: `In this research, we take the time to analyze and invstigate how people from under-privileged communities are disproportionately affected by the COVID-19 pandemic.`,
     author: `Nathan LeRoy`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-styled-components`,
       options: {
-        fonts: [
-          {
-            family: `Roboto Mono`,
-            variants: [`400`, `700`]
-          },
-          {
-            family: `Roboto`,
-            subsets: [`latin`]
-          },
-        ],
+        // Add any options here
       },
     },
+    {
+    resolve: `gatsby-plugin-google-fonts-v2`,
+    options: {
+      fonts: [
+        {
+          family: 'Roboto',
+          variable: true,
+          weights: ['200..900']
+        }
+      ]
+    }
+  },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -41,7 +44,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/indiana-flag.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

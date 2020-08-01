@@ -1,0 +1,105 @@
+import React, {useState} from 'react';
+import styled, { withTheme } from 'styled-components';
+
+import { Line } from 'react-chartjs-2';
+
+import {
+    Grid,
+    Paper,
+    useMediaQuery
+} from '@material-ui/core';
+
+import SwitchSelector from "react-switch-selector";
+
+const Wrapper = styled(Paper)`
+    height: 85% !important;
+    padding: ${props => props.mobile ? '5px' : '20px'};
+    background-color: #272727 !important;
+`
+
+const SelectorWrapper = styled.div`
+    height: 25px;
+    margin: 10px;
+    font-family: inherit;
+`
+
+const LandingChart = ({ data, dates }) => {
+    const matches = useMediaQuery('(max-width:768px)');
+    const [metric, setMetric] = useState('cases')
+    const [options, setOptions] = useState({
+        legend: {
+            display: false
+         },
+        maintainAspectRatio: false,
+        scales: {
+            xAxes: [{scaleLabel: { display: true, labelString: ''}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}],
+            yAxes: [{scaleLabel: { display: true, labelString: `Total`, fontColor: 'white'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
+        }
+    })
+    const selectOps = [
+        {
+            label: "Cases",
+            value: "cases",
+            selectedBackgroundColor: "#005fb8",
+        },
+        {
+            label: "Deaths",
+            value: "deaths",
+            selectedBackgroundColor: "#005fb8"
+        },
+        {
+            label: "Recovered",
+            value: "recovered",
+            selectedBackgroundColor: "#005fb8"
+        }
+    ];
+    const onSelectorChange = (newValue) => {
+        setMetric(newValue)
+        console.log(data[newValue])
+    };
+    console.log(data[metric])
+    return(
+        
+        <>
+        <Wrapper
+          square={true}
+          elevation={5}
+          mobile={matches}
+        >
+          <SelectorWrapper>
+            <SwitchSelector
+               border={4}
+               onChange={onSelectorChange}
+               options={selectOps}
+               backgroundColor={"#272727"}
+               fontColor={"#f5f6fa"}
+               wrapperBorderRadius={0}
+               optionBorderRadius={0}
+               selectionIndicatorMargin={2}
+               style={{padding: '4px', borderRadius: '0px !important'}}
+            />
+          </SelectorWrapper>
+          <Line
+            options={options}
+            data={{
+                labels: dates,
+                datasets: [
+                    {
+                        label: metric,
+                        data: data[metric],
+                        fill: true,
+                        backgroundColor: "rgba(75,192,192,0.2)",
+                        borderColor: "rgba(75,192,192,1)",
+                        pointRadius: 0,
+                        lineTension: 1
+                    }
+                ]
+            }}
+            options={options}
+          />
+        </Wrapper>
+        </>
+    )
+}
+
+export default LandingChart;
