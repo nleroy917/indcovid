@@ -30,7 +30,8 @@ const LandingChart = ({ data, dates }) => {
         legend: {
             display: false
          },
-        maintainAspectRatio: false,
+        aspectRatio: 2,
+        maintainAspectRatio: true,
         scales: {
             xAxes: [{scaleLabel: { display: true, labelString: ''}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white', maxTicksLimit: 8}}],
             yAxes: [{scaleLabel: { display: false, labelString: ``, fontColor: 'white', fontSize: '18'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
@@ -48,17 +49,17 @@ const LandingChart = ({ data, dates }) => {
             selectedBackgroundColor: "#005fb8"
         },
         {
-            label: "Recovered",
+            label: "Total Recovered",
             value: "recovered",
             selectedBackgroundColor: "#005fb8"
         },
         {
-            label: "Hospitalized",
+            label: "Total Hospitalized",
             value: "hospitalized",
             selectedBackgroundColor: "#005fb8"
         },
         {
-            label: "Total Tests",
+            label: "New Tests",
             value: "tests",
             selectedBackgroundColor: "#005fb8"
         }
@@ -79,6 +80,7 @@ const LandingChart = ({ data, dates }) => {
           <SelectorWrapper>
             <SwitchSelector
                border={4}
+               fontSize={10}
                onChange={onSelectorChange}
                options={selectOps}
                backgroundColor={"#272727"}
@@ -89,7 +91,12 @@ const LandingChart = ({ data, dates }) => {
                style={{padding: '4px', borderRadius: '0px !important'}}
             />
           </SelectorWrapper>
+          <hr
+           style={{borderTop: '1px solid'}}
+          ></hr>
           <Line
+            height={null}
+             width={null}
             options={options}
             data={{
                 labels: dates,

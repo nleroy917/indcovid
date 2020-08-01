@@ -23,6 +23,21 @@ const Wrapper = styled.div`
 
 `
 
+const MapWrapper = styled.div`
+  position: relative; 
+  padding-bottom: 80%; 
+  height: 0; 
+  max-width: 100%;  small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style>
+`
+
+const IFrame = styled.iframe`
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+`
+
 const LandingTitle = styled(Typography)`
     font-weight: 400 !important;
     font-size: 2.2rem !important;
@@ -116,7 +131,19 @@ const Landing = () => {
             />
           </Grid>
           <Grid item lg={6} md={6} s={5} xs={10}>
+          <MapWrapper class="embed-container">
+            <IFrame 
+              width="500" 
+              height="400" 
+              frameborder="0" 
+              scrolling="no" 
+              marginheight="0" 
+              marginwidth="0" 
+              title="indcovid" 
+              src="//nleroy917.maps.arcgis.com/apps/Embed/index.html?webmap=2478c23728f24575a659ff0f8037a1a2&extent=-94.3558,36.4918,-76.0306,43.277&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=dark">
 
+            </IFrame>
+          </MapWrapper>
           </Grid>
           </Grid>
           <Grid container
