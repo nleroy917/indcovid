@@ -1,6 +1,7 @@
 import sys
 import os
 sys.path.append('../')
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -10,7 +11,10 @@ MYSQL_USER = os.environ['MYSQL_USER']
 MYSQL_PASS = os.environ['MYSQL_PASS']
 
 # import custom classes
-from ..lib.mysqlclient import MySQL
+try:
+    from ..lib.mysqlclient import MySQL
+except:
+    from lib.mysqlclient import MySQL
 
 
 # import flask
