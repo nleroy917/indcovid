@@ -10,7 +10,7 @@ MYSQL_USER = os.environ['MYSQL_USER']
 MYSQL_PASS = os.environ['MYSQL_PASS']
 
 # import custom classes
-from lib.mysqlclient import MySQL
+from ..lib.mysqlclient import MySQL
 
 
 # import flask
