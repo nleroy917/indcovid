@@ -32,7 +32,12 @@ const InfoData = styled(Typography)`
 
 `
 
-const InfoCard = ( { children, color, title, data, moreInfo }) => {
+const DailyData = styled(Typography)`
+  font-weight: 300 !important;
+  opacity: 0.8;
+`
+
+const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
   const numberWithCommas = (n) =>  {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -69,6 +74,9 @@ const InfoCard = ( { children, color, title, data, moreInfo }) => {
           <InfoData variant="h4" style={{textAlign: 'center'}}>
             {numberWithCommas(data)}
           </InfoData>
+          <DailyData variant="h6" style={{textAlign: 'center'}}>
+            {`+ ${daily}`}
+          </DailyData>
             {children}
           </Wrapper>
         </>

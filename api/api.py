@@ -1,5 +1,6 @@
 import sys
 import os
+import requests
 sys.path.append('../')
 
 from dotenv import load_dotenv
@@ -32,6 +33,12 @@ def api_base():
         'version': 1
     }
     return jsonify(return_package)
+
+@app.route('/data/isdh/full', methods=['GET'])
+def get_isdh_dull():
+    res = requests.get('https://www.coronavirus.in.gov/map/covid-19-indiana-universal-report-current-public.json')
+    return res.json()
+
 
 @app.route('/data/indiana/county-hospitals', methods=['GET'])
 def get_county_hospitals():
