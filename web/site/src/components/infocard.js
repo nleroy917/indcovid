@@ -32,6 +32,11 @@ const InfoData = styled(Typography)`
 
 `
 
+const TooltipInfo = styled(Tooltip)`
+  padding: 4px !important;
+  font-size: 1.5rem !important;
+`
+
 const DailyData = styled(Typography)`
   font-weight: 300 !important;
   opacity: 0.8;
@@ -57,9 +62,10 @@ const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
           </InfoTitle>
           </Grid>
           <Grid item>
-          <Tooltip
+          <TooltipInfo
             title={moreInfo}
             placement="top"
+            arrow={true}
           >
           <IconButton
            style={{margin: 0, padding: '2px'}}
@@ -68,7 +74,7 @@ const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
               style={{fill: '#e3e3e3'}}
             />
           </IconButton>
-          </Tooltip>
+          </TooltipInfo>
           </Grid>
           </Grid>
           <InfoData variant="h4" style={{textAlign: 'center'}}>
