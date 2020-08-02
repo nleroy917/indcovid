@@ -82,7 +82,7 @@ const LandingChart = ({ data, dates }) => {
           <SelectorWrapper>
             <SwitchSelector
                border={4}
-               fontSize={matches ? 8 : 10}
+               fontSize={matches ? 9 : 10}
                onChange={onSelectorChange}
                options={selectOps}
                backgroundColor={"#272727"}

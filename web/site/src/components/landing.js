@@ -177,14 +177,14 @@ const Landing = () => {
             spacing={1}
             style={{width: '100%', height: '75%'}}
             >
-          <Grid item lg={6} md={6} s={5} xs={10}>
+          <Grid item lg={6} md={6} s={5} xs={12}>
             <LandingChart
               dates={dates}
               data={covidHistoric}
             />
           </Grid>
-          <Grid item lg={6} md={6} s={5} xs={10}>
-            {/* <LandingPie data={yeetedData} /> */}
+          <Grid item lg={6} md={6} s={5} xs={12}>
+
           </Grid>
           </Grid>
           <Grid container
@@ -194,7 +194,7 @@ const Landing = () => {
             spacing={5}
             style={{width: '100%', height: '20%'}}
           >
-          <Grid item lg={3} md={3} s={3} xs={10}>
+          <Grid item lg={3} md={3} s={3} xs={12}>
           <InfoCard
             color="#a00000"
             title="No. of Cases:"
@@ -204,7 +204,7 @@ const Landing = () => {
           > 
           </InfoCard>
           </Grid>
-          <Grid item lg={3} md={3} s={3} xs={10}>
+          <Grid item lg={3} md={3} s={3} xs={12}>
           <InfoCard
             color="#005fb8"
             title="No. Tested:"
@@ -214,7 +214,7 @@ const Landing = () => {
           >
           </InfoCard>
           </Grid>
-          <Grid item lg={3} md={3} s={3} xs={10}
+          <Grid item lg={3} md={3} s={3} xs={12}
           >
             <InfoCard 
               color="green"
@@ -225,7 +225,7 @@ const Landing = () => {
             >  
              </InfoCard>
           </Grid>
-          <Grid item lg={3} md={3} s={3} xs={10}
+          <Grid item lg={3} md={3} s={3} xs={12}
           >
             <InfoCard 
               color="green"
