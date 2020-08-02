@@ -71,7 +71,6 @@ const LandingChart = ({ data, dates }) => {
         setMetric(newValue)
         console.log(data[newValue])
     };
-    console.log(data[metric])
     return(
         
         <>
@@ -83,7 +82,7 @@ const LandingChart = ({ data, dates }) => {
           <SelectorWrapper>
             <SwitchSelector
                border={4}
-               fontSize={10}
+               fontSize={matches ? 8 : 10}
                onChange={onSelectorChange}
                options={selectOps}
                backgroundColor={"#272727"}
