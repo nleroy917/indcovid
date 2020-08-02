@@ -5,23 +5,29 @@ import axios from 'axios';
 import {
     Typography,
     Grid,
-    useMediaQuery
+    useMediaQuery,
+    Button
 } from '@material-ui/core';
 
 
 import InfoCard from '../components/infocard';
 import LandingChart from '../components/landingchart';
+import LandingPie from '../components/landingpie';
 
 const COVID_19_API_NOW = 'https://covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://covidtracking.com/api/v1/states/in/daily.json'
-const COVID_19_YEET = 'https://www.coronavirus.in.gov/map/covid-19-indiana-universal-report-current-public.json'
+const API_URL = 'https://indianacovid-api.herokuapp.com/'
 
 const Wrapper = styled.div`
-    height: 70vh;
+    height: 75vh;
     @media (max-width: 768px) {
     height: none;
   }
 
+`
+
+const SquareButton = styled(Button)`
+  border-radius: 0px !important;
 `
 
 const MapWrapper = styled.div`
@@ -46,6 +52,10 @@ const LandingTitle = styled(Typography)`
     font-weight: 400 !important;
     font-size: 2.2rem !important;
 
+`
+
+const LandingSubTitle = styled(Typography)`
+  font-weight: 300 !important;
 `
 
 const Landing = () => {
@@ -108,13 +118,12 @@ const Landing = () => {
             data_point.totalTestResultsIncrease
           )
         }
-        console.log(historic_data_full)
         setCovidHistoric(historic_data_full)
       }
     }
 
     const yeetCovidData = async () => {
-      let res = await axios.get(COVID_19_YEET)
+      let res = await axios.get(`${API_URL}/data/isdh/full`)
       if(res === 200) {
         let data = await res.data
         let icu_avail = data.metrics.data.m2b_hospitalized_icu_available
@@ -128,8 +137,8 @@ const Landing = () => {
             other: (icu_else[icu_else.length-1]/icu_total)*100,
           }
         }
-        console.log(yeeted_data)
         setYeetedData(yeeted_data)
+        console.log(yeetedData)
       }
     }
 
@@ -148,12 +157,25 @@ const Landing = () => {
           >
             The Widespread Implications of the COVID-19 Pandemic in Indiana.
           </LandingTitle>
+          <Grid container direction="row" justify="space-between" alignItems="center" style={{width:'100%'}}>
+            <Grid item lg={10} md={10} xl={10}>
+              <LandingSubTitle variant="h6" gutterBottom>
+                How are health disparities marginalizing under-privileged groups?
+              </LandingSubTitle>
+            </Grid>
+            <Grid item lg={2} md={2} xl={2}>
+              <SquareButton variant="outlined" color="inherit" size="medium">
+                Learn More
+              </SquareButton>
+            </Grid>
+          </Grid>
+          <br></br>
           <Grid container
             direction="row"
             alignItems={matches ? "flex-start" : "stretch"}
             justify={matches ? "center" : "space-between"}
             spacing={1}
-            style={{width: '100%', height: '80%'}}
+            style={{width: '100%', height: '75%'}}
             >
           <Grid item lg={6} md={6} s={5} xs={10}>
             <LandingChart
@@ -162,19 +184,7 @@ const Landing = () => {
             />
           </Grid>
           <Grid item lg={6} md={6} s={5} xs={10}>
-          {/* <MapWrapper class="embed-container">
-            <IFrame 
-              width="500" 
-              height="400" 
-              frameborder="0" 
-              scrolling="no" 
-              marginheight="0" 
-              marginwidth="0" 
-              title="indcovid" 
-              src="//nleroy917.maps.arcgis.com/apps/Embed/index.html?webmap=2478c23728f24575a659ff0f8037a1a2&extent=-94.3558,36.4918,-76.0306,43.277&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=dark">
-
-            </IFrame>
-          </MapWrapper> */}
+            {/* <LandingPie data={yeetedData} /> */}
           </Grid>
           </Grid>
           <Grid container
