@@ -15,6 +15,9 @@ const Wrapper = styled(Paper)`
     height: 85% !important;
     padding: ${props => props.mobile ? '5px' : '20px'};
     background-color: #272727 !important;
+    &:hover {
+        transform: translate(2px,2px);
+    }
 `
 
 const SelectorWrapper = styled.div`
@@ -49,12 +52,12 @@ const LandingChart = ({ data, dates }) => {
             selectedBackgroundColor: "#005fb8"
         },
         {
-            label: "Total Recovered",
+            label: "Recovered",
             value: "recovered",
             selectedBackgroundColor: "#005fb8"
         },
         {
-            label: "Total Hospitalized",
+            label: "Hospitalized",
             value: "hospitalized",
             selectedBackgroundColor: "#005fb8"
         },

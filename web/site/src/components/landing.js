@@ -14,6 +14,7 @@ import LandingChart from '../components/landingchart';
 
 const COVID_19_API_NOW = 'https://covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://covidtracking.com/api/v1/states/in/daily.json'
+const COVID_19_YEET = 'https://www.coronavirus.in.gov/map/covid-19-indiana-universal-report-current-public.json'
 
 const Wrapper = styled.div`
     height: 70vh;
@@ -54,6 +55,7 @@ const Landing = () => {
     const [covidNow, setCovidNow] = useState(0);
     const [covidHistoric, setCovidHistoric] = useState([]);
     const [dates, setDates] = useState([]);
+    const [yeetedData, setYeetedData] = useState([]);
     const matches = useMediaQuery('(max-width:768px)');
 
     const fetchCovidNow = async () => {
@@ -75,7 +77,11 @@ const Landing = () => {
           deaths: [],
           recovered: [],
           hospitalized: [],
-          tests: []
+          tests: [],
+          casesToday: data[data.length-1].positiveIncrease,
+          testedToday: data[data.length-1].totalTestResultsIncrease,
+          deathToday: data[data.length-1].deathProbable,
+          hospitalizedToday: data[data.length-1].hospitalizedIncrease
         }
         for(let i = 0; i < data_rev.length; i++) {
 
@@ -102,13 +108,35 @@ const Landing = () => {
             data_point.totalTestResultsIncrease
           )
         }
+        console.log(historic_data_full)
         setCovidHistoric(historic_data_full)
+      }
+    }
+
+    const yeetCovidData = async () => {
+      let res = await axios.get(COVID_19_YEET)
+      if(res === 200) {
+        let data = await res.data
+        let icu_avail = data.metrics.data.m2b_hospitalized_icu_available
+        let icu_covid = data.metrics.data.m2b_hospitalized_icu_occupied_covid
+        let icu_else = data.metrics.data.m2b_hospitalized_icu_occupied_non_covid
+        let icu_total = icu_avail[icu_avail.lenth-1] + icu_covid[icu_covid.length-1] + icu_else[icu_else.length-1]
+        let yeeted_data = {
+          icu: {
+            available: (icu_avail[icu_avail.length-1]/icu_total)*100,
+            covid: (icu_covid[icu_covid.length-1]/icu_total)*100, 
+            other: (icu_else[icu_else.length-1]/icu_total)*100,
+          }
+        }
+        console.log(yeeted_data)
+        setYeetedData(yeeted_data)
       }
     }
 
     useEffect(() => {
         fetchCovidNow()
         fetchCovidHistoric()
+        yeetCovidData()
     }, [])
 
     return(
@@ -153,7 +181,7 @@ const Landing = () => {
             direction="row"
             alignItems={matches ? "flex-start" : "center"}
             justify={matches ? "center" : "space-between"}
-            spacing={4}
+            spacing={5}
             style={{width: '100%', height: '20%'}}
           >
           <Grid item lg={3} md={3} s={3} xs={10}>
@@ -161,6 +189,7 @@ const Landing = () => {
             color="#a00000"
             title="No. of Cases:"
             data={covidNow.positive}
+            daily={covidHistoric.casesToday}
             moreInfo="The number of postive cases currently in Indiana."
           > 
           </InfoCard>
@@ -170,6 +199,7 @@ const Landing = () => {
             color="#005fb8"
             title="No. Tested:"
             data={covidNow.total}
+            daily={covidHistoric.testedToday}
             moreInfo="The number of tested people currently in Indiana."
           >
           </InfoCard>
@@ -178,9 +208,21 @@ const Landing = () => {
           >
             <InfoCard 
               color="green"
-              title="No. Recovered:"
-              data={covidNow.recovered}
-              moreInfo="The number of recovered people currently in Indiana."
+              title="No. Deaths:"
+              data={covidNow.deathConfirmed}
+              daily={covidHistoric.deathToday}
+              moreInfo="The number of deaths from COVID-19"
+            >  
+             </InfoCard>
+          </Grid>
+          <Grid item lg={3} md={3} s={3} xs={10}
+          >
+            <InfoCard 
+              color="green"
+              title="No. Hospitalized:"
+              data={covidNow.hospitalized}
+              daily={covidNow.hospitalizedIncrease}
+              moreInfo="The number hospitalized from COVID-19"
             >  
              </InfoCard>
           </Grid>
