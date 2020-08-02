@@ -48,6 +48,11 @@ const IFrame = styled.iframe`
     height: 100%;
 `
 
+const MoreInfo = styled.span`
+  font-size: 0.8rem;
+  padding: 4px;
+`
+
 const LandingTitle = styled(Typography)`
     font-weight: 400 !important;
     font-size: 2.2rem !important;
@@ -157,18 +162,21 @@ const Landing = () => {
           >
             The Widespread Implications of the COVID-19 Pandemic in Indiana.
           </LandingTitle>
-          <Grid container direction="row" justify="space-between" alignItems="center" style={{width:'100%'}}>
+          <Grid container direction={matches ? "column" : "row"} justify={matches ? "center" : "space-between"} alignItems="center" style={{width:'100%'}}>
             <Grid item lg={10} md={10} xl={10}>
-              <LandingSubTitle variant="h6" gutterBottom>
+              <LandingSubTitle variant="h5">
                 How are health disparities marginalizing under-privileged groups?
               </LandingSubTitle>
             </Grid>
-            <Grid item lg={2} md={2} xl={2}>
-              <SquareButton variant="outlined" color="inherit" size="medium">
+            <Grid item lg={2} md={2} xl={12}>
+              <SquareButton variant="contained" color="" size="medium">
                 Learn More
               </SquareButton>
             </Grid>
           </Grid>
+          {matches ? ' ' :
+          <hr style={{color: 'inherit', opacity: 0.8}}></hr>
+          }
           <br></br>
           <Grid container
             direction="row"
@@ -189,7 +197,7 @@ const Landing = () => {
           </Grid>
           <Grid container
             direction="row"
-            alignItems={matches ? "flex-start" : "center"}
+            alignItems="center"
             justify={matches ? "center" : "space-between"}
             spacing={5}
             style={{width: '100%', height: '20%'}}
@@ -200,7 +208,7 @@ const Landing = () => {
             title="No. of Cases:"
             data={covidNow.positive}
             daily={covidHistoric.casesToday}
-            moreInfo="The number of postive cases currently in Indiana."
+            moreInfo={<MoreInfo>The number of postive cases currently in Indiana.</MoreInfo>}
           > 
           </InfoCard>
           </Grid>
@@ -210,7 +218,7 @@ const Landing = () => {
             title="No. Tested:"
             data={covidNow.total}
             daily={covidHistoric.testedToday}
-            moreInfo="The number of tested people currently in Indiana."
+            moreInfo={<MoreInfo>The number of tested people currently in Indiana.</MoreInfo>}
           >
           </InfoCard>
           </Grid>
@@ -221,7 +229,7 @@ const Landing = () => {
               title="No. Deaths:"
               data={covidNow.deathConfirmed}
               daily={covidHistoric.deathToday}
-              moreInfo="The number of deaths from COVID-19"
+              moreInfo={<MoreInfo>The number of deaths from COVID-19</MoreInfo>}
             >  
              </InfoCard>
           </Grid>
@@ -232,7 +240,7 @@ const Landing = () => {
               title="No. Hospitalized:"
               data={covidNow.hospitalized}
               daily={covidNow.hospitalizedIncrease}
-              moreInfo="The number hospitalized from COVID-19"
+              moreInfo={<MoreInfo>The number hospitalized from COVID-19</MoreInfo>}
             >  
              </InfoCard>
           </Grid>

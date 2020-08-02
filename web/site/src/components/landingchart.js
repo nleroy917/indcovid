@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled, { withTheme } from 'styled-components';
 
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 import {
     Grid,
@@ -15,9 +15,6 @@ const Wrapper = styled(Paper)`
     height: 85% !important;
     padding: ${props => props.mobile ? '5px' : '20px'};
     background-color: #272727 !important;
-    &:hover {
-        transform: translate(2px,2px);
-    }
 `
 
 const SelectorWrapper = styled.div`
@@ -89,14 +86,14 @@ const LandingChart = ({ data, dates }) => {
                fontColor={"#f5f6fa"}
                wrapperBorderRadius={0}
                optionBorderRadius={0}
-               selectionIndicatorMargin={2}
+               selectionIndicatorMargin={0}
                style={{padding: '4px', borderRadius: '0px !important'}}
             />
           </SelectorWrapper>
           <hr
            style={{borderTop: '1px solid'}}
           ></hr>
-          <Line
+          <Bar
             height={null}
              width={null}
             options={options}
@@ -108,7 +105,7 @@ const LandingChart = ({ data, dates }) => {
                         data: data[metric],
                         fill: true,
                         borderWidth: 0,
-                        backgroundColor: "rgba(75,192,192,0.2)",
+                        backgroundColor: "rgba(75,192,192,0.9)",
                         borderColor: "rgba(75,192,192,1)",
                         pointRadius: 0,
                         lineTension: 0
