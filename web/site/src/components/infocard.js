@@ -10,6 +10,8 @@ import {
 } from '@material-ui/core';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
+import IndianaIcon from '../images/Info-Thick.svg';
+
 const Wrapper = styled(Paper)`
     padding: 12px;
     height: 100% !important;
@@ -70,8 +72,9 @@ const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
           <IconButton
            style={{margin: 0, padding: '2px'}}
           >
-            <InfoOutlinedIcon 
-              style={{fill: '#e3e3e3'}}
+            <img
+              src={IndianaIcon}
+              style={{fill: '#e3e3e3',height: '20px', width: 'auto'}}
             />
           </IconButton>
           </TooltipInfo>

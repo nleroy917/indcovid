@@ -12,7 +12,7 @@ import {
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 const HeaderWrapper = styled.header`
-  min-height: 75px;
+  min-height: 10vh;
 `
 
 const SquareButton = styled(Button)`
