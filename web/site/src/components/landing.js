@@ -13,13 +13,14 @@ import {
 import InfoCard from '../components/infocard';
 import LandingChart from '../components/landingchart';
 import LandingPie from '../components/landingpie';
+import LandingMap from '../components/landingmap';
 
 const COVID_19_API_NOW = 'https://covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://covidtracking.com/api/v1/states/in/daily.json'
 const API_URL = 'https://indianacovid-api.herokuapp.com/'
 
 const Wrapper = styled.div`
-    height: 75vh;
+    height: 90vh;
     @media (max-width: 768px) {
     height: none;
   }
@@ -70,8 +71,9 @@ const Landing = () => {
     const [covidNow, setCovidNow] = useState(0);
     const [covidHistoric, setCovidHistoric] = useState([]);
     const [dates, setDates] = useState([]);
-    const [yeetedData, setYeetedData] = useState([]);
+    const [yeetedData, setYeetedData] = useState(null);
     const matches = useMediaQuery('(max-width:768px)');
+    const iPad = useMediaQuery('(min-device-width:1024px)')
 
     const fetchCovidNow = async () => {
         
@@ -129,12 +131,13 @@ const Landing = () => {
 
     const yeetCovidData = async () => {
       let res = await axios.get(`${API_URL}/data/isdh/full`)
-      if(res === 200) {
+      
+      if(res.status === 200) {
         let data = await res.data
         let icu_avail = data.metrics.data.m2b_hospitalized_icu_available
         let icu_covid = data.metrics.data.m2b_hospitalized_icu_occupied_covid
         let icu_else = data.metrics.data.m2b_hospitalized_icu_occupied_non_covid
-        let icu_total = icu_avail[icu_avail.lenth-1] + icu_covid[icu_covid.length-1] + icu_else[icu_else.length-1]
+        let icu_total = icu_avail[icu_avail.length-1] + icu_covid[icu_covid.length-1] + icu_else[icu_else.length-1]
         let yeeted_data = {
           icu: {
             available: (icu_avail[icu_avail.length-1]/icu_total)*100,
@@ -143,7 +146,6 @@ const Landing = () => {
           }
         }
         setYeetedData(yeeted_data)
-        console.log(yeetedData)
       }
     }
 
@@ -152,15 +154,14 @@ const Landing = () => {
         fetchCovidHistoric()
         yeetCovidData()
     }, [])
-
+    if(covidNow && yeetedData){
     return(
-      covidNow ?
         <>
         <Wrapper>
           <LandingTitle variant="h2"
             gutterBottom
           >
-            The Widespread Implications of the COVID-19 Pandemic in Indiana.
+            The Implications of the COVID-19 Pandemic in Indiana.
           </LandingTitle>
           <Grid container direction={matches ? "column" : "row"} justify={matches ? "center" : "space-between"} alignItems="center" style={{width:'100%'}}>
             <Grid item lg={10} md={10} xl={10}>
@@ -180,75 +181,77 @@ const Landing = () => {
           <br></br>
           <Grid container
             direction="row"
-            alignItems={matches ? "flex-start" : "stretch"}
-            justify={matches ? "center" : "space-between"}
-            spacing={1}
-            style={{width: '100%', height: '75%'}}
+            alignItems={matches || iPad ? "flex-start" : "stretch"}
+            justify={matches ? "center" : "stretch"}
+            spacing={matches ? 2 : 4}
+            style={{width: matches ? '' : '100%', height: matches ? '' : '65%', paddingBottom: matches ? '10px' : 0}}
             >
-          <Grid item lg={6} md={6} s={5} xs={12}>
+          <Grid item lg={6} md={6} s={5} xs={iPad ? 6 : 12}>
             <LandingChart
               dates={dates}
               data={covidHistoric}
             />
           </Grid>
-          <Grid item lg={6} md={6} s={5} xs={12}>
-
+          <Grid item lg={6} md={6} s={5} xs={iPad ? 6 : 12}>
+            <LandingMap />
           </Grid>
           </Grid>
           <Grid container
             direction="row"
-            alignItems="center"
-            justify={matches ? "center" : "space-between"}
-            spacing={5}
-            style={{width: '100%', height: '20%'}}
+            alignItems={matches || iPad ? "flex-start" : "stretch"}
+            justify={matches ? "center" : "stretch"}
+            spacing={matches ? 3 : 5}
+            style={{width:'100%', height: matches ? '' : '20%'}}
           >
-          <Grid item lg={3} md={3} s={3} xs={12}>
+          <Grid item lg={3} md={3} s={3} xs={iPad ? 5 : 12}>
           <InfoCard
             color="#a00000"
             title="No. of Cases:"
             data={covidNow.positive}
             daily={covidHistoric.casesToday}
-            moreInfo={<MoreInfo>The number of postive cases currently in Indiana.</MoreInfo>}
+            moreInfo={<MoreInfo>The running total of positive SARS-CoV-2 cases</MoreInfo>}
           > 
           </InfoCard>
           </Grid>
-          <Grid item lg={3} md={3} s={3} xs={12}>
+          <Grid item lg={3} md={3} s={3} xs={iPad ? 5 : 12}>
           <InfoCard
             color="#005fb8"
             title="No. Tested:"
             data={covidNow.total}
             daily={covidHistoric.testedToday}
-            moreInfo={<MoreInfo>The number of tested people currently in Indiana.</MoreInfo>}
+            moreInfo={<MoreInfo>The running total of persons tested for SARS-CoV-2 cases</MoreInfo>}
           >
           </InfoCard>
           </Grid>
-          <Grid item lg={3} md={3} s={3} xs={12}
+          <Grid item lg={3} md={3} s={3} xs={iPad ? 5 : 12}
           >
             <InfoCard 
               color="green"
               title="No. Deaths:"
               data={covidNow.deathConfirmed}
               daily={covidHistoric.deathToday}
-              moreInfo={<MoreInfo>The number of deaths from COVID-19</MoreInfo>}
+              moreInfo={<MoreInfo>The running total of persons who have died in relation to contracting SARS-CoV-2</MoreInfo>}
             >  
              </InfoCard>
           </Grid>
-          <Grid item lg={3} md={3} s={3} xs={12}
+          <Grid item lg={3} md={3} s={3} xs={iPad ? 5 : 12}
           >
             <InfoCard 
               color="green"
               title="No. Hospitalized:"
               data={covidNow.hospitalized}
               daily={covidNow.hospitalizedIncrease}
-              moreInfo={<MoreInfo>The number hospitalized from COVID-19</MoreInfo>}
+              moreInfo={<MoreInfo>The running total of persons who have been hospitalized in relation to contracting SARS-CoV-2</MoreInfo>}
             >  
              </InfoCard>
           </Grid>
           </Grid>
         </Wrapper>
         </>
-        : ' ' 
-    )
+    )}
+    else{
+      return(<> </>)
+    }
 
 }
 

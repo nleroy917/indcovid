@@ -6,6 +6,5 @@ export const Placeholder = styled.div`
   font-size: 24px;
   justify-content: center;
   align-items: center;
-  margin: 10rem;
   padding: 20px;
 `
