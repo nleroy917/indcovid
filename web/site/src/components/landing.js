@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 indcovid.com
+@author: Nathan LeRoy
+@contact: NLeRoy917@gmail.com
+
+Landing page component
+*/
+
 import React, {useState, useEffect} from "react";
 import styled from 'styled-components';
 import axios from 'axios';

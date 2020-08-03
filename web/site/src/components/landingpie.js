@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 indcovid.com
+@author: Nathan LeRoy
+@contact: NLeRoy917@gmail.com
+
+Landing page pie/doughnut chart for ICU capacity
+*/
+
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 

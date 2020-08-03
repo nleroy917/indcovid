@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 indcovid.com
+@author: Nathan LeRoy
+@contact: NLeRoy917@gmail.com
+
+Info Card for Landing Page Component
+*/
+
 import React from "react";
 import styled from 'styled-components';
 
@@ -16,7 +24,7 @@ const Wrapper = styled(Paper)`
     padding: 12px;
     height: 100% !important;
     width: 100%;
-    background-color: #272727 !important;
+    background-color: #1d1d1d !important;
     color: inherit !important;
     /* box-shadow: ${props => props.color} 8px 8px !important; */
     transition: ease 0.2s;

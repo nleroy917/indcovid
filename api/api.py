@@ -1,3 +1,11 @@
+'''
+Copyright (c) 2020 indcovid.com
+@author: Nathan LeRoy
+@contact: NLeRoy917@gmail.com
+
+indcovid.com main api to interface the MySQL database and the UI
+'''
+
 import sys
 import os
 import requests
