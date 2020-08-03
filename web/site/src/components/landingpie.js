@@ -1,27 +1,64 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
-import { Pie } from 'react-chartjs-2';
+import {
+    useMediaQuery
+} from '@material-ui/core'
+
+import { Doughnut } from 'react-chartjs-2';
 
 const Wrapper = styled.div`
-
+    height: 100% !important;
+    padding: ${props => props.mobile ? '5px' : '20px'};
+    padding-bottom: 10px;
+    background-color: #272727 !important;
 `
 
 const LandingPie = ({data}) => {
+    const matches = useMediaQuery('(max-width:768px)');
+    const [options, setOptions] = useState({
+        legend: {
+            position: "top",
+              labels: {
+                  fontColor: "white",
+                  fontSize: window.innerWidth < 600 ? 10 : 12,
+                  position: "left",
+                  padding: window.innerWidth < 600 ? 8 : 10
+              }
+        } ,
+        pieceLabel: {
+           render: 'label',
+           fontColor: 'black',
+           fontSize: 10
+        },
+        plugins: {
+           datalabels: {
+              display: true
+           }
+        },
+        aspectRatio: 1,
+        maintainAspectRatio: true,
+    })
     useEffect(() => {
         console.log(data)
     },[])
     return(
         <>
-          <Wrapper>
-            <Pie
+        <Wrapper>
+            <Doughnut
+                height={null}
+                width={null}
+                options={options}
                 data={{
                     labels: ['ICU Available', 'ICU In Use - COVID', 'ICU In Use - Else'],
-                    data: [data.icu.available, data.icu.covid, data.icu.other]
+                    datasets: [{
+                        data: [data.icu.available, data.icu.covid, data.icu.other],
+                        backgroundColor:['rgba(75,192,192,0.9)','white','#5ed950']
+                        }]
                 }
                 }
             />
-          </Wrapper>
+        </Wrapper>
         </>
     )
 }

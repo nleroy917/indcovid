@@ -14,6 +14,7 @@ import SwitchSelector from "react-switch-selector";
 const Wrapper = styled(Paper)`
     height: 85% !important;
     padding: ${props => props.mobile ? '5px' : '20px'};
+    padding-bottom: 0px;
     background-color: #272727 !important;
 `
 
@@ -49,12 +50,12 @@ const LandingChart = ({ data, dates }) => {
             selectedBackgroundColor: "#005fb8"
         },
         {
-            label: "Recovered",
+            label: "Total Recovered",
             value: "recovered",
             selectedBackgroundColor: "#005fb8"
         },
         {
-            label: "Hospitalized",
+            label: "Total Hospitalized",
             value: "hospitalized",
             selectedBackgroundColor: "#005fb8"
         },
@@ -79,7 +80,7 @@ const LandingChart = ({ data, dates }) => {
           <SelectorWrapper>
             <SwitchSelector
                border={4}
-               fontSize={matches ? 9 : 10}
+               fontSize={matches ? 9 : 12}
                onChange={onSelectorChange}
                options={selectOps}
                backgroundColor={"#272727"}
