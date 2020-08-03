@@ -72,8 +72,9 @@ const Landing = () => {
     const [covidHistoric, setCovidHistoric] = useState([]);
     const [dates, setDates] = useState([]);
     const [yeetedData, setYeetedData] = useState(null);
-    const matches = useMediaQuery('(max-width:768px)');
-    const iPad = useMediaQuery('(min-device-width:1024px)')
+    const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
+    const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
+    const iPadPro = useMediaQuery('(max-device-width:1024px)', { noSsr: true });
 
     const fetchCovidNow = async () => {
         
@@ -155,15 +156,22 @@ const Landing = () => {
         yeetCovidData()
     }, [])
     if(covidNow && yeetedData){
+    console.log('Mobile:', mobile)
+    console.log('iPad:', iPad)
     return(
         <>
         <Wrapper>
+        {
+          /* 
+          LANDING TITLE, SUBTITLE AND LEARN MORE BUTTON 
+          */
+        }
           <LandingTitle variant="h2"
             gutterBottom
           >
             The Implications of the COVID-19 Pandemic in Indiana.
           </LandingTitle>
-          <Grid container direction={matches ? "column" : "row"} justify={matches ? "center" : "space-between"} alignItems="center" style={{width:'100%'}}>
+          <Grid container direction={mobile ? "column" : "row"} justify={mobile ? "center" : "space-between"} alignItems="center" style={{width:'100%'}}>
             <Grid item lg={10} md={10} xl={10}>
               <LandingSubTitle variant="h5">
                 How are health disparities marginalizing under-privileged groups?
@@ -175,35 +183,47 @@ const Landing = () => {
               </SquareButton>
             </Grid>
           </Grid>
-          {matches ? ' ' :
+          {mobile ? ' ' :
           <hr style={{color: 'inherit', opacity: 0.8}}></hr>
           }
           <br></br>
+          {
+          /* 
+            LANDING CHART AND MAP | SET TO BE 60% OF THE VIEW HEIGHT
+          */
+          }
           <Grid container
             direction="row"
-            alignItems={matches || iPad ? "flex-start" : "stretch"}
-            justify={matches ? "center" : "stretch"}
-            spacing={matches ? 2 : 4}
-            style={{width: matches ? '' : '100%', height: matches ? '' : '65%', paddingBottom: matches ? '10px' : 0}}
+            alignItems={mobile? "flex-start" : "stretch"}
+            justify={mobile || iPad ? "center" : "space-between"}
+            spacing={mobile ? 2 : 4}
+            style={{width: mobile ? '' : '100%', height: mobile ? '' : iPad ? '45vh' : iPadPro ? '40vh' : '60vh', paddingBottom: mobile ? '10px' : 0}}
             >
-          <Grid item lg={6} md={6} s={5} xs={iPad ? 6 : 12}>
+          <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
             <LandingChart
               dates={dates}
               data={covidHistoric}
             />
           </Grid>
-          <Grid item lg={6} md={6} s={5} xs={iPad ? 6 : 12}>
-            <LandingMap />
+          <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
+            <LandingMap 
+
+            />
           </Grid>
           </Grid>
+          {
+          /* 
+          LANDING INFO CARDS - SET TO BE 20% OF THE VIEW HEIGHT 
+          */
+        }
           <Grid container
             direction="row"
-            alignItems={matches || iPad ? "flex-start" : "stretch"}
-            justify={matches ? "center" : "stretch"}
-            spacing={matches ? 3 : 5}
-            style={{width:'100%', height: matches ? '' : '20%'}}
+            alignItems={mobile || iPad ? "flex-start" : "stretch"}
+            justify={mobile || iPad ? "center" : "stretch"}
+            spacing={mobile ? 3 : 5}
+            style={{width:'100%', height: mobile ? '' : '10vh'}}
           >
-          <Grid item lg={3} md={3} s={3} xs={iPad ? 5 : 12}>
+          <Grid item lg={3} md={3} s={3} xs={!mobile ? 5 : 12}>
           <InfoCard
             color="#a00000"
             title="No. of Cases:"
@@ -213,7 +233,7 @@ const Landing = () => {
           > 
           </InfoCard>
           </Grid>
-          <Grid item lg={3} md={3} s={3} xs={iPad ? 5 : 12}>
+          <Grid item lg={3} md={3} s={3} xs={!mobile ? 5 : 12}>
           <InfoCard
             color="#005fb8"
             title="No. Tested:"
@@ -223,7 +243,7 @@ const Landing = () => {
           >
           </InfoCard>
           </Grid>
-          <Grid item lg={3} md={3} s={3} xs={iPad ? 5 : 12}
+          <Grid item lg={3} md={3} s={3} xs={!mobile ? 5 : 12}
           >
             <InfoCard 
               color="green"
@@ -234,7 +254,7 @@ const Landing = () => {
             >  
              </InfoCard>
           </Grid>
-          <Grid item lg={3} md={3} s={3} xs={iPad ? 5 : 12}
+          <Grid item lg={3} md={3} s={3} xs={!mobile ? 5 : 12}
           >
             <InfoCard 
               color="green"

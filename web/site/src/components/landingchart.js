@@ -14,7 +14,6 @@ import SwitchSelector from "react-switch-selector";
 const Wrapper = styled(Paper)`
     height: 85% !important;
     padding: ${props => props.mobile ? '5px' : '20px'};
-    padding-bottom: 0px;
     background-color: #272727 !important;
 `
 
