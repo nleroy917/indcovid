@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 indcovid.com
+@author: Nathan LeRoy & Gatsby JS
+@contact: NLeRoy917@gmail.com
+
+Layout component for each page - contains nav and margins/padding
+*/
+
 /**
  * Layout component that queries for data
  * with Gatsby's useStaticQuery component

@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 indcovid.com
+@author: Nathan LeRoy
+@contact: NLeRoy917@gmail.com
+
+Landing Page Graph/Chart on Pandemic Statistics
+*/
+
 import React, {useState} from 'react';
 import styled, { withTheme } from 'styled-components';
 
@@ -14,7 +22,7 @@ import SwitchSelector from "react-switch-selector";
 const Wrapper = styled(Paper)`
     height: 85% !important;
     padding: ${props => props.mobile ? '5px' : '20px'};
-    background-color: #272727 !important;
+    background-color: #1d1d1d !important;
 `
 
 const SelectorWrapper = styled.div`
@@ -41,27 +49,27 @@ const LandingChart = ({ data, dates }) => {
         {
             label: "New Cases",
             value: "cases",
-            selectedBackgroundColor: "#005fb8",
+            selectedBackgroundColor: "rgba(75,192,192,0.9)",
         },
         {
             label: "New Deaths",
             value: "deaths",
-            selectedBackgroundColor: "#005fb8"
+            selectedBackgroundColor: "rgba(75,192,192,0.9)"
         },
         {
             label: "Total Recovered",
             value: "recovered",
-            selectedBackgroundColor: "#005fb8"
+            selectedBackgroundColor: "rgba(75,192,192,0.9)"
         },
         {
             label: "Total Hospitalized",
             value: "hospitalized",
-            selectedBackgroundColor: "#005fb8"
+            selectedBackgroundColor: "rgba(75,192,192,0.9)"
         },
         {
             label: "New Tests",
             value: "tests",
-            selectedBackgroundColor: "#005fb8"
+            selectedBackgroundColor: "rgba(75,192,192,0.9)"
         }
     ];
     const onSelectorChange = (newValue) => {
@@ -82,7 +90,7 @@ const LandingChart = ({ data, dates }) => {
                fontSize={matches ? 9 : 12}
                onChange={onSelectorChange}
                options={selectOps}
-               backgroundColor={"#272727"}
+               backgroundColor={"#1d1d1d"}
                fontColor={"#f5f6fa"}
                wrapperBorderRadius={0}
                optionBorderRadius={0}
