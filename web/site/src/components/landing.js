@@ -18,6 +18,7 @@ import {
     MobileStepper
 } from '@material-ui/core';
 
+import { Link } from 'gatsby';
 
 import InfoCard from '../components/infocard';
 import LandingChart from '../components/landingchart';
@@ -27,6 +28,21 @@ import LandingMap from '../components/landingmap';
 const COVID_19_API_NOW = 'https://covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://covidtracking.com/api/v1/states/in/daily.json'
 const API_URL = 'https://indianacovid-api.herokuapp.com/'
+
+const ALink = styled(Link)`
+  color: inherit;
+  font-size: 0.75rem;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+`
 
 const Wrapper = styled.div`
     height: ${props => props.mobile ? '' : '90vh'};
@@ -247,19 +263,25 @@ const Landing = () => {
             spacing={2}
           >
             <Grid item lg={2} md={2} xl={12}>
-              <SquareButton variant="outlined" color="inherit" size="medium">
+            <ALink to="">
+              <SquareButton href="" variant="outlined" color="inherit" size="medium">
                 Health Equity
               </SquareButton>
+              </ALink>
             </Grid>
             <Grid item lg={2} md={2} xl={12}>
+            <ALink to="/stay-healthy">
               <SquareButton variant="outlined" color="inherit" size="medium">
                 Stay Healthy
               </SquareButton>
+              </ALink>
             </Grid>
             <Grid item lg={2} md={2} xl={12}>
+            <ALink to="/more-info">
               <SquareButton variant="outlined" color="inherit" size="medium">
                 More Info
               </SquareButton>
+              </ALink>
             </Grid>
           </Grid>
           {mobile ? ' ' :
