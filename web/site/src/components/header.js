@@ -27,11 +27,13 @@ const SquareButton = styled(Button)`
   border-radius: 0px !important;
 `
 
-const ALink = styled(Link)`
+const ALink = styled.a`
   color: inherit;
+  font-size: 0.75rem;
   text-decoration: none;
   &:hover {
     text-decoration: none;
+    cursor: pointer;
   }
   &:active {
     text-decoration: none;
@@ -61,17 +63,8 @@ const Header = ({ siteTitle }) => {
       spacing={2}
     >
       <Grid item>
-      <ALink to="/about">
-        <SquareButton variant="outlined" color="inherit" size="small">
-          More Information
-        </SquareButton>
-        </ALink>
-      </Grid>
-      <Grid item>
-      <ALink to="/about">
-        <SquareButton variant="outlined" color="inherit" size="small">
-          Stay Healthy
-        </SquareButton>
+      <ALink href="mailto:indianacovid@gmail.com">
+          Contact Us
         </ALink>
       </Grid>
     </Grid>

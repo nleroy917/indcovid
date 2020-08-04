@@ -58,12 +58,12 @@ const LandingChart = ({ data, dates }) => {
             selectedBackgroundColor: "rgba(75,192,192,0.9)"
         },
         {
-            label: "Total Recovered",
+            label: "Newly Recovered",
             value: "recovered",
             selectedBackgroundColor: "rgba(75,192,192,0.9)"
         },
         {
-            label: "Total Hospitalized",
+            label: "Daily Hospitalized",
             value: "hospitalized",
             selectedBackgroundColor: "rgba(75,192,192,0.9)"
         },
@@ -75,7 +75,6 @@ const LandingChart = ({ data, dates }) => {
     ];
     const onSelectorChange = (newValue) => {
         setMetric(newValue)
-        console.log(data[newValue])
     };
     return(
         

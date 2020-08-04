@@ -102,7 +102,7 @@ const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
             {numberWithCommas(data)}
           </InfoData>
           <DailyData variant="h6">
-            {`+ ${daily}`}
+            {`+ ${numberWithCommas(daily)}`}
           </DailyData>
             {children}
           </Wrapper>
