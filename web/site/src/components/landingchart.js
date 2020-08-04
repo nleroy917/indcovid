@@ -21,7 +21,7 @@ import SwitchSelector from "react-switch-selector";
 
 const Wrapper = styled(Paper)`
     height: 85% !important;
-    padding: ${props => props.mobile ? '5px' : '20px'};
+    padding: ${props => props.mobile ? '15px' : '20px'};
     background-color: #1d1d1d !important;
 `
 
@@ -29,6 +29,7 @@ const SelectorWrapper = styled.div`
     height: 25px;
     margin: 10px;
     font-family: inherit;
+    text-align: center;
 `
 
 const LandingChart = ({ data, dates }) => {
@@ -94,7 +95,7 @@ const LandingChart = ({ data, dates }) => {
                fontColor={"#f5f6fa"}
                wrapperBorderRadius={0}
                optionBorderRadius={0}
-               selectionIndicatorMargin={0}
+               selectionIndicatorMargin={-2}
                style={{padding: '4px', borderRadius: '0px !important'}}
             />
           </SelectorWrapper>
