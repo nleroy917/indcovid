@@ -33,7 +33,7 @@ const PageFooter = () => {
             <Grid container
                 direction="row"
                 alignItems="center"
-                justify={mobile ? "center" : "space-between"}
+                justify={mobile || iPad ? "center" : "space-between"}
             >
               <Grid item lg={3} md={3} xs={10}>
                 <FooterText>
