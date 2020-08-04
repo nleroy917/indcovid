@@ -54,6 +54,7 @@ const Wrapper = styled.div`
 
 const SquareButton = styled(Button)`
   border-radius: 0px !important;
+  margin: 5px !important;
 `
 
 const MapWrapper = styled.div`
@@ -260,7 +261,6 @@ const Landing = () => {
             justify={mobile ? "center" : "center"} 
             alignItems="center" 
             style={{width:'100%'}}
-            spacing={2}
           >
             <Grid item lg={2} md={2} xl={12}>
             <ALink to="">
