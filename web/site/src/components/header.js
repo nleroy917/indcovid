@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 indcovid.com
+@author: Nathan LeRoy
+@contact: NLeRoy917@gmail.com
+
+Header for each page
+*/
+
 import PropTypes from "prop-types"
 import React from "react"
 import styled from 'styled-components';
