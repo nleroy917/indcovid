@@ -239,7 +239,13 @@ const Landing = () => {
           >
             The Implications of the COVID-19 Pandemic in Indiana
           </LandingTitle>
-          <Grid container direction={mobile ? "column" : "row"} justify={mobile ? "center" : "center"} alignItems="center" style={{width:'100%'}}>
+          <Grid container 
+            direction={mobile ? "column" : "row"} 
+            justify={mobile ? "center" : "center"} 
+            alignItems="center" 
+            style={{width:'100%'}}
+            spacing={2}
+          >
             <Grid item lg={2} md={2} xl={12}>
               <SquareButton variant="outlined" color="inherit" size="medium">
                 Health Equity
