@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2020 indcovid.com
+@author: Nathan LeRoy
+@contact: NLeRoy917@gmail.com
+
+Landing page map of Indiana - Contains Arc-Gis map
+*/
+
 import React from 'react';
 import styled from 'styled-components';
 import {
@@ -8,8 +16,8 @@ import {
 
 const Wrapper = styled(Paper)`
     height: 85% !important;
-    padding: ${props => props.mobile || props.iPad ? '5px' : '20px'};
-    background-color: #272727 !important;
+    padding: ${props => props.mobile || props.iPad ? '15px' : '20px'};
+    background-color: #1d1d1d !important;
 `
 
 const MapTitleWrapper = styled.div`
@@ -36,7 +44,7 @@ const Map = styled.iframe`
     top: 0; 
     left: 0; 
     width: 100%;
-    height: ${props => props.mobile ? '100%' : '109%'};
+    height: ${props => props.mobile ? '100%' : '104%'};
     position: absolute; 
     z-index: 40; 
     bottom: 0; 
