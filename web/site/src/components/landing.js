@@ -66,6 +66,7 @@ const MoreInfo = styled.span`
 const LandingTitle = styled(Typography)`
     font-weight: 400 !important;
     font-size: 2.2rem !important;
+    text-align: center;
 
 `
 
@@ -84,6 +85,60 @@ const Landing = () => {
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
     const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
     const iPadPro = useMediaQuery('(max-device-width:1024px)', { noSsr: true });
+
+    const removeOutliers = (someArray) => {
+
+        // Copy the values, rather than operating on references to existing values
+        var values = someArray.concat();
+    
+        // Then sort
+        values.sort( function(a, b) {
+                return a - b;
+             });
+    
+        /* Then find a generous IQR. This is generous because if (values.length / 4) 
+         * is not an int, then really you should average the two elements on either 
+         * side to find q1.
+         */     
+        var q1 = values[Math.floor((values.length / 4))];
+        // Likewise for q3. 
+        var q3 = values[Math.ceil((values.length * (3 / 4)))];
+        var iqr = q3 - q1;
+    
+        // Then find min and max values
+        var maxValue = q3 + iqr*3;
+        var minValue = q1 - iqr*3;
+    
+        // Then filter anything beyond or beneath these values.
+        var filteredValues = values.filter(function(x) {
+            return (x <= maxValue) && (x >= minValue);
+        });
+    
+        // Then return
+        return filteredValues;
+    
+    }
+
+    const cumulativeToDaily = (cumulative) => {
+
+      let daily = []
+      daily.push(0);
+
+      let delta = 0
+
+      for(let i = 0; i < cumulative.length - 1; i++) {
+
+        delta = cumulative[i+1] - cumulative[i]
+
+        if(delta < 0) {
+          daily.push(0)
+        } else{
+          daily.push(delta)
+        }
+
+      }
+      return removeOutliers(daily)
+    }
 
     const fetchCovidNow = async () => {
         
@@ -107,7 +162,7 @@ const Landing = () => {
           tests: [],
           casesToday: data[data.length-1].positiveIncrease,
           testedToday: data[data.length-1].totalTestResultsIncrease,
-          deathToday: data[data.length-1].deathProbable,
+          deathToday: data[data.length-1].deathIncrease,
           hospitalizedToday: data[data.length-1].hospitalizedIncrease
         }
         for(let i = 0; i < data_rev.length; i++) {
@@ -129,12 +184,14 @@ const Landing = () => {
              data_point.recovered
           )
           historic_data_full.hospitalized.push(
-            data_point.hospitalized
+            data_point.hospitalizedIncrease
           )
           historic_data_full.tests.push(
             data_point.totalTestResultsIncrease
           )
         }
+        historic_data_full.hospitalized = removeOutliers(historic_data_full.hospitalized)
+        historic_data_full.recovered = cumulativeToDaily(historic_data_full.recovered)
         setCovidHistoric(historic_data_full)
       }
     }
@@ -180,17 +237,22 @@ const Landing = () => {
           <LandingTitle variant="h2"
             gutterBottom
           >
-            The Implications of the COVID-19 Pandemic in Indiana.
+            The Implications of the COVID-19 Pandemic in Indiana
           </LandingTitle>
-          <Grid container direction={mobile ? "column" : "row"} justify={mobile ? "center" : "space-between"} alignItems="center" style={{width:'100%'}}>
-            <Grid item lg={10} md={10} xl={10}>
-              <LandingSubTitle variant="h5">
-                How are health disparities marginalizing under-privileged groups?
-              </LandingSubTitle>
+          <Grid container direction={mobile ? "column" : "row"} justify={mobile ? "center" : "center"} alignItems="center" style={{width:'100%'}}>
+            <Grid item lg={2} md={2} xl={12}>
+              <SquareButton variant="outlined" color="inherit" size="medium">
+                Health Equity
+              </SquareButton>
             </Grid>
             <Grid item lg={2} md={2} xl={12}>
-              <SquareButton variant="contained" color="" size="medium">
-                Learn More
+              <SquareButton variant="outlined" color="inherit" size="medium">
+                Stay Healthy
+              </SquareButton>
+            </Grid>
+            <Grid item lg={2} md={2} xl={12}>
+              <SquareButton variant="outlined" color="inherit" size="medium">
+                More Info
               </SquareButton>
             </Grid>
           </Grid>

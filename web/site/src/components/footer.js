@@ -35,23 +35,23 @@ const PageFooter = () => {
                 alignItems="center"
                 justify="space-between"
             >
-              <Grid item lg={4} md={4} xs={10}>
+              <Grid item lg={3} md={3} xs={10}>
                 <FooterText>
                     Contact:
                     <br></br>
                     indianacovid@gmail.com
                 </FooterText>
               </Grid>
-              <Grid item lg={4} md={4} xs={10}>
+              <Grid item lg={3} md={3} xs={10}>
                 <FooterText>
                   <em>
                     All data displayed is preliminary and subject to change as more information is reported to ISDH. Expect historical data to change as data is reported to ISDH.
                   </em>
                 </FooterText>
               </Grid>
-              <Grid item lg={4} md={4} xs={10}>
+              <Grid item lg={3} md={3} xs={10}>
                 <FooterText>
-                    Web-Design: Nathan LeRoy
+                    Web Design: Nathan LeRoy, Barnabas Obeng-Gyasi, Hailey Russell
                 </FooterText>
               </Grid>
             </Grid>
