@@ -14,7 +14,8 @@ import {
     Typography,
     Grid,
     useMediaQuery,
-    Button
+    Button,
+    MobileStepper
 } from '@material-ui/core';
 
 
@@ -28,9 +29,9 @@ const COVID_19_API_HISTORIC = 'https://covidtracking.com/api/v1/states/in/daily.
 const API_URL = 'https://indianacovid-api.herokuapp.com/'
 
 const Wrapper = styled.div`
-    height: 90vh;
+    height: ${props => props.mobile ? '' : '90vh'};
     @media (max-width: 768px) {
-    height: none;
+      height: none;
   }
 
 `
@@ -168,7 +169,9 @@ const Landing = () => {
     console.log('iPad:', iPad)
     return(
         <>
-        <Wrapper>
+        <Wrapper
+          mobile={MobileStepper}
+        >
         {
           /* 
           LANDING TITLE, SUBTITLE AND LEARN MORE BUTTON 
@@ -203,9 +206,9 @@ const Landing = () => {
           <Grid container
             direction="row"
             alignItems={mobile? "flex-start" : "stretch"}
-            justify={mobile || iPad ? "center" : "space-between"}
+            justify={mobile || iPad ? "center" : "center"}
             spacing={mobile ? 2 : 4}
-            style={{width: mobile ? '' : '100%', height: mobile ? '' : iPad ? '45vh' : iPadPro ? '40vh' : '60vh', paddingBottom: mobile ? '10px' : 0}}
+            style={{height: mobile ? '' : iPad ? '' : iPadPro ? '45vh' : '60vh', paddingBottom: mobile || iPad ? '10px' : 0}}
             >
           <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
             <LandingChart
@@ -226,10 +229,10 @@ const Landing = () => {
         }
           <Grid container
             direction="row"
-            alignItems={mobile || iPad ? "flex-start" : "stretch"}
-            justify={mobile || iPad ? "center" : "stretch"}
-            spacing={mobile ? 3 : 5}
-            style={{width:'100%', height: mobile ? '' : '10vh'}}
+            alignItems={mobile || iPad ? "flex-start" : "center"}
+            justify={mobile || iPad ? "center" : "center"}
+            spacing={mobile ? 3 : 4}
+            style={{width: mobile ? '100%' : '', height: mobile || iPad ? '' : '20vh'}}
           >
           <Grid item lg={3} md={3} s={3} xs={!mobile ? 5 : 12}>
           <InfoCard
