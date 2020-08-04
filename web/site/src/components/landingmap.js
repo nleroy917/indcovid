@@ -70,7 +70,7 @@ const LandingMap = () => {
               marginheight="0" 
               marginwidth="0" 
               title="Indiana Covid-19 Data" 
-              src="//barnabasog.maps.arcgis.com/apps/Embed/index.html?webmap=eae8093967f94adf8f10faf9368145fd&extent=-93.4912,36.1523,-79.3078,43.5376&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=dark"
+              src="//barnabasog.maps.arcgis.com/apps/Embed/index.html?webmap=eae8093967f94adf8f10faf9368145fd&extent=-89.2337,38.5245,-82.142,42.1939&home=true&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=dark"
             >
             </Map>
           </MapWrapper>
