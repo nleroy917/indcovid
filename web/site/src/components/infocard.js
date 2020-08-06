@@ -15,7 +15,8 @@ import {
     Typography,
     IconButton,
     Tooltip,
-    useMediaQuery
+    useMediaQuery,
+    Popover
 } from '@material-ui/core';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
@@ -49,6 +50,13 @@ const TooltipInfo = styled(Tooltip)`
   font-size: 1.5rem !important;
 `
 
+const PopoverWrapper = styled(Paper)`
+  background-color: #5a5a5a !important;
+  color: white !important;
+  padding: 4px !important;
+  font-size: 1.5rem !important;
+`
+
 const DailyData = styled(Typography)`
   font-weight: 300 !important;
   opacity: 0.8;
@@ -59,9 +67,24 @@ const DailyData = styled(Typography)`
 const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
     const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+      if(mobile) {
+      setAnchorEl(event.currentTarget);
+      }
+    };
+
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+
     const numberWithCommas = (n) =>  {
       return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+
+    const open = Boolean(anchorEl);
+
     return(
         <>
           <Wrapper
@@ -89,6 +112,7 @@ const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
             arrow={true}
           >
           <IconButton
+            onClick={handleClick}
           >
             <img
               src={IndianaIcon}
@@ -96,6 +120,23 @@ const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
             />
           </IconButton>
           </TooltipInfo>
+          <Popover
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+          >
+          <PopoverWrapper>
+            {moreInfo}
+          </PopoverWrapper>
+          </Popover>
           </Grid>
           </Grid>
           <InfoData variant="h4" style={{textAlign: 'center'}}>
