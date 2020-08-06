@@ -20,6 +20,7 @@ import {
 
 import { Link } from 'gatsby';
 
+import Nav from '../components/nav';
 import InfoCard from '../components/infocard';
 import LandingChart from '../components/landingchart';
 import LandingPie from '../components/landingpie';
@@ -88,7 +89,7 @@ const LandingSubTitle = styled(Typography)`
 `
 
 const Landing = ({dates, covidNow, covidHistoric, yeetedData}) => {
-  
+
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
     const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
     const iPadPro = useMediaQuery('(max-device-width:1024px)', { noSsr: true });
@@ -108,37 +109,7 @@ const Landing = ({dates, covidNow, covidHistoric, yeetedData}) => {
           >
             The Implications of the COVID-19 Pandemic in Indiana
           </LandingTitle>
-          <Grid container 
-            direction={mobile ? "column" : "row"} 
-            justify={mobile ? "center" : "center"} 
-            alignItems="center" 
-            style={{width:'100%'}}
-          >
-            <Grid item lg={2} md={2} xl={12}>
-            <ALink to="">
-              <SquareButton href="" variant="outlined" color="inherit" size="medium">
-                Health Equity
-              </SquareButton>
-              </ALink>
-            </Grid>
-            <Grid item lg={2} md={2} xl={12}>
-            <ALink to="/stay-healthy">
-              <SquareButton variant="outlined" color="inherit" size="medium">
-                Stay Healthy
-              </SquareButton>
-              </ALink>
-            </Grid>
-            <Grid item lg={2} md={2} xl={12}>
-            <ALink to="/more-info">
-              <SquareButton variant="outlined" color="inherit" size="medium">
-                More Info
-              </SquareButton>
-              </ALink>
-            </Grid>
-          </Grid>
-          {mobile ? ' ' :
-          <hr style={{color: 'inherit', opacity: 0.8}}></hr>
-          }
+          <Nav />
           <br></br>
           {
           /* 

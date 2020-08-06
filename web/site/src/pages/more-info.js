@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { Placeholder } from "../components/placeholder-div";
 import InfoSection from '../components/moreinfosection';
+import Nav from '../components/nav';
 
 import barnabas from '../images/barnabas.jpg';
 import nathan from '../images/nathan.png';
@@ -20,6 +21,10 @@ const SquareButton = styled(Button)`
   border-radius: 0px !important;
   padding: 5px !important;
   margin-bottom: 15px !important;
+`
+
+const InlineLink = styled.a`
+    color: rgba(75,192,192,0.9);
 `
 
 const ALink = styled(Link)`
@@ -82,15 +87,11 @@ const MoreInfoPage = () => {
 
     return (
     <Layout>
-      <SEO title="404: Not found" />
-      <ALink to="/">
-        <SquareButton variant="outlined" color="inherit">
-            Home
-        </SquareButton>
-      </ALink>
+      <SEO title="More Info" />
+      <Nav />
       <InfoSection
         title="Developers"
-        content="This site was developed by Nathan LeRoy and Barnabas Obeng-Gyasi. Both graduates of Purdue University, Nathan now works for the Indiana Biosciences Research Institute as an Assistant Research Associate. Barnabas currently works as a research assistant at Duke University and is preparing for medical school. Most of the web design and system architecture was developed by Nathan, while Barnabas worked to develop the Python back-end for calculating our various metrics."
+        content="This site was developed by Nathan LeRoy and Barnabas Obeng-Gyasi. Both graduates of Purdue University, Nathan now works for the Indiana Biosciences Research Institute as an Assistant Research Associate. Barnabas currently works as a Senior Research Assistant at Duke University and is preparing for medical school. Most of the web design and system architecture was developed by Nathan, while Barnabas worked to incorporate visual map data with ArcGIS and developed the Python back-end for calculating our various metrics within the lens of health equity."
         media={
             <>
               <MediaWrapper>
@@ -107,11 +108,17 @@ const MoreInfoPage = () => {
       <br></br>
       <InfoSection
         title="Data Sources"
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        content={<><div>Our data is pulled from <InlineLink href="https://hub.mph.in.gov/dataset?q=COVID">Indiana Data Hub's</InlineLink> daily updated statistics on coronavirus. This is then run through the program ArcGIS to create map data. Analysis takes this data and frames it within a <InlineLink href="https://www.graham-center.org/rgc/maps-data-tools/sdi/social-deprivation-index.html">deprivation index</InlineLink> which gives us a set of societal domains to evaluate the statistics. This allows us to identify the potential for different race-based and socioeconomic disparities in communities in indiana.</div>
+        <div style={{padding: '5px', fontSize: '0.9rem'}}>
+        <em>Note: No direct conclusions were drawn from the data simply the identification for areas of inequity and the visualization of the pandemic.</em>
+        </div></>}
         media={
             <>
               <MediaWrapper>
-                <img src={mph_logo} />
+                <img 
+                  src={mph_logo} 
+                  style={{margin:'10px'}}
+                />
               </MediaWrapper>
             </>
         }

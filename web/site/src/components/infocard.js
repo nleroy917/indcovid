@@ -37,7 +37,7 @@ const Wrapper = styled(Paper)`
 
 const InfoTitle = styled(Typography)`
   font-weight: 300 !important;
-  font-size: 1.4rem !important;
+  font-size: 1.2rem !important;
 `
 
 const InfoData = styled(Typography)`
