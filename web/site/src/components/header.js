@@ -64,12 +64,12 @@ const Header = ({ siteTitle }) => {
     >
       <Grid item>
       <ALink href="mailto:indianacovid@gmail.com">
-          Contact Us
+          Contact Us ✉️
         </ALink>
       </Grid>
       <Grid item>
       <ALink href="https://www.hhs.gov/coronavirus/community-based-testing-sites/index.html">
-          Find a testing location
+          Find a testing location 🦠
         </ALink>
       </Grid>
     </Grid>
