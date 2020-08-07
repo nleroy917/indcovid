@@ -69,7 +69,7 @@ const Header = ({ siteTitle }) => {
       </Grid>
       <Grid item>
       <ALink href="https://www.hhs.gov/coronavirus/community-based-testing-sites/index.html">
-          Find a testing location 🦠
+          Find a testing location 🏥
         </ALink>
       </Grid>
     </Grid>
