@@ -11,6 +11,7 @@ import Nav from '../components/nav';
 import barnabas from '../images/barnabas.jpg';
 import nathan from '../images/nathan.png';
 import mph_logo from '../images/mph-logo.svg';
+import ind_gov from '../images/ind-gov.png';
 
 import {
   Button,
@@ -45,6 +46,7 @@ const ALink = styled(Link)`
 const MediaWrapper = styled.div`
     display: flex !important;
     justify-content: center !important;
+    align-items: center !important;
 `
 
 const ImgLink = styled.a`
@@ -108,7 +110,7 @@ const MoreInfoPage = () => {
       <br></br>
       <InfoSection
         title="Data Sources"
-        content={<><div>Our data is pulled from <InlineLink href="https://hub.mph.in.gov/dataset?q=COVID">Indiana Data Hub's</InlineLink> daily updated statistics on coronavirus. This is then run through the program ArcGIS to create map data. Analysis takes this data and frames it within a <InlineLink href="https://www.graham-center.org/rgc/maps-data-tools/sdi/social-deprivation-index.html">deprivation index</InlineLink> which gives us a set of societal domains to evaluate the statistics. This allows us to identify the potential for different race-based and socioeconomic disparities in communities in indiana.</div>
+        content={<><div>Our data is pulled from <InlineLink href="https://hub.mph.in.gov/dataset?q=COVID">Indiana Data Hub's</InlineLink> daily updated statistics on coronavirus. This is then run through the program ArcGIS to create map data. Analysis takes this data and frames it within a <InlineLink href="https://www.graham-center.org/rgc/maps-data-tools/sdi/social-deprivation-index.html">Social Deprivation Index (SDI)</InlineLink> which gives us a set of societal domains to display the statistics. This allows us to identify the potential for different race-based and socioeconomic disparities in communities in indiana.</div>
         <div style={{padding: '5px', fontSize: '0.9rem'}}>
         <em>Note: No direct conclusions were drawn from the data simply the identification for areas of inequity and the visualization of the pandemic.</em>
         </div></>}
@@ -117,7 +119,11 @@ const MoreInfoPage = () => {
               <MediaWrapper>
                 <img 
                   src={mph_logo} 
-                  style={{margin:'10px'}}
+                  style={{margin:'10px', height: '50px', width: 'auto', position: 'absolute'}}
+                />
+                <img
+                  src={ind_gov}
+                  style={{margin: '10px', height: '50px', width: 'auto', position: 'absolute'}}
                 />
               </MediaWrapper>
             </>
