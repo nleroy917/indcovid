@@ -183,7 +183,7 @@ const ReopeningTimeline = () =>  {
              iconStyle={{ background: '#FFF' }}
             >
                <ElementTitle variant="h2">
-                   Stage Four Point Five
+                   Stage Five
                </ElementTitle>
                <ElementContent gutterBottom>
                 TBD
