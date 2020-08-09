@@ -15,7 +15,8 @@ import ind_gov from '../images/ind-gov.png';
 
 import {
   Button,
-  useMediaQuery
+  useMediaQuery,
+  Grid
 } from '@material-ui/core';
 
 const SquareButton = styled(Button)`
@@ -81,6 +82,12 @@ const Img = styled.img`
     }
 `
 
+const LogoImg = styled.img`
+  height: 75px;
+  width: auto;
+  margin: 10px;
+`
+
 const MoreInfoPage = () => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
@@ -117,14 +124,19 @@ const MoreInfoPage = () => {
         media={
             <>
               <MediaWrapper>
-                <img 
-                  src={mph_logo} 
-                  style={{margin:'10px', height: '50px', width: 'auto', position: 'absolute'}}
-                />
-                <img
-                  src={ind_gov}
-                  style={{margin: '10px', height: '50px', width: 'auto', position: 'absolute'}}
-                />
+                <Grid container
+                 direction="column"
+                 alignItems="center"
+                 justify="center"
+                 >
+                   <Grid item>
+                    <LogoImg src={mph_logo} />
+                   </Grid>
+                    <LogoImg src={ind_gov} />
+                   <Grid item>
+
+                   </Grid>
+                 </Grid>
               </MediaWrapper>
             </>
         }
