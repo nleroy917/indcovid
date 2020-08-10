@@ -75,8 +75,8 @@ function SEO({ description, lang, meta, title }) {
 
 SEO.defaultProps = {
   lang: `en`,
-  meta: [],
-  description: ``,
+  meta: 'Indiana COVID-19 & Health Inqeualities',
+  description: metaDescription,
 }
 
 SEO.propTypes = {

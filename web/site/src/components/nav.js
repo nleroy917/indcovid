@@ -62,7 +62,7 @@ const Nav = () => {
                 size={mobile ? "small" : "medium"}
                 mobile={mobile}
               >
-                Stay Healthy
+                Staying Healthy
               </SquareButton>
               </ALink>
             </Grid>
@@ -74,7 +74,7 @@ const Nav = () => {
                 size={mobile ? "small" : "medium"}
                 mobile={mobile}
               >
-                More Info
+                More Information
               </SquareButton>
               </ALink>
             </Grid>
