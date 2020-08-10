@@ -138,7 +138,7 @@ const StayHealthyPage = () => {
             <Img src={covid_test} /> 
         } 
         </Grid>
-        <Grid item lg={6} md={6} xs={12} style={{display: mobile ? 'contents' : ''}}>
+        <Grid item lg={6} md={6} xs={12} style={{display: mobile || iPad ? 'contents' : ''}}>
         {
             mobile ?
             <Img src={covid_test} />  

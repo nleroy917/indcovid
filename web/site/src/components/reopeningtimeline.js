@@ -23,7 +23,7 @@ const StageIconWrapper = styled.div`
 
 const StageIconText = styled(Typography)`
     font-weight: 800 !important;
-    font-size: 2.5rem !important;
+    font-size: ${props => props.size === "small" ? '24px !important' : '2.5rem !important'};
     color: black;
 `
 const ElementTitle = styled(Typography)`
@@ -48,13 +48,14 @@ const MoreInfoButton = styled(Button)`
     border-radius: 0px !important;
     font-size: 0.5 rem !important;
     margin-top: 5px !important;
+    display: flex;
 `
 
-const StageIcon = ( { stageNum } ) => {
+const StageIcon = ( { stageNum, size } ) => {
     return (
         <>
             <StageIconWrapper>
-                <StageIconText variant="h1">
+                <StageIconText size={size} variant="h1">
                     {stageNum}
                 </StageIconText>
             </StageIconWrapper>
@@ -153,7 +154,7 @@ const ReopeningTimeline = () =>  {
             <VerticalTimelineElement
              style={{bodShadow: 'none'}}
              date="July 4th - August 27th"
-             icon={<StageIcon stageNum={4.5}/>}
+             icon={<StageIcon stageNum={4.5} size="small"/>}
              contentArrowStyle={{ borderRight: '7px solid  green' }}
              contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'green 2px solid', boxShadow: 'none'}}
              iconStyle={{ background: '#FFF' }}
@@ -177,8 +178,8 @@ const ReopeningTimeline = () =>  {
                </MoreInfoButton>
             </VerticalTimelineElement>
             <VerticalTimelineElement
-             date="TBD"
-             icon={<StageIcon stageNum={5}/>}
+             date=""
+             icon={<StageIcon stageNum={5} />}
              contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'white 2px solid'}}
              iconStyle={{ background: '#FFF' }}
             >
