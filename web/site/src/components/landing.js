@@ -109,7 +109,7 @@ const Landing = ({dates, covidNow, covidHistoric, yeetedData}) => {
           >
             The Implications of the COVID-19 Pandemic in Indiana
           </LandingTitle>
-          <Nav />
+          {mobile ? '' : <Nav />}
           <br></br>
           {
           /* 

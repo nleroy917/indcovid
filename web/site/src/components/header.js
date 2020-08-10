@@ -7,7 +7,7 @@ Header for each page
 */
 
 import PropTypes from "prop-types"
-import React from "react"
+import React, {useState} from "react"
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
@@ -15,9 +15,12 @@ import {
   IconButton,
   Grid,
   Button,
-  useMediaQuery
+  useMediaQuery,
 } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/menu';
+
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import NavMobile from './navmobile';
 
 const HeaderWrapper = styled.header`
   min-height: 10vh;
@@ -44,7 +47,13 @@ const ALink = styled.a`
 `
 
 const Header = ({ siteTitle }) => {
-  const matches = useMediaQuery('(max-width:768px)');
+  const [navOpen, setNavOpen] = useState(false);
+  const mobile = useMediaQuery('(max-width:768px)');
+
+  const toggleNav = () => {
+    setNavOpen(!navOpen)
+  }
+
   return(
   <HeaderWrapper
   >
@@ -55,13 +64,23 @@ const Header = ({ siteTitle }) => {
         padding: `1.45rem 1.0875rem`,
       }}
     >
+    <NavMobile open={navOpen} setOpen={toggleNav} />
     <Grid container 
       direction="row" 
       alignItems="center"
-      justify={matches ? "center" : "flex-end"}
+      justify={mobile ? "space-between" : "flex-end"}
       style={{width: '100%'}}
       spacing={2}
     >
+    { mobile ? 
+      <Grid item>
+        <IconButton onClick={toggleNav}>
+          <MenuIcon style={{fill:'white'}}/>
+        </IconButton>
+      </Grid>
+      :
+      ' '
+    }
       <Grid item>
       <ALink href="mailto:indianacovid@gmail.com">
           Contact Us ✉️
@@ -86,4 +105,4 @@ Header.defaultProps = {
   siteTitle: ``,
 }
 
-export default Header
+export default Header;

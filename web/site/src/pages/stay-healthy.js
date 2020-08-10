@@ -14,7 +14,6 @@ import {
 } from '@material-ui/core';
 
 import Nav from '../components/nav';
-import ReopeningTimeline from '../components/reopeningtimeline';
 
 import wash_hands from '../images/hand-wash.png';
 import covid_test from '../images/covid-test.png'
@@ -74,7 +73,7 @@ const StayHealthyPage = () => {
     return(
     <Layout>
       <SEO title="Stay Healthy" />
-      <Nav />
+      {mobile ? '' : <Nav />}
       <br></br>
       <Grid container
         direction="row"
@@ -165,13 +164,6 @@ const StayHealthyPage = () => {
         </Grid>
         </Grid>
         </Grid>
-        <SectionTitle gutterBottom variant="h4">
-          Indiana's "Back-on-Track" Plan
-        </SectionTitle>
-        <SectionContent gutterBottom>
-          The state of Indiana has committed to a 4-Stage plan to get Indiana "back on track". Included in this plan are systems in place to slowly and safely open our small businesses, gyms, restaurants, entertainment venues, and social gatherings to get our economy going again while keeping Hoosier's safe. It is important that we follow the guidelines and mandates set in place to get using moving to the next stage as quikcly as possible.
-        </SectionContent>
-        <ReopeningTimeline />
     </Layout>
     )
   }
