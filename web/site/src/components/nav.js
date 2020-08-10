@@ -8,6 +8,8 @@ import {
     Button
 } from '@material-ui/core';
 
+import IndianaIcon from '../images/Info-Thick.svg';
+
 const ALink = styled(Link)`
   color: inherit;
   font-size: 0.75rem;
@@ -28,7 +30,7 @@ const SquareButton = styled(Button)`
   border-radius: 0px !important;
   height: 100%;
   width: 100%;
-  font-size: ${props => props.mobile ? '0.75rem !important' : ''};
+  font-size: ${props => props.mobile ? '0.5rem !important' : ''};
 `
 
 const Nav = () => {
@@ -47,7 +49,7 @@ const Nav = () => {
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 
-                size={mobile ? "small" : "medium"}
+                size="small"
                 mobile={mobile}
               >
                 Health Equity
@@ -59,7 +61,7 @@ const Nav = () => {
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 
-                size={mobile ? "small" : "medium"}
+                size="small"
                 mobile={mobile}
               >
                 Staying Healthy
@@ -71,10 +73,22 @@ const Nav = () => {
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 
-                size={mobile ? "small" : "medium"}
+                size="small"
                 mobile={mobile}
               >
-                More Information
+                More Info
+              </SquareButton>
+              </ALink>
+            </Grid>
+            <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
+            <ALink to="/back-on-track">
+              <SquareButton 
+                variant="outlined" 
+                color="inherit" 
+                size="small"
+                mobile={mobile}
+              >
+                Back on Track
               </SquareButton>
               </ALink>
             </Grid>

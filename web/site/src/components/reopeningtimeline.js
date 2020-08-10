@@ -68,14 +68,17 @@ const ReopeningTimeline = () =>  {
         <>
         <VerticalTimeline>
             <VerticalTimelineElement
-             date="March 23 - May 3"
+             date=""
              icon={<StageIcon stageNum={1}/>}
              contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'white 1px solid' }}
              iconStyle={{ background: '#FFF' }}
             >
-               <ElementTitle variant="h2">
+               <ElementTitle variant="h2" gutterBottom>
                    Stage One
                </ElementTitle>
+               <ElementSubTitle variant="h4">
+                  March 23 - May 3
+               </ElementSubTitle>
                <ElementContent>
                     Essential manufacturing, construction, infrastructure, government, business, healthcare, and other critical businesses, retail businesses providing necessities of life such as grocery stores, pharmacies, hardware, building materials, and more open as outlined in Executive Order 20-22. Restaurants and bars may offer carryout, curbside, and delivery services. Retail stores may offer call-in or online ordering with curbside pickup and delivery. State parks are open. Golf courses are open. Only essential travel is allowed. Social gatherings with no more than 10 people are allowed. K-12 school buildings are closed and all activities are canceled until June 30.
                </ElementContent>
@@ -89,14 +92,17 @@ const ReopeningTimeline = () =>  {
                </MoreInfoButton>
             </VerticalTimelineElement>
             <VerticalTimelineElement
-             date="May 4th - May 21st"
+             date=""
              icon={<StageIcon stageNum={2}/>}
              contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'white 1px solid' }}
              iconStyle={{ background: '#FFF' }}
             >
-               <ElementTitle variant="h2">
+               <ElementTitle variant="h2" gutterBottom>
                    Stage Two
                </ElementTitle>
+               <ElementSubTitle variant="h4">
+                 May 4th - May 21st
+               </ElementSubTitle>
                <ElementContent>
                Essential manufacturing, construction, infrastructure, government, business, healthcare, and other critical businesses, retail businesses providing necessities of life such as grocery stores, pharmacies, hardware, building materials remain open. Personal services like hair and nails may open by appointment only. Gyms and fitness centers remain closed. Bars and nightclus remain closed. Restaurants may open at 50% capacity. Social entertainment venues like sports, movies, and concerts are prohibited.
                </ElementContent>
@@ -110,14 +116,17 @@ const ReopeningTimeline = () =>  {
                </MoreInfoButton>
             </VerticalTimelineElement>
             <VerticalTimelineElement
-             date="May 22nd - June 13th"
+             date=""
              icon={<StageIcon stageNum={3}/>}
              contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'white 1px solid' }}
              iconStyle={{ background: '#FFF' }}
             >
-               <ElementTitle variant="h2">
+               <ElementTitle variant="h2" gutterBottom>
                    Stage Three
                </ElementTitle>
+               <ElementSubTitle variant="h4">
+                 May 22nd - June 13th
+               </ElementSubTitle>
                <ElementContent>
                 Continue with remote work as much as possible. Face coverings are recommended. Social gatherings up to 100 people are permitted. No travel restrictions. Retail stores at 75% capacity. Malls at 50% capacity. Community pools may open according to guidelines. Gyms and fitness centers may open following guidlines. Bars, nightclubs, amusement parks, and sporting events are to remain closed
                </ElementContent>
@@ -131,14 +140,17 @@ const ReopeningTimeline = () =>  {
                </MoreInfoButton>
             </VerticalTimelineElement>
             <VerticalTimelineElement
-             date="June 12th - July 3rd"
+             date=""
              icon={<StageIcon stageNum={4}/>}
              contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'white 1px solid' }}
              iconStyle={{ background: '#FFF' }}
             >
-               <ElementTitle variant="h2">
+               <ElementTitle variant="h2" gutterBottom>
                    Stage Four
                </ElementTitle>
+               <ElementSubTitle variant="h4">
+                  June 12th - July 3rd
+               </ElementSubTitle>
                <ElementContent>
                 Social gatherings up to 250 people may take place. Face coverings are recommended. Retail stores and malls open at full capacity. Bars and nightclubs may open at 50% capacity. Cultural, entiertainment, and tourism sites may open at 50% capacity. Dining room service may open at 75% capacity. Continue remote work as needed.
                </ElementContent>
@@ -153,17 +165,17 @@ const ReopeningTimeline = () =>  {
             </VerticalTimelineElement>
             <VerticalTimelineElement
              style={{bodShadow: 'none'}}
-             date="July 4th - August 27th"
+             date=""
              icon={<StageIcon stageNum={4.5} size="small"/>}
              contentArrowStyle={{ borderRight: '7px solid  green' }}
              contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'green 2px solid', boxShadow: 'none'}}
              iconStyle={{ background: '#FFF' }}
             >
-               <ElementTitle variant="h2">
-                   Stage Four Point Five
+               <ElementTitle variant="h2" gutterBottom>
+                   Stage 4.5 (Current Stage)
                </ElementTitle>
                <ElementSubTitle variant="h4">
-                   (We are here)
+                 July 4th - August 27th
                </ElementSubTitle>
                <ElementContent>
                 Face coverings are required! Social gatherings up to 250 people are permitted. Dining room service may operate at 75% capacity. Retail stores and malls open at full capacity. Bars and nightclubs may open at 50% capacity. Cultural, entiertainment, and tourism sites may open at 50% capacity. Continue remote work as needed. Hospital visitiations encouraged with precautions.
@@ -186,8 +198,11 @@ const ReopeningTimeline = () =>  {
                <ElementTitle variant="h2">
                    Stage Five
                </ElementTitle>
+               <ElementSubTitle variant="h4">
+                  Dates TBD
+               </ElementSubTitle>
                <ElementContent gutterBottom>
-                TBD
+                Restrictions TBD
                </ElementContent>
                <MoreInfoButton 
                  variant="outlined" 
