@@ -45,7 +45,7 @@ const Nav = () => {
             style={{width:'100%', height: '100%'}}
           >
             <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
-            <ALink to="/">
+            <ALink to="/#disparities-map">
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 
