@@ -68,7 +68,13 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
+    >
+    <meta
+      name="description"
+      content="In this research, we take the time to analyze and invstigate how people from under-privileged communities are disproportionately affected by the COVID-19 pandemic."
     />
+    <meta name="author" content="Nathan LeRoy & Barnabas Obeng-Gyasi" />
+    </Helmet>
 
   )
 }
