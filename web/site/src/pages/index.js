@@ -1,16 +1,29 @@
 import React, {useState, useEffect} from "react";
+import styled from 'styled-components';
 
 import Loader from '../components/loader';
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Landing from '../components/landing';
+import DisparitiesMap from '../components/disparitiesmap';
+import SectionTitle from '../components/sectiontitle';
+import SectionContent from '../components/sectioncontent';
+
 import PageFooter from '../components/footer';
+
+import {
+  Grid
+} from '@material-ui/core';
 
 import axios from 'axios';
 
 const COVID_19_API_NOW = 'https://covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://covidtracking.com/api/v1/states/in/daily.json'
 const API_URL = 'https://indianacovid-api.herokuapp.com/'
+
+const InlineLink = styled.a`
+    color: rgba(75,192,192,0.9);
+`
 
 const IndexPage = () => {
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -167,6 +180,31 @@ const IndexPage = () => {
           covidNow={covidNow}
           covidHistoric={covidHistoric}
         />
+        <SectionTitle
+          textAlign="center"
+        >
+          What is a Health Disparity? 
+        </SectionTitle>
+        <Grid container
+          direction="row"
+          alignItems="center"
+          justify="center"
+          style={{width: '100%'}}
+          >
+            <Grid item lg={6} xs={12}>
+            <SectionContent>
+            {<p>The Department of Health and Human Services(HHS)’s <InlineLink href="https://www.healthypeople.gov/2020/about/foundation-health-measures/Disparities">Healthypeople2020.gov</InlineLink> defines a health disparity as “a particular type of health difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect groups of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion; socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity; geographic location; or other characteristics historically linked to discrimination or exclusion.”</p>}
+            </SectionContent>
+            <SectionContent>
+            The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is effecting populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social determinants of health-especially in relation to institutional policies and practices. “ HHS believes that if we hope to achieve health equity it would require measuring these changes.
+            </SectionContent>
+            </Grid>
+            <Grid item lg={6} xs={12}>
+              <DisparitiesMap 
+                id="disparities-map"
+              />
+            </Grid>
+          </Grid>
       <PageFooter />
     </Layout>
     )

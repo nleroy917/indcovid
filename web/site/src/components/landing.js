@@ -42,11 +42,19 @@ const ALink = styled(Link)`
 `
 
 const Wrapper = styled.div`
-    height: ${props => props.mobile ? '' : '90vh'};
+    height: ${props => props.mobile ? '' : '95vh'};
     @media (max-width: 768px) {
       height: none;
   }
 
+`
+
+const LearnMoreWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 5px;
 `
 
 const SquareButton = styled(Button)`
@@ -82,10 +90,6 @@ const LandingTitle = styled(Typography)`
     font-size: 2.2rem !important;
     text-align: center;
 
-`
-
-const LandingSubTitle = styled(Typography)`
-  font-weight: 300 !important;
 `
 
 const Landing = ({dates, covidNow, covidHistoric, yeetedData}) => {
