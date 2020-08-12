@@ -69,6 +69,18 @@ const Nav = () => {
               </ALink>
             </Grid>
             <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
+            <ALink to="/back-on-track">
+              <SquareButton 
+                variant="outlined" 
+                color="inherit" 
+                size="small"
+                mobile={mobile}
+              >
+                Back on Track
+              </SquareButton>
+              </ALink>
+            </Grid>
+            <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
             <ALink to="/more-info">
               <SquareButton 
                 variant="outlined" 
@@ -81,14 +93,14 @@ const Nav = () => {
               </ALink>
             </Grid>
             <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
-            <ALink to="/back-on-track">
+            <ALink to="/about-us">
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 
                 size="small"
                 mobile={mobile}
               >
-                Back on Track
+                About Us
               </SquareButton>
               </ALink>
             </Grid>

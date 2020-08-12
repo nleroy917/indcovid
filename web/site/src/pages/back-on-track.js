@@ -17,6 +17,10 @@ const SectionTitle = styled(Typography)`
     font-size: 1.75rem;
 `
 
+const InlineLink = styled.a`
+    color: rgba(75,192,192,0.9);
+`
+
 const SectionContent = styled(Typography)`
     color: inherit;
     font-size: 1.75rem;
@@ -38,7 +42,7 @@ const BackOnTrack = () => {
           Indiana's "Back-on-Track" Plan
         </SectionTitle>
         <SectionContent gutterBottom>
-          The state of Indiana has committed to a 4-Stage plan to get Indiana "back on track". Included in this plan are systems in place to slowly and safely open our small businesses, gyms, restaurants, entertainment venues, and social gatherings to get our economy going again while keeping Hoosier's safe. It is important that we follow the guidelines and mandates set in place to get using moving to the next stage as quikcly as possible.
+          The state of Indiana has committed to <InlineLink href="https://backontrack.in.gov/">a 4-Stage plan</InlineLink> to get Indiana "back on track". Included in this plan are systems in place to slowly and safely open our small businesses, gyms, restaurants, entertainment venues, and social gatherings to get our economy going again while keeping Hoosier's safe. It is important that we follow the guidelines and mandates set in place to get using moving to the next stage as quikcly as possible.
         </SectionContent>
         <ReopeningTimeline />
     </Layout>
