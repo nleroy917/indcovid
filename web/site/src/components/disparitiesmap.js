@@ -17,14 +17,8 @@ const Map = styled.iframe`
 const DisparitiesMap = () => {
     return(
         <>
+        
         <MapWrapper>
-            <Map
-              src="https://datavizpublic.in.gov/views/COVID-19CaseCountsbyZip/COVID-19CaseCountsbyZipCode?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link&:isGuestRedirectFromVizportal=y&:embed=ys"
-              height="500px"
-              width="500px"
-              scrollTo=""
-            >
-            </Map>
         </MapWrapper>
         </>
     )

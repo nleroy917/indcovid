@@ -7,7 +7,7 @@ import 'react-vertical-timeline-component/style.min.css';
 import { 
     Typography, Button,
  } from '@material-ui/core';
-import MoreInfoPage from '../pages/more-info';
+import MoreInfoPage from '../pages/about-us';
 
 
 const StageIconWrapper = styled.div`
@@ -184,7 +184,7 @@ const ReopeningTimeline = () =>  {
                  variant="outlined" 
                  color="inherit" 
                  size="small"
-                 href="https://backontrack.in.gov/files/Stage4.5_Aug-1_update.pdfs"
+                 href="https://backontrack.in.gov/files/Stage_4.5.pdf"
                >
                 Stage 4.5 Info
                </MoreInfoButton>

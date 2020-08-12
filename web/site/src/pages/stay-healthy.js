@@ -10,17 +10,40 @@ import {
   Button,
   Grid,
   useMediaQuery,
-  Typography
+  Typography,
+  Paper
 } from '@material-ui/core';
 
 import Nav from '../components/nav';
 
 import wash_hands from '../images/hand-wash.png';
-import covid_test from '../images/covid-test.png'
+import covid_test from '../images/covid-test.png';
+import social_distance from '../images/social-distance.png';
+import mask from '../images/mask.png';
+import symptoms from '../images/symptoms.png';
 
 const SquareButton = styled(Button)`
   border-radius: 0px !important;
   margin: 5px !important;
+`
+const SectionWrapper = styled(Paper)`
+  align-items: center;
+  justify-content: center;
+  background-color: #1d1d1d !important;
+  padding: 10px;
+  box-shadow: 5px 5px white !important;
+  color: inherit !important;
+  height: 100%;
+`
+const PageTitle = styled(Typography)`
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: inherit;
+  text-align: center;
+`
+
+const InlineLink = styled.a`
+    color: rgba(75,192,192,0.9);
 `
 
 const SectionTitle = styled(Typography)`
@@ -50,10 +73,11 @@ const ALink = styled(Link)`
 `
 
 const Img = styled.img`
-    height: 150px;
+    height: 40px;
     width: auto;
     overflow: cover;
-    margin: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 `
 
 const List = styled.ul`
@@ -75,10 +99,52 @@ const StayHealthyPage = () => {
       <SEO title="Stay Healthy" />
       {mobile ? '' : <Nav />}
       <br></br>
+      <PageTitle gutterBottom variant="h2">
+        Ways to Stay Healthy
+      </PageTitle>
+      <Grid container
+        direction="row"
+        justify="center"
+        alignItems="stretch"
+        spacing={4}
+        style={{width: '100%', margin: '10px'}}
+      >
+        <Grid item lg={10} md={10} xs={12}>
+        <SectionTitle 
+              gutterBottom 
+              variant="h4"
+            >
+                Recognize the Symptoms! <Img src={symptoms} />
+            </SectionTitle>
+            <SectionContent>
+                One of the first steps to protecting yourself and others is recognizing the symptoms of COVID-19. If you are experiencing one or more of the symptoms below, contact your healthcare provider right away or get tested.
+            </SectionContent>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <List>
+              <ListItem>Fever or chills</ListItem>
+              <ListItem>New loss of taste or smell</ListItem>
+              <ListItem>Shortness of breath or difficulty breathing</ListItem>
+              <ListItem>Congestion or runny nose</ListItem>
+
+              <ListItem>Muscle or body aches</ListItem>
+              <ListItem>Weakness</ListItem>
+            </List>
+            <List>
+              <ListItem>Headache</ListItem>
+              <ListItem>Cough</ListItem>
+              <ListItem>Sore throat</ListItem>
+              <ListItem>Fatigue</ListItem>  
+              <ListItem>Nausea or vomiting</ListItem>
+              <ListItem>Diarrhea</ListItem>
+            </List>
+          </div>
+        </Grid>
+      </Grid>
       <Grid container
         direction="row"
         justify={mobile ? "center" : "flex-start"}
         alignItems="stretch"
+        spacing={4}
         style={{width: '100%', margin: '10px'}}
         >
         <Grid item lg={6} md={6} xs={12}>
@@ -86,7 +152,7 @@ const StayHealthyPage = () => {
               gutterBottom 
               variant="h4"
             >
-                Wash Your Hands
+                Wash Your Hands <Img src={wash_hands} /> 
             </SectionTitle>
             <SectionContent>
                 The CDC states that keeping your hands clean is especially important to help prevent the spread of the virus. Wash your hands often with soap and water for at least 20 seconds especially after you have been in a public place, or after blowing your nose, coughing, or sneezing. Its especially important to wash:
@@ -103,24 +169,12 @@ const StayHealthyPage = () => {
               <ListItem>After touching animals or pets</ListItem>
             </List>
         </Grid>
-        <Grid item lg={6} md={6} xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <Img src={wash_hands} />
-        </Grid>
-        <Grid container
-        direction="row"
-        justify={mobile ? "center" : "flex-start"}
-        alignItems="stretch"
-        style={{width: '100%', margin: '10px'}}
-        >
-        <Grid item lg={6} md={6} xs={12} style={{display: mobile ? '' : 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        {
-            mobile ? 
-            <>
-            <SectionTitle 
+        <Grid item lg={6} md={6} xs={12} >
+        <SectionTitle 
               gutterBottom 
               variant="h4"
             >
-                Get tested
+                Get tested <Img src={covid_test} /> 
             </SectionTitle>
             <SectionContent gutterBottom>
             If you think you have been exposed to COVID-19 and develop a fever and symptoms, such as cough or difficulty breathing, call your healthcare provider for medical advice. If you have a medical appointment, call your doctor’s office or emergency department, and tell them you have or may have COVID-19. This will help the office protect themselves and other patients. You can also consult a healthcare provider through telehealth, if that is an option.
@@ -131,37 +185,45 @@ const StayHealthyPage = () => {
               href="https://www.hhs.gov/coronavirus/community-based-testing-sites/index.html"
             >
                 Get Tested
-            </SquareButton> 
-            </>
-            : 
-            <Img src={covid_test} /> 
-        } 
+            </SquareButton>
         </Grid>
-        <Grid item lg={6} md={6} xs={12} style={{display: mobile || iPad ? 'contents' : ''}}>
-        {
-            mobile ?
-            <Img src={covid_test} />  
-            : 
+        </Grid>
+        <Grid container
+        direction="row"
+        justify={mobile ? "center" : "flex-start"}
+        alignItems="stretch"
+        spacing={4}
+        style={{width: '100%', margin: '10px'}}
+        >
+        <Grid item lg={6} md={6} xs={12}>
             <>
             <SectionTitle 
               gutterBottom 
               variant="h4"
             >
-                Get tested
+                Social Distancing <Img src={social_distance} /> 
             </SectionTitle>
-            <SquareButton 
-              variant="outlined" 
-              color="inherit"
-              href="https://lhi.care/covidtesting"
-            >
-                Get Tested
-            </SquareButton>
             <SectionContent gutterBottom>
-            If you think you have been exposed to COVID-19 and develop a fever and symptoms, such as cough or difficulty breathing, call your healthcare provider for medical advice. If you have a medical appointment, call your doctor’s office or emergency department, and tell them you have or may have COVID-19. This will help the office protect themselves and other patients. You can also consult a healthcare provider through telehealth, if that is an option.
+            Social distancing, also called “physical distancing,” means keeping a safe space between yourself and other people who are not from your household.
+            </SectionContent>
+            <SectionContent gutterBottom>
+            To practice social or physical distancing, stay at least 6 feet (about 2 arms’ length) from other people who are not from your household in both indoor and outdoor spaces.
             </SectionContent>
             </>
-        }
         </Grid>
+        <Grid item lg={6} md={6} xs={12}>
+          <SectionTitle
+          gutterBottom
+          variant="h4"
+          >
+            Where A Mask <Img src={mask}/> 
+          </SectionTitle>
+          <SectionContent gutterBottom>
+          {
+            <p>Masks may help prevent people who have COVID-19 from spreading the virus to others. Wearing a mask will help protect people around you, including those at <InlineLink href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-at-higher-risk-old.html">higher risk of severe illness</InlineLink> from COVID-19 and workers who frequently come into close contact with other people.Masks are most likely to reduce the spread of COVID-19 when they are widely used by people in public settings. The spread of COVID-19 can be reduced when masks are used along with other <InlineLink href="preventive measures">preventive measures.</InlineLink>
+            </p>
+          }
+          </SectionContent>
         </Grid>
         </Grid>
     </Layout>
