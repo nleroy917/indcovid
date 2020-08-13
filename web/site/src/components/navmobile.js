@@ -12,7 +12,7 @@ import {
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import PeopleIcon from '@material-ui/icons/People';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
-
+import CodeIcon from '@material-ui/icons/Code';
 import IndianaIcon from '../images/Info-Thick.svg';
 
 const DrawerContainer = styled(Drawer)`
@@ -60,15 +60,6 @@ const NavMobile = ({ open, setOpen}) => {
               </ALink>
           </ListItem>
           <ListItem>
-            <img
-              src={IndianaIcon}
-              style={{fill: '#e3e3e3', height: '20px', width: 'auto', marginLeft: '11px', marginRight: '11px', marginTop: '5px', marginBottom: '5px'}}
-            />
-            <ALink to="/more-info">
-              More Info
-            </ALink>
-          </ListItem>
-          <ListItem>
               <LocalHospitalIcon fill='white' style={{margin: '5px'}}/>
               <ALink to="/stay-healthy">
                 Stay Healthy
@@ -79,6 +70,21 @@ const NavMobile = ({ open, setOpen}) => {
               <ALink to="/back-on-track">
                   Back On Track
               </ALink>
+          </ListItem>
+          <ListItem>
+            <img
+              src={IndianaIcon}
+              style={{fill: '#e3e3e3', height: '20px', width: 'auto', marginLeft: '11px', marginRight: '11px', marginTop: '5px', marginBottom: '5px'}}
+            />
+            <ALink to="/more-info">
+              More Info
+            </ALink>
+          </ListItem>
+          <ListItem>
+            <CodeIcon fill='white'  style={{margin: '5px'}}/>
+            <ALink to="/about-us">
+              About Us
+            </ALink>
           </ListItem>
         </List> 
         </InnerWrapper>   
