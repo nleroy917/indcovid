@@ -48,7 +48,6 @@ const Loader = (props) => {
           </Grid>
           <Grid item>
               <LoadingText>
-                  Fetching latest data ...
               </LoadingText>
           </Grid>
           </Grid>
