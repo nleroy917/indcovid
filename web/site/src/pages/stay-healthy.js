@@ -142,9 +142,9 @@ const StayHealthyPage = () => {
       </Grid>
       <Grid container
         direction="row"
-        justify={mobile ? "center" : "flex-start"}
+        justify={mobile ? "center" : "space-between"}
         alignItems="stretch"
-        spacing={4}
+        spacing={5}
         style={{width: '100%', margin: '10px'}}
         >
         <Grid item lg={6} md={6} xs={12}>
@@ -169,7 +169,7 @@ const StayHealthyPage = () => {
               <ListItem>After touching animals or pets</ListItem>
             </List>
         </Grid>
-        <Grid item lg={6} md={6} xs={12} >
+        <Grid item lg={6} md={6} xs={12}>
         <SectionTitle 
               gutterBottom 
               variant="h4"

@@ -19,8 +19,8 @@ import {
 
 import axios from 'axios';
 
-const COVID_19_API_NOW = 'https://covidtracking.com/api/v1/states/in/current.json'
-const COVID_19_API_HISTORIC = 'https://covidtracking.com/api/v1/states/in/daily.json'
+const COVID_19_API_NOW = 'https://api.covidtracking.com/api/v1/states/in/current.json'
+const COVID_19_API_HISTORIC = 'https://api.covidtracking.com/api/v1/states/in/daily.json'
 const API_URL = 'https://indianacovid-api.herokuapp.com/'
 
 const InlineLink = styled.a`
