@@ -91,6 +91,11 @@ const Header = ({ siteTitle }) => {
           Find a testing location 🏥
         </ALink>
       </Grid>
+      <Grid item>
+      <ALink href="https://github.com/NLeRoy917/indcovid/issues/new">
+          Report an Issue
+        </ALink>
+      </Grid>
     </Grid>
     </div>
   </HeaderWrapper>
