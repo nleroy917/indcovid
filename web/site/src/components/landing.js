@@ -92,7 +92,7 @@ const LandingTitle = styled(Typography)`
 
 `
 
-const Landing = ({dates, covidNow, covidHistoric, yeetedData}) => {
+const Landing = ({dates, covidNow, covidHistoric, yeetedData, smoothScroll}) => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
     const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
@@ -113,7 +113,7 @@ const Landing = ({dates, covidNow, covidHistoric, yeetedData}) => {
           >
             The Implications of the COVID-19 Pandemic in Indiana
           </LandingTitle>
-          {mobile ? '' : <Nav />}
+          {mobile ? '' : <Nav smoothScroll={smoothScroll}/>}
           <br></br>
           {
           /* 
@@ -171,6 +171,7 @@ const Landing = ({dates, covidNow, covidHistoric, yeetedData}) => {
           >
           </InfoCard>
           </Grid>
+          
           <Grid item lg={3} md={3} s={3} xs={!mobile ? 5 : 12}
           >
             <InfoCard 

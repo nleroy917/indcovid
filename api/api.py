@@ -93,7 +93,8 @@ def get_demographics():
     Get the most recent demographic data for Indiana
     """
     mysql = MySQL.MySQL(MYSQL_URL, MYSQL_USER, MYSQL_PASS)
-    data = mysql.get_demographics()
+    data_raw = mysql.get_demographics()
+
     return_package = {
         'data': data
     }

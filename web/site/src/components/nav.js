@@ -33,7 +33,7 @@ const SquareButton = styled(Button)`
   font-size: ${props => props.mobile ? '0.5rem !important' : ''};
 `
 
-const Nav = () => {
+const Nav = ({smoothScroll}) => {
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
     return(
         <>
@@ -51,6 +51,7 @@ const Nav = () => {
                 color="inherit" 
                 size="small"
                 mobile={mobile}
+                onClick={smoothScroll}
               >
                 Health Equity
               </SquareButton>
