@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import styled from 'styled-components';
 
 import Loader from '../components/loader';
@@ -27,8 +27,14 @@ const InlineLink = styled.a`
     color: rgba(75,192,192,0.9);
 `
 
+const scrollToHealth = (ref) => window.scrollTo(0, ref.current.offsetTop)
+
 const IndexPage = () => {
+
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
+
+    const healthRef = useRef(null);
+    const executeScroll = () => scrollToHealth(healthRef)
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -176,19 +182,26 @@ const IndexPage = () => {
 
   if (covidNow && yeetedData) {
     return(
-    <Layout>
+    <Layout
+       smoothScroll={scrollToHealth}
+    >
       <SEO title="Home" />
         <Landing
           dates={dates}
           yeetedData={yeetedData}
           covidNow={covidNow}
           covidHistoric={covidHistoric}
+          smoothScroll={executeScroll}
         />
+        <div
+          ref={healthRef}
+        >
         <SectionTitle
-          textAlign="center"
+          textAlign="center"  
         >
           Health Equity
         </SectionTitle>
+        </div>
         <br></br>
         <SectionSubTitle>
           What is a health disparity?
@@ -199,7 +212,7 @@ const IndexPage = () => {
           justify={mobile ? "center" : "flex-start"}
           style={{width: '100%'}}
           >
-            <Grid item lg={12} xs={12}>
+            <Grid item lg={6} md={12} xs={12}>
               <SectionContent
                  textAlign="left"
               >
@@ -209,6 +222,56 @@ const IndexPage = () => {
               The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is effecting   populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the   actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the   physical and social determinants of health-especially in relation to institutional policies and practices. “ HHS believes that if we  hope to achieve health equity it would require measuring these changes.
               </SectionContent>
             </Grid>
+            <Grid item lg={6} md={12} xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              (media)
+            </Grid>
+          </Grid>
+          <br></br>
+          <SectionSubTitle
+            textAlign="right"
+          >
+          What is health inequity?
+        </SectionSubTitle>
+          <Grid container
+          direction="row"
+          alignItems="center"
+          justify={mobile ? "center" : "flex-start"}
+          style={{width: '100%'}}
+          >
+            <Grid item lg={6} md={6}  xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              
+                (media)
+
+            </Grid>
+            <Grid item lg={6} md={6}  xs={12}>
+              <SectionContent>
+                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
+                </SectionContent>
+                <SectionContent>
+                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
+                </SectionContent>
+          </Grid>
+          </Grid>
+          <br></br>
+          <SectionTitle
+          textAlign="center"  
+        >
+          Race
+        </SectionTitle>
+        <Grid container
+          direction="row"
+          alignItems="center"
+          justify={mobile ? "center" : "flex-start"}
+          style={{width: '100%'}}
+          >
+          <Grid item lg={12} md={12} xs={12}>
+          <SectionContent>
+                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
+                </SectionContent>
+                <SectionContent>
+                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
+                </SectionContent>
+          </Grid>
           </Grid>
       <PageFooter />
     </Layout>

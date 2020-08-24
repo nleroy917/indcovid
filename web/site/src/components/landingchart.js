@@ -36,6 +36,14 @@ const LandingChart = ({ data, dates }) => {
     const matches = useMediaQuery('(max-width:768px)');
     const [metric, setMetric] = useState('cases')
     const [options, setOptions] = useState({
+        tooltips: {
+            mode: 'index',
+            intersect: false
+         },
+         hover: {
+            mode: 'index',
+            intersect: false
+         },
         legend: {
             display: false
          },
