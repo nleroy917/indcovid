@@ -1,0 +1,1 @@
+daily data is downloaded into this folder

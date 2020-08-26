@@ -136,6 +136,16 @@ class MySQL():
         result = self._query(query)
         return result
     
+    def get_medicaid_race(self):
+        """
+        Get the demographics data for mediaid use
+        """
+        query = '''
+        SELECT * FROM indcovid.MedicaidRace
+        '''
+        result = self._query(query)
+        return result
+    
     def get_median_rent(self):
         """
         Gets the median rent for specific geographic regions in Indiana. All for the year 2016

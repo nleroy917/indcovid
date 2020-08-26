@@ -11,6 +11,8 @@ import SectionSubTitle from '../components/sectionsubtitle';
 import SectionContent from '../components/sectioncontent';
 
 import PageFooter from '../components/footer';
+import RaceChart from '../components/racechart';
+import CovidRaceChart from '../components/casesracechart';
 
 import {
   Grid,
@@ -21,7 +23,7 @@ import axios from 'axios';
 
 const COVID_19_API_NOW = 'https://api.covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://api.covidtracking.com/api/v1/states/in/daily.json'
-const API_URL = 'https://indianacovid-api.herokuapp.com/'
+const API_URL = 'http://localhost:5000/'
 
 const InlineLink = styled.a`
     color: rgba(75,192,192,0.9);
@@ -43,6 +45,10 @@ const IndexPage = () => {
     const [covidHistoric, setCovidHistoric] = useState([]);
     const [dates, setDates] = useState([]);
     const [yeetedData, setYeetedData] = useState(null);
+    const [racePct, setRacePct] = useState([]);
+    const [raceLabels, setRaceLabels] = useState([]);
+    const [covidRacePct, setCovidRacePct] = useState([]);
+    const [covidRaceLabels, setCovidRaceLabels] = useState([]);
 
     const removeOutliers = (someArray) => {
 
@@ -174,10 +180,32 @@ const IndexPage = () => {
     }
   }
 
+  const fetchIndianaRace = async () => {
+    const res = await axios.get(`${API_URL}/data/indiana/demographics`)
+    if(res.status === 200) {
+      let data = res.data
+      console.log(data)
+      setRacePct(data.percentages)
+      setRaceLabels(data.labels)
+    }
+  }
+
+  const fetchCOVIDRace = async () => {
+    const res = await axios.get(`${API_URL}/data/covid/demographics`)
+    if(res.status === 200) {
+      let data = res.data
+      console.log(data)
+      setCovidRacePct(data.COVID_TEST_PCT)
+      setCovidRaceLabels(data.labels)
+    }
+  }
+
   useEffect(() => {
       fetchCovidNow()
       fetchCovidHistoric()
       yeetCovidData()
+      fetchIndianaRace()
+      fetchCOVIDRace()
   }, [])
 
   if (covidNow && yeetedData) {
@@ -193,6 +221,7 @@ const IndexPage = () => {
           covidHistoric={covidHistoric}
           smoothScroll={executeScroll}
         />
+        <br></br>
         <div
           ref={healthRef}
         >
@@ -203,7 +232,9 @@ const IndexPage = () => {
         </SectionTitle>
         </div>
         <br></br>
-        <SectionSubTitle>
+        <SectionSubTitle
+          textAlign={mobile ? "center" : "left"}
+        >
           What is a health disparity?
         </SectionSubTitle>
         <Grid container
@@ -214,7 +245,7 @@ const IndexPage = () => {
           >
             <Grid item lg={6} md={12} xs={12}>
               <SectionContent
-                 textAlign="left"
+                textAlign="left"
               >
               {<p>The Department of Health and Human Services (HHS)’s <InlineLink href="https://www.healthypeople.gov/2020/about/  foundation-health-measures/Disparities">Healthypeople2020.gov</InlineLink> defines a health disparity as “a particular type of health   difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect groups  of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion;   socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity;  geographic location; or other characteristics historically linked to discrimination or exclusion.”</p>}
               </SectionContent>
@@ -228,7 +259,7 @@ const IndexPage = () => {
           </Grid>
           <br></br>
           <SectionSubTitle
-            textAlign="right"
+            textAlign={mobile ? "center" : "right"}
           >
           What is health inequity?
         </SectionSubTitle>
@@ -272,6 +303,26 @@ const IndexPage = () => {
                 loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
                 </SectionContent>
           </Grid>
+          </Grid>
+          <br></br>
+          <Grid container
+          direction="row"
+          alignItems="center"
+          justify={mobile ? "center" : "flex-start"}
+          style={{width: '100%'}}
+          >
+            <Grid item lg={6} md={6} xs={12}>
+              <RaceChart
+                data={racePct}
+                labels={raceLabels}
+              />
+            </Grid>
+            <Grid item lg={6} md={6} xs={12}>
+              <CovidRaceChart
+                data={covidRacePct}
+                labels={covidRaceLabels}
+              />
+            </Grid>
           </Grid>
       <PageFooter />
     </Layout>

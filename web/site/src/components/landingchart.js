@@ -7,7 +7,7 @@ Landing Page Graph/Chart on Pandemic Statistics
 */
 
 import React, {useState} from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 
 import { Bar } from 'react-chartjs-2';
 
@@ -111,7 +111,7 @@ const LandingChart = ({ data, dates }) => {
           ></hr>
           <Bar
             height={null}
-             width={null}
+            width={null}
             options={options}
             data={{
                 labels: dates,
