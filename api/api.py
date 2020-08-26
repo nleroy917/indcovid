@@ -45,7 +45,7 @@ def fetch_latest_data():
 
 # background scheduler
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=fetch_latest_data, trigger="interval", seconds=2000)
+scheduler.add_job(func=fetch_latest_data, trigger="interval", seconds=21600)
 scheduler.start()
 
 # Testing route/main route
