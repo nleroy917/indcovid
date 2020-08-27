@@ -192,6 +192,30 @@ def get_case_demographics():
     del fetcher
     return jsonify(return_package)
 
+@app.route('/data/covid/demographics-2', methods=['GET'])
+def get_case_demographics_2():
+    """
+    """
+    uri = 'https://data.cdc.gov/resource/k8wy-p9cg.json?fipsstate=18'
+    res = requests.get(uri)
+    data = res.json()
+    return_package = {
+        'data': data
+    }
+    return jsonify(return_package)
+
+@app.route('/data/covid/demographics-3', methods=['GET'])
+def get_case_demographics_3():
+    """
+    """
+    uri = 'https://data.cdc.gov/resource/ks3g-spdg.json?state=Indiana'
+    res = requests.get(uri)
+    data = res.json()
+    return_package = {
+        'data': data
+    }
+    return jsonify(return_package)
+
 if __name__ =='__main__':
     app.run()
 
