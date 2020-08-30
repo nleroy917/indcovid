@@ -13,6 +13,8 @@ import SectionContent from '../components/sectioncontent';
 import PageFooter from '../components/footer';
 import RaceChart from '../components/racechart';
 import CovidRaceChart from '../components/casesracechart';
+import RaceAgeChart from '../components/raceagechart';
+import HealthCareAccess from '../components/healthcareaccess';
 
 import {
   Grid,
@@ -21,12 +23,23 @@ import {
 
 import axios from 'axios';
 
+import balance from '../images/balance-scale.png';
+
 const COVID_19_API_NOW = 'https://api.covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://api.covidtracking.com/api/v1/states/in/daily.json'
-const API_URL = 'https://indianacovid-api.herokuapp.com//'
+// const API_URL = 'https://indianacovid-api.herokuapp.com/'
+const API_URL = 'http://localhost:5000'
 
 const InlineLink = styled.a`
     color: rgba(75,192,192,0.9);
+`
+
+const Img = styled.img`
+    height: 250px;
+    width: auto;
+    overflow: cover;
+    margin-left: 10px;
+    margin-right: 10px;
 `
 
 const scrollToHealth = (ref) => window.scrollTo(0, ref.current.offsetTop)
@@ -49,6 +62,12 @@ const IndexPage = () => {
     const [raceLabels, setRaceLabels] = useState([]);
     const [covidRacePct, setCovidRacePct] = useState([]);
     const [covidRaceLabels, setCovidRaceLabels] = useState([]);
+    const [covidRaceAgeData, setCovidRaceAgeData] = useState([]);
+    const [covidRaceAgeLabels, setCovidRaceAgeLabels] = useState([]);
+    const [weeks, setWeeks] = useState([]);
+    const [delayed, setDelayed] = useState([]);
+    const [didNotGet, setDidNotGet] = useState([]);
+    const [both, setBoth] = useState([]);
 
     const removeOutliers = (someArray) => {
 
@@ -194,9 +213,31 @@ const IndexPage = () => {
     const res = await axios.get(`${API_URL}/data/covid/demographics`)
     if(res.status === 200) {
       let data = res.data
-      console.log(data)
-      setCovidRacePct(data.COVID_TEST_PCT)
+      // console.log(data)
+      setCovidRacePct(data.COVID_COUNT_PCT)
       setCovidRaceLabels(data.labels)
+    }
+  }
+
+  const fetchCOVIDRaceAge = async () => {
+    const res = await axios.get(`${API_URL}/data/covid/cdc-demographics-death`)
+    if(res.status === 200) {
+      let data = res.data
+      // console.log(data)
+      setCovidRaceAgeData(data.race_age_data)
+      setCovidRaceAgeLabels(data.ages)
+    }
+  }
+
+  const fetchHealthCareAccess = async () => {
+    const res = await axios.get(`${API_URL}/data/covid/access-to-care`)
+    if(res.status === 200) {
+      let data = res.data
+      console.log(data)
+      setWeeks(data.weeks)
+      setDelayed(data.delayed)
+      setDidNotGet(data.did_not_get)
+      setBoth(data.both)
     }
   }
 
@@ -206,6 +247,8 @@ const IndexPage = () => {
       yeetCovidData()
       fetchIndianaRace()
       fetchCOVIDRace()
+      fetchCOVIDRaceAge()
+      fetchHealthCareAccess()
   }, [])
 
   if (covidNow && yeetedData) {
@@ -258,11 +301,6 @@ const IndexPage = () => {
             </Grid>
           </Grid>
           <br></br>
-          <SectionSubTitle
-            textAlign={mobile ? "center" : "right"}
-          >
-          What is health inequity?
-        </SectionSubTitle>
           <Grid container
           direction="row"
           alignItems="center"
@@ -271,10 +309,15 @@ const IndexPage = () => {
           >
             <Grid item lg={6} md={6}  xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               
-                (media)
+            <Img src={balance} />
 
             </Grid>
             <Grid item lg={6} md={6}  xs={12}>
+            <SectionSubTitle
+            textAlign={mobile ? "center" : "left"}
+          >
+          What is health inequity?
+        </SectionSubTitle>
               <SectionContent>
                 loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
                 </SectionContent>
@@ -299,9 +342,6 @@ const IndexPage = () => {
           <SectionContent>
                 loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
                 </SectionContent>
-                <SectionContent>
-                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
-                </SectionContent>
           </Grid>
           </Grid>
           <br></br>
@@ -312,18 +352,64 @@ const IndexPage = () => {
           style={{width: '100%'}}
           >
             <Grid item lg={6} md={6} xs={12}>
-              <RaceChart
-                data={racePct}
-                labels={raceLabels}
-              />
-            </Grid>
-            <Grid item lg={6} md={6} xs={12}>
-              <CovidRaceChart
-                data={covidRacePct}
+            <CovidRaceChart
+                indiana_data={racePct}
+                covid_data={covidRacePct}
                 labels={covidRaceLabels}
               />
             </Grid>
+            <Grid item lg={6} md={6} xs={12}>
+
+            </Grid>
           </Grid>
+          <br></br>
+          <SectionContent>
+                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
+          </SectionContent>
+          <br></br>
+          <div>
+          <Grid container
+          direction="row"
+          alignItems="center"
+          justify={mobile ? "center" : "center"}
+          style={{width: '100%', height: '100%'}}
+          >
+          <Grid item xs={12} lg={12} md={12} style={{height: '50vh'}}>
+            <RaceAgeChart
+              data={covidRaceAgeData}
+              labels={covidRaceAgeLabels}
+            />
+          </Grid>
+          </Grid>
+          </div>
+          <br></br>
+          <SectionTitle
+            textAlign="center"  
+          >
+          Access to Health Care
+        </SectionTitle>
+        <SectionContent>
+                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
+          </SectionContent>
+          <br></br>
+        <Grid container
+          direction="row"
+          alignItems="center"
+          justify={mobile ? "center" : "flex-start"}
+          style={{width: '100%'}}
+          >
+            <Grid item lg={6} md={6} xs={12}>
+            <HealthCareAccess
+              weeks={weeks}
+              delayed={delayed}
+              didNotGet={didNotGet}
+              both={both}
+            />
+            </Grid>
+            <Grid item lg={6} md={6} xs={12}>
+
+            </Grid>
+            </Grid>
       <PageFooter />
     </Layout>
     )

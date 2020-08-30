@@ -11,7 +11,7 @@ const ChartTitle = styled(Typography)`
     text-align: center;
 `;
 
-const CovidRaceChart = ( { data, labels } ) => {
+const CovidRaceChart = ( { indiana_data, covid_data, labels } ) => {
     const [options, setOptions] = useState({
         tooltips: {
             mode: 'index',
@@ -21,14 +21,17 @@ const CovidRaceChart = ( { data, labels } ) => {
             mode: 'index',
             intersect: false
          },
-        legend: {
-            display: false
+         legend: {
+            display: true,
+            fontColor: 'white'
          },
-        aspectRatio: 2,
-        maintainAspectRatio: true,
+        height: "100%",
+        width: "100%",
+        aspectRatio: 1,
+        maintainAspectRatio: false,
         scales: {
             xAxes: [{scaleLabel: { display: true, labelString: ''}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white', fontSize: '12', maxTicksLimit: 8}}],
-            yAxes: [{scaleLabel: { display: true, labelString: '% Population', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
+            yAxes: [{scaleLabel: { display: true, labelString: '%', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
         }
     })
     return(
@@ -45,12 +48,20 @@ const CovidRaceChart = ( { data, labels } ) => {
                     {
                         label: "Indiana Demographics",
                         barPercentage: 0.5,
-                        barThickness: 30,
+                        barThickness: 25,
                         minBarLength: 5,
-                        backgroundColor: ['rgba(255,129,150,0.8)','rgba(255,177,9,0.8)','rgba(255,201,82,0.8)','rgba(94,236,230,0.8)','rgba(114,190,253,0.8)','rgba(174,137,255,0.8)','rgba(255,249,245,0.8)'],
-                        borderColor: ['rgba(255,129,150,1)','rgba(255,177,9,1)','rgba(255,201,82,1)','rgba(94,236,230,1)','rgba(114,190,253,1)','rgba(174,137,255,1)','rgba(255,249,245,1)'],
+                        backgroundColor: '#78c2ff',
                         borderWidth: 1,
-                        data: data
+                        data: indiana_data
+                    },
+                    {
+                        label: "COVID-19 Case Demographics",
+                        barPercentage: 0.5,
+                        barThickness: 25,
+                        minBarLength: 5,
+                        backgroundColor: '#ff8578',
+                        borderWidth: 1,
+                        data: covid_data
                     }
                 ]
             }}

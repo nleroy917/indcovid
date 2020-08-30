@@ -220,7 +220,7 @@ const StayHealthyPage = () => {
           </SectionTitle>
           <SectionContent gutterBottom>
           {
-            <p>Masks may help prevent people who have COVID-19 from spreading the virus to others. Wearing a mask will help protect people around you, including those at <InlineLink href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-at-higher-risk-old.html">higher risk of severe illness</InlineLink> from COVID-19 and workers who frequently come into close contact with other people.Masks are most likely to reduce the spread of COVID-19 when they are widely used by people in public settings. The spread of COVID-19 can be reduced when masks are used along with other <InlineLink href="preventive measures">preventive measures.</InlineLink>
+            <p>Masks may help prevent people who have COVID-19 from spreading the virus to others. Wearing a mask will help protect people around you, including those at <InlineLink href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-at-increased-risk.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Fcoronavirus%2F2019-ncov%2Fneed-extra-precautions%2Fpeople-at-higher-risk.html">higher risk of severe illness</InlineLink> from COVID-19 and workers who frequently come into close contact with other people.Masks are most likely to reduce the spread of COVID-19 when they are widely used by people in public settings. The spread of COVID-19 can be reduced when masks are used along with other <InlineLink href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html">preventive measures.</InlineLink>
             </p>
           }
           </SectionContent>
