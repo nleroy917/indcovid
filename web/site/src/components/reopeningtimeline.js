@@ -184,7 +184,7 @@ const ReopeningTimeline = () =>  {
                  variant="outlined" 
                  color="inherit" 
                  size="small"
-                 href="https://backontrack.in.gov/files/Stage_4.5.pdf"
+                 href="https://backontrack.in.gov/files/Stage4.5_Aug-1_update.pdf"
                >
                 Stage 4.5 Info
                </MoreInfoButton>
