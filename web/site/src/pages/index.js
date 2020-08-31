@@ -28,8 +28,8 @@ import balance from '../images/balance-scale.png';
 
 const COVID_19_API_NOW = 'https://api.covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://api.covidtracking.com/api/v1/states/in/daily.json'
-// const API_URL = 'https://indianacovid-api.herokuapp.com/'
-const API_URL = 'http://localhost:5000'
+const API_URL = 'https://indianacovid-api.herokuapp.com/'
+// const API_URL = 'http://localhost:5000'
 
 const InlineLink = styled.a`
     color: rgba(75,192,192,0.9);
