@@ -67,12 +67,27 @@ class DataFetcher():
         with open(self.dir + 'covid_19_demographics.xlsx','wb') as xl:
             xl.write(res.content)
     
-    def read_case_demographics(self):
+    def read_case_demographics_race(self):
         df = pandas.read_excel(self.dir + 'covid_19_demographics.xlsx','Race')
         case_demographics = []
         for index, row in df.iterrows():
             case_demographics.append({
                 'Race': row['RACE'],
+                'COVID_TEST': row['COVID_TEST'],
+                'COVID_COUNT': row['COVID_COUNT'],
+                'COVID_DEATHS': row['COVID_DEATHS'],
+                'COVID_TEST_PCT': row['COVID_TEST_PCT'],
+                'COVID_COUNT_PCT': row['COVID_COUNT_PCT'],
+                'COVID_DEATHS_PCT': row['COVID_DEATHS_PCT']
+            })
+        return case_demographics
+
+    def read_case_demographics_ethnicity(self):
+        df = pandas.read_excel(self.dir + 'covid_19_demographics.xlsx','Ethnicity')
+        case_demographics = []
+        for index, row in df.iterrows():
+            case_demographics.append({
+                'Race': row['ETHNICITY'],
                 'COVID_TEST': row['COVID_TEST'],
                 'COVID_COUNT': row['COVID_COUNT'],
                 'COVID_DEATHS': row['COVID_DEATHS'],

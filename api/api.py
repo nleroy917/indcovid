@@ -110,21 +110,41 @@ def get_demographics():
     """
     mysql = MySQL.MySQL(MYSQL_URL, MYSQL_USER, MYSQL_PASS)
     data_raw = mysql.get_demographics()
-    demographics = []
+    demographics_race = []
+    demographics_ethnicities = []
+    ethnicities = ['Hispanic', 'Not Hispanic or Latino']
     for row in data_raw:
-        demographics.append({
-            'Race': row[0],
-            'Percent': row[1],
-            'Count': row[2],
-            'ID': row[3]
-        })
-    demographics_sorted = sorted(demographics, key=lambda k: k['Race']) 
-    percentages = [obj['Percent'] for obj in demographics_sorted]
-    labels = [obj['Race'] for obj in demographics_sorted]
+        if row[0] not in ethnicities:
+            demographics_race.append({
+                'Race': row[0],
+                'Percent': row[1],
+                'Count': row[2],
+                'ID': row[3]
+            })
+        else:
+            demographics_ethnicities.append(
+                {
+                'Ethnicity': row[0],
+                'Percent': row[1],
+                'Count': row[2],
+                'ID': row[3]  
+                }
+            )
+    demographics_race_sorted = sorted(demographics_race, key=lambda k: k['Race']) 
+    race_percentages = [obj['Percent'] for obj in demographics_race_sorted]
+    race_labels = [obj['Race'] for obj in demographics_race_sorted]
+
+    demographics_ethnicities_sorted = sorted(demographics_ethnicities, key=lambda k: k['Ethnicity']) 
+    ethnicities_percentages = [obj['Percent'] for obj in demographics_ethnicities_sorted]
+    ethnicities_labels = [obj['Ethnicity'] for obj in demographics_ethnicities_sorted]
+
     return_package = {
-        'data': demographics,
-        'percentages': percentages,
-        'labels': labels
+        'race_data': demographics_race,
+        'race_percentages': race_percentages,
+        'race_labels': race_labels,
+        'ethnicity_data': demographics_ethnicities,
+        'ethnicity_percentages': ethnicities_percentages,
+        'ethnicity_labels': ethnicities_labels
     }
     del mysql
     return jsonify(return_package)
@@ -174,29 +194,51 @@ def get_case_demographics():
     Get the covid-19 case demographics for Indiana
     """
     fetcher = DataFetcher.DataFetcher()
-    demographics = fetcher.read_case_demographics()
-    labels = []
-    for obj in demographics:
+    demographics_race = fetcher.read_case_demographics_race()
+    demographics_ethnicity = fetcher.read_case_demographics_ethnicity()
+    race_labels = []
+    ethnicity_labels = []
+
+    for obj in demographics_race:
         # case to change "Black or African American to Black"
         if obj['Race'] == 'Black or African American':
-            labels.append('Black')
+            race_labels.append('Black')
         else:
-            labels.append(obj['Race'])
-    COVID_TEST = [obj['COVID_TEST'] for obj in demographics]
-    COVID_COUNT = [obj['COVID_COUNT'] for obj in demographics]
-    COVID_DEATHS = [obj['COVID_DEATHS'] for obj in demographics]
-    COVID_TEST_PCT = [obj['COVID_TEST_PCT'] for obj in demographics]
-    COVID_COUNT_PCT = [obj['COVID_COUNT_PCT'] for obj in demographics]
-    COVID_DEATHS_PCT = [obj['COVID_DEATHS_PCT'] for obj in demographics]
+            race_labels.append(obj['Race'])
+    COVID_TEST_RACE = [obj['COVID_TEST'] for obj in demographics_race]
+    COVID_COUNT_RACE = [obj['COVID_COUNT'] for obj in demographics_race]
+    COVID_DEATHS_RACE = [obj['COVID_DEATHS'] for obj in demographics_race]
+    COVID_TEST_PCT_RACE = [obj['COVID_TEST_PCT'] for obj in demographics_race]
+    COVID_COUNT_PCT_RACE = [obj['COVID_COUNT_PCT'] for obj in demographics_race]
+    COVID_DEATHS_PCT_RACE = [obj['COVID_DEATHS_PCT'] for obj in demographics_race]
+
+    for obj in demographics_ethnicity:
+        ethnicity_labels.append(obj['Race'])
+
+    COVID_TEST_ETHNICITY = [obj['COVID_TEST'] for obj in demographics_ethnicity]
+    COVID_COUNT_ETHNICITY = [obj['COVID_COUNT'] for obj in demographics_ethnicity]
+    COVID_DEATHS_ETHNICITY = [obj['COVID_DEATHS'] for obj in demographics_ethnicity]
+    COVID_TEST_PCT_ETHNICITY = [obj['COVID_TEST_PCT'] for obj in demographics_ethnicity]
+    COVID_COUNT_PCT_ETHNICITY = [obj['COVID_COUNT_PCT'] for obj in demographics_ethnicity]
+    COVID_DEATHS_PCT_ETHNICITY = [obj['COVID_DEATHS_PCT'] for obj in demographics_ethnicity]
+
     return_package = {
-        'data': demographics,
-        'COVID_TEST': COVID_TEST,
-        'COVID_COUNT': COVID_COUNT,
-        'COVID_DEATHS': COVID_DEATHS,
-        'COVID_TEST_PCT': COVID_TEST_PCT,
-        'COVID_COUNT_PCT': COVID_COUNT_PCT,
-        'COVID_DEATHS_PCT': COVID_DEATHS_PCT,
-        'labels': labels
+        'race_data': demographics_race,
+        'ethnicity_data': demographics_ethnicity,
+        'COVID_TEST_RACE': COVID_TEST_RACE,
+        'COVID_COUNT_RACE': COVID_COUNT_RACE,
+        'COVID_DEATHS_RACE': COVID_DEATHS_RACE,
+        'COVID_TEST_PCT_RACE': COVID_TEST_PCT_RACE,
+        'COVID_COUNT_PCT_RACE': COVID_COUNT_PCT_RACE,
+        'COVID_DEATHS_PCT_RACE': COVID_DEATHS_PCT_RACE,
+        'COVID_TEST_ETHNICITY': COVID_TEST_ETHNICITY,
+        'COVID_COUNT_ETHNICITY': COVID_COUNT_ETHNICITY,
+        'COVID_DEATHS_ETHNICITY': COVID_DEATHS_ETHNICITY,
+        'COVID_TEST_PCT_ETHNICITY': COVID_TEST_PCT_ETHNICITY,
+        'COVID_COUNT_PCT_ETHNICITY': COVID_COUNT_PCT_ETHNICITY,
+        'COVID_DEATHS_PCT_ETHNICITY': COVID_DEATHS_PCT_ETHNICITY,
+        'race_labels': race_labels,
+        'ethnicity_labels': ethnicity_labels
     }
     del fetcher
     return jsonify(return_package)
