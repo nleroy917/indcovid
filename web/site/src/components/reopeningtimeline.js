@@ -152,7 +152,7 @@ const ReopeningTimeline = () =>  {
                   June 12th - July 3rd
                </ElementSubTitle>
                <ElementContent>
-                Social gatherings up to 250 people may take place. Face coverings are recommended. Retail stores and malls open at full capacity. Bars and nightclubs may open at 50% capacity. Cultural, entiertainment, and tourism sites may open at 50% capacity. Dining room service may open at 75% capacity. Continue remote work as needed.
+                Social gatherings up to 250 people may take place. Face coverings are recommended. Retail stores and malls open at full capacity. Bars and nightclubs may open at 50% capacity. Cultural, entertainment, and tourism sites may open at 50% capacity. Dining room service may open at 75% capacity. Continue remote work as needed.
                </ElementContent>
                <MoreInfoButton 
                  variant="outlined" 
@@ -178,7 +178,7 @@ const ReopeningTimeline = () =>  {
                  July 4th - August 27th
                </ElementSubTitle>
                <ElementContent>
-                Face coverings are required! Social gatherings up to 250 people are permitted. Dining room service may operate at 75% capacity. Retail stores and malls open at full capacity. Bars and nightclubs may open at 50% capacity. Cultural, entiertainment, and tourism sites may open at 50% capacity. Continue remote work as needed. Hospital visitiations encouraged with precautions.
+                Face coverings are required! Social gatherings up to 250 people are permitted. Dining room service may operate at 75% capacity. Retail stores and malls open at full capacity. Bars and nightclubs may open at 50% capacity. Cultural, entertainment, and tourism sites may open at 50% capacity. Continue remote work as needed. Hospital visits encouraged with precautions.
                </ElementContent>
                <MoreInfoButton 
                  variant="outlined" 

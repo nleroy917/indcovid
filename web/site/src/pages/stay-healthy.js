@@ -26,14 +26,11 @@ const SquareButton = styled(Button)`
   border-radius: 0px !important;
   margin: 5px !important;
 `
-const SectionWrapper = styled(Paper)`
-  align-items: center;
-  justify-content: center;
-  background-color: #1d1d1d !important;
-  padding: 10px;
-  box-shadow: 5px 5px white !important;
-  color: inherit !important;
+const SectionWrapper = styled.div`
+  padding: ${props => props.mobile ? '' : '10px'};
+  border: ${props => props.mobile ? '' : 'solid white 1px'};
   height: 100%;
+  width: 100%;
 `
 const PageTitle = styled(Typography)`
   font-weight: 400;
@@ -109,7 +106,8 @@ const StayHealthyPage = () => {
         spacing={4}
         style={{width: '100%', margin: '10px'}}
       >
-        <Grid item lg={10} md={10} xs={12}>
+        <Grid item lg={12} md={12} xs={12}>
+        <SectionWrapper>
         <SectionTitle 
               gutterBottom 
               variant="h4"
@@ -138,6 +136,7 @@ const StayHealthyPage = () => {
               <ListItem>Diarrhea</ListItem>
             </List>
           </div>
+          </SectionWrapper>
         </Grid>
       </Grid>
       <Grid container
@@ -148,6 +147,7 @@ const StayHealthyPage = () => {
         style={{width: '100%', margin: '10px'}}
         >
         <Grid item lg={6} md={6} xs={12}>
+        <SectionWrapper mobile={mobile}>
             <SectionTitle 
               gutterBottom 
               variant="h4"
@@ -168,8 +168,10 @@ const StayHealthyPage = () => {
               <ListItem>After caring for someone sick</ListItem>
               <ListItem>After touching animals or pets</ListItem>
             </List>
+            </SectionWrapper>
         </Grid>
         <Grid item lg={6} md={6} xs={12}>
+        <SectionWrapper mobile={mobile}>
         <SectionTitle 
               gutterBottom 
               variant="h4"
@@ -186,6 +188,7 @@ const StayHealthyPage = () => {
             >
                 Get Tested
             </SquareButton>
+            </SectionWrapper>
         </Grid>
         </Grid>
         <Grid container
@@ -196,7 +199,7 @@ const StayHealthyPage = () => {
         style={{width: '100%', margin: '10px'}}
         >
         <Grid item lg={6} md={6} xs={12}>
-            <>
+            <SectionWrapper mobile={mobile}>
             <SectionTitle 
               gutterBottom 
               variant="h4"
@@ -209,14 +212,15 @@ const StayHealthyPage = () => {
             <SectionContent gutterBottom>
             To practice social or physical distancing, stay at least 6 feet (about 2 arms’ length) from other people who are not from your household in both indoor and outdoor spaces.
             </SectionContent>
-            </>
+            </SectionWrapper>
         </Grid>
         <Grid item lg={6} md={6} xs={12}>
+        <SectionWrapper mobile={mobile}>
           <SectionTitle
           gutterBottom
           variant="h4"
           >
-            Where A Mask <Img src={mask}/> 
+            Wear A Mask <Img src={mask}/> 
           </SectionTitle>
           <SectionContent gutterBottom>
           {
@@ -224,6 +228,7 @@ const StayHealthyPage = () => {
             </p>
           }
           </SectionContent>
+          </SectionWrapper>
         </Grid>
         </Grid>
     </Layout>

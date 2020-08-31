@@ -13,6 +13,7 @@ import SectionContent from '../components/sectioncontent';
 import PageFooter from '../components/footer';
 import RaceChart from '../components/racechart';
 import CovidRaceChart from '../components/casesracechart';
+import CovidEthnicityChart from '../components/ethnicitycasechart';
 import RaceAgeChart from '../components/raceagechart';
 import HealthCareAccess from '../components/healthcareaccess';
 
@@ -27,8 +28,8 @@ import balance from '../images/balance-scale.png';
 
 const COVID_19_API_NOW = 'https://api.covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://api.covidtracking.com/api/v1/states/in/daily.json'
-const API_URL = 'https://indianacovid-api.herokuapp.com/'
-// const API_URL = 'http://localhost:5000'
+// const API_URL = 'https://indianacovid-api.herokuapp.com/'
+const API_URL = 'http://localhost:5000'
 
 const InlineLink = styled.a`
     color: rgba(75,192,192,0.9);
@@ -60,6 +61,10 @@ const IndexPage = () => {
     const [yeetedData, setYeetedData] = useState(null);
     const [racePct, setRacePct] = useState([]);
     const [raceLabels, setRaceLabels] = useState([]);
+    const [ethnicityPct, setEthnicityPct] = useState([]);
+    const [ethnicityLabels, setEthnicityLabels] = useState([]);
+    const [covidEthnicityPct, setCovidEthnicityPct] = useState([]);
+    const [covidEthnicityLabels, setCovidEthnicityLabels] = useState([]);
     const [covidRacePct, setCovidRacePct] = useState([]);
     const [covidRaceLabels, setCovidRaceLabels] = useState([]);
     const [covidRaceAgeData, setCovidRaceAgeData] = useState([]);
@@ -204,8 +209,10 @@ const IndexPage = () => {
     if(res.status === 200) {
       let data = res.data
       console.log(data)
-      setRacePct(data.percentages)
-      setRaceLabels(data.labels)
+      setRacePct(data.race_percentages)
+      setRaceLabels(data.race_labels)
+      setEthnicityPct(data.ethnicity_percentages)
+      setEthnicityLabels(data.ethnicity_labels)
     }
   }
 
@@ -214,8 +221,10 @@ const IndexPage = () => {
     if(res.status === 200) {
       let data = res.data
       // console.log(data)
-      setCovidRacePct(data.COVID_COUNT_PCT)
-      setCovidRaceLabels(data.labels)
+      setCovidRacePct(data.COVID_COUNT_PCT_RACE)
+      setCovidRaceLabels(data.race_labels)
+      setCovidEthnicityPct(data.COVID_COUNT_PCT_ETHNICITY)
+      setCovidEthnicityLabels(data.ethnicity_labels)
     }
   }
 
@@ -278,7 +287,7 @@ const IndexPage = () => {
         <SectionSubTitle
           textAlign={mobile ? "center" : "left"}
         >
-          What is a health disparity?
+          What is a Health Disparity
         </SectionSubTitle>
         <Grid container
           direction="row"
@@ -290,14 +299,24 @@ const IndexPage = () => {
               <SectionContent
                 textAlign="left"
               >
-              {<p>The Department of Health and Human Services (HHS)’s <InlineLink href="https://www.healthypeople.gov/2020/about/  foundation-health-measures/Disparities">Healthypeople2020.gov</InlineLink> defines a health disparity as “a particular type of health   difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect groups  of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion;   socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity;  geographic location; or other characteristics historically linked to discrimination or exclusion.”</p>}
+              {<p>The Department of Health and Human Services(HHS)’s <InlineLink href="https://www.healthypeople.gov/2020/about/%20%20foundation-health-measures/Disparities">Healthypeople2020.gov</InlineLink> defines a health disparity as “a particular type of health difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect groups of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion; socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity; geographic location; or other characteristics historically linked to discrimination or exclusion.”</p>}
               </SectionContent>
               <SectionContent>
-              The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is effecting   populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the   actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the   physical and social determinants of health-especially in relation to institutional policies and practices. “ HHS believes that if we  hope to achieve health equity it would require measuring these changes.
+              The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is affecting populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social determinants of health-especially in relation to institutional policies and practices. '' HHS believes that if we hope to achieve health equity it would require measuring these changes.
               </SectionContent>
             </Grid>
             <Grid item lg={6} md={12} xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-              (media)
+              <iframe 
+                id="healthdisparitiesframe" 
+                width="100%" 
+                src="https://www.healthypeople.gov/hdwidget/embed" 
+                name="healthdisparitiesframe" 
+                title="Health Disparities widget" 
+                scrolling="no" 
+                style={{border: 'none'}}
+              >
+                <p>Your browser does not support iframes.</p>
+              </iframe>
             </Grid>
           </Grid>
           <br></br>
@@ -359,7 +378,11 @@ const IndexPage = () => {
               />
             </Grid>
             <Grid item lg={6} md={6} xs={12}>
-
+              <CovidEthnicityChart
+                indiana_data={ethnicityPct}
+                covid_data={covidEthnicityPct}
+                labels={covidEthnicityLabels}
+              />
             </Grid>
           </Grid>
           <br></br>
