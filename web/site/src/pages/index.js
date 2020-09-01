@@ -16,6 +16,7 @@ import RaceAgeChart from '../components/raceagechart';
 import HealthCareAccess from '../components/healthcareaccess';
 import MentalHealthGraph from '../components/mentalhealthgraph';
 import InfoCard from '../components/infocard';
+import RaceMap from '../components/racemap';
 
 import {
   Grid,
@@ -36,7 +37,7 @@ const InlineLink = styled.a`
 `
 
 const Img = styled.img`
-    height: 230px;
+    height: 350px;
     width: auto;
     overflow: cover;
     margin-left: 10px;
@@ -314,7 +315,7 @@ const IndexPage = () => {
           direction="row"
           alignItems="center"
           justify={mobile ? "center" : "flex-start"}
-          style={{width: '100%'}}
+          style={{width: '100%', height: '100%'}}
           >
             <Grid item lg={6} md={12} xs={12}>
               <SectionContent
@@ -334,18 +335,8 @@ const IndexPage = () => {
               }
               </SectionContent>
             </Grid>
-            <Grid item lg={6} md={12} xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-              <iframe 
-                id="healthdisparitiesframe" 
-                width="100%" 
-                src="https://www.healthypeople.gov/hdwidget/embed" 
-                name="healthdisparitiesframe" 
-                title="Health Disparities widget" 
-                scrolling="no" 
-                style={{border: 'none'}}
-              >
-                <p>Your browser does not support iframes.</p>
-              </iframe>
+            <Grid item lg={6} md={12} xs={12}>
+              <RaceMap />
             </Grid>
           </Grid>
           <br></br>
@@ -460,7 +451,7 @@ const IndexPage = () => {
                 both={both}
               />
             </Grid>
-            <Grid item lg={4} md={4} xs={12}> 
+            <Grid item lg={4} md={4} xs={10}> 
               <InfoCard
                 title="Delayed Medical Care"
                 units="%"
@@ -495,7 +486,7 @@ const IndexPage = () => {
           justify={mobile ? "center" : "space-between"}
           style={{width: '100%'}}
           >
-            <Grid item lg={4} md={4} xs={12}>
+            <Grid item lg={4} md={4} xs={10}>
             <InfoCard
                 title="Experiencing Anxiety"
                 units="%"

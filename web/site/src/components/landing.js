@@ -134,9 +134,7 @@ const Landing = ({dates, covidNow, covidHistoric, yeetedData, smoothScroll}) => 
             />
           </Grid>
           <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
-            <LandingMap 
-
-            />
+            <LandingMap />
           </Grid>
           </Grid>
           {
