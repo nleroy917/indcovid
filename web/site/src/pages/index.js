@@ -10,12 +10,14 @@ import SectionTitle from '../components/sectiontitle';
 import SectionSubTitle from '../components/sectionsubtitle';
 import SectionContent from '../components/sectioncontent';
 
+import InfoTip from '../components/infotip';
 import PageFooter from '../components/footer';
 import RaceChart from '../components/racechart';
 import CovidRaceChart from '../components/casesracechart';
 import CovidEthnicityChart from '../components/ethnicitycasechart';
 import RaceAgeChart from '../components/raceagechart';
 import HealthCareAccess from '../components/healthcareaccess';
+import MentalHealthGraph from '../components/mentalhealthgraph';
 
 import {
   Grid,
@@ -28,19 +30,20 @@ import balance from '../images/balance-scale.png';
 
 const COVID_19_API_NOW = 'https://api.covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://api.covidtracking.com/api/v1/states/in/daily.json'
-const API_URL = 'https://indianacovid-api.herokuapp.com/'
-// const API_URL = 'http://localhost:5000'
+// const API_URL = 'https://indianacovid-api.herokuapp.com/'
+const API_URL = 'http://localhost:5000'
 
 const InlineLink = styled.a`
     color: rgba(75,192,192,0.9);
 `
 
 const Img = styled.img`
-    height: 250px;
+    height: 230px;
     width: auto;
     overflow: cover;
     margin-left: 10px;
     margin-right: 10px;
+    padding: 20px;
 `
 
 const scrollToHealth = (ref) => window.scrollTo(0, ref.current.offsetTop)
@@ -69,6 +72,9 @@ const IndexPage = () => {
     const [covidRaceLabels, setCovidRaceLabels] = useState([]);
     const [covidRaceAgeData, setCovidRaceAgeData] = useState([]);
     const [covidRaceAgeLabels, setCovidRaceAgeLabels] = useState([]);
+    const [anxiety, setAnxiety] = useState([]);
+    const [depression, setDepression] = useState([]);
+    const [anxiety_depression, setAnxietyDepression] = useState([]);
     const [weeks, setWeeks] = useState([]);
     const [delayed, setDelayed] = useState([]);
     const [didNotGet, setDidNotGet] = useState([]);
@@ -208,7 +214,7 @@ const IndexPage = () => {
     const res = await axios.get(`${API_URL}/data/indiana/demographics`)
     if(res.status === 200) {
       let data = res.data
-      console.log(data)
+      // console.log(data)
       setRacePct(data.race_percentages)
       setRaceLabels(data.race_labels)
       setEthnicityPct(data.ethnicity_percentages)
@@ -242,11 +248,22 @@ const IndexPage = () => {
     const res = await axios.get(`${API_URL}/data/covid/access-to-care`)
     if(res.status === 200) {
       let data = res.data
-      console.log(data)
+      // console.log(data)
       setWeeks(data.weeks)
       setDelayed(data.delayed)
       setDidNotGet(data.did_not_get)
       setBoth(data.both)
+    }
+  }
+
+  const fetchMentalHealth = async () => {
+    const res = await axios.get(`${API_URL}/data/covid/mental-health`)
+    if(res.status === 200) {
+      let data = res.data
+      // console.log(data)
+      setAnxiety(data.anxiety)
+      setDepression(data.depression)
+      setAnxietyDepression(data.depression_anxiety)
     }
   }
 
@@ -258,6 +275,7 @@ const IndexPage = () => {
       fetchCOVIDRace()
       fetchCOVIDRaceAge()
       fetchHealthCareAccess()
+      fetchMentalHealth()
   }, [])
 
   if (covidNow && yeetedData) {
@@ -299,10 +317,18 @@ const IndexPage = () => {
               <SectionContent
                 textAlign="left"
               >
-              {<p>The Department of Health and Human Services(HHS)’s <InlineLink href="https://www.healthypeople.gov/2020/about/%20%20foundation-health-measures/Disparities">Healthypeople2020.gov</InlineLink> defines a health disparity as “a particular type of health difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect groups of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion; socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity; geographic location; or other characteristics historically linked to discrimination or exclusion.”</p>}
+              {
+                <p>
+                  The Department of Health and Human Services(HHS)’s <InlineLink href="https://www.healthypeople.gov/2020/about/  %20%20foundation-health-measures/Disparities">Healthypeople2020.gov</InlineLink> defines a health disparity as “a particular type of  health difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect   groups of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion;   socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity;  geographic location; or other characteristics historically linked to discrimination or exclusion.”<sup><InlineLink href="http://www.minorityhealth.hhs.gov/npa/templates/browse.aspx?&lvl=2&lvlid=34.">1.</InlineLink></sup>
+                </p>
+              }
               </SectionContent>
               <SectionContent>
-              The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is affecting populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social determinants of health-especially in relation to institutional policies and practices. '' HHS believes that if we hope to achieve health equity it would require measuring these changes.
+              {
+              <p>
+                The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is affecting populations  that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social  determinants of health-especially in relation to institutional policies and practices. '' HHS believes that if we hope to achieve health equity it would require measuring these changes.
+              </p>
+              }
               </SectionContent>
             </Grid>
             <Grid item lg={6} md={12} xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -333,16 +359,17 @@ const IndexPage = () => {
             </Grid>
             <Grid item lg={6} md={6}  xs={12}>
             <SectionSubTitle
-            textAlign={mobile ? "center" : "left"}
-          >
-          What is health inequity?
+            textAlign={mobile ? "center" : "center"}
+            >
+          What is Health Equity?
         </SectionSubTitle>
               <SectionContent>
-                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
-                </SectionContent>
-                <SectionContent>
-                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
-                </SectionContent>
+              {
+                <p>
+                The Department of Health and Human Services Healthypeople2020.gov defines health equity as “attainment of the highest level of health for all people. Achieving health equity requires valuing everyone equally with focused and ongoing societal efforts to address avoidable inequalities, historical and contemporary injustices, and the elimination of health and health care disparities.”<sup><InlineLink href="http://www.healthypeople.gov/sites/default/files/PhaseI_0.pdf.">2.</InlineLink></sup>
+                </p>
+              }
+              </SectionContent>
           </Grid>
           </Grid>
           <br></br>
@@ -412,7 +439,7 @@ const IndexPage = () => {
           Access to Health Care
         </SectionTitle>
         <SectionContent>
-                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
+                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est. loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
           </SectionContent>
           <br></br>
         <Grid container
@@ -422,17 +449,48 @@ const IndexPage = () => {
           style={{width: '100%'}}
           >
             <Grid item lg={6} md={6} xs={12}>
-            <HealthCareAccess
-              weeks={weeks}
-              delayed={delayed}
-              didNotGet={didNotGet}
-              both={both}
-            />
+              <HealthCareAccess
+                weeks={weeks}
+                delayed={delayed}
+                didNotGet={didNotGet}
+                both={both}
+              />
             </Grid>
             <Grid item lg={6} md={6} xs={12}>
 
             </Grid>
             </Grid>
+            <br></br>
+          <SectionTitle
+            textAlign="center"  
+          >
+          Mental Health
+        </SectionTitle>
+        <SectionContent>
+          During a global pandemic it is easy to focus all of our attention on our physical health. However, often forgotten is how our mental health may be affected by a global pandemic such as this. Fear and anxiety over a novel virus can cause a lot of overwhelming stress in both adults and adolescents. In addition, public health measures taken such as social distaning and isolation only further perpetuate these feelings of anxiety, depression, and lonliness. Taking care of one's mental health should be taken just as seriously as one's physical health in a time such as this.
+        </SectionContent>
+        <SectionContent>
+          Since the onset of the pandemic - especially in recent weeks - counts of depression and anxiety have steadily increased over time. As the country takes more and more time to socially distance, these problems will only get worse. In addition, health disparities we present on this site are present in the context of mental health as well. Historically marginalized groups who are systematically experiencing greater obstacles to health based on their racial or ethnic group are also experiencing these problems with mental health care. In 2001 the Federal Collaborative for Health Disparities Research chose mental health disparity as one of four topics warranting its immediate national research attention. Unequal access to resources like remote therapy, support groups, and counciling perpetuates the onset of mental and subsquent physical health inequities as well. 
+        </SectionContent>
+          <br></br>
+          <Grid container
+          direction="row"
+          alignItems="center"
+          justify={mobile ? "center" : "flex-start"}
+          style={{width: '100%'}}
+          >
+            <Grid item lg={6} md={6} xs={12}>
+
+            </Grid>
+            <Grid item lg={6} md={6} xs={12}>
+              <MentalHealthGraph
+                anxiety={anxiety}
+                depression={depression}
+                both={anxiety_depression}
+                weeks={weeks}
+              />
+            </Grid>
+          </Grid>
       <PageFooter />
     </Layout>
     )

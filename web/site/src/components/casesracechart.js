@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Bar } from 'react-chartjs-2';
 import { Typography } from '@material-ui/core';
+import InfoTip from './infotip';
 
 const ChartWrapper = styled.div`
     height: 100%;
@@ -31,14 +32,15 @@ const CovidRaceChart = ( { indiana_data, covid_data, labels } ) => {
         maintainAspectRatio: false,
         scales: {
             xAxes: [{scaleLabel: { display: true, labelString: ''}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white', fontSize: '12', maxTicksLimit: 8}}],
-            yAxes: [{scaleLabel: { display: true, labelString: '%', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
+            yAxes: [{scaleLabel: { display: true, labelString: '% Population', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
         }
     })
     return(
         <>
         <ChartWrapper>
+        <InfoTip moreInfo="Due to the nature of the COVID-19 testing, only select race data is acquired. Sometimes it is not taken at all. Thus, the Indiana Census data was consolidated to fit this." />
           <ChartTitle variant="body1" gutterBottom>
-            COVID-19 Case Demographics
+            COVID-19 Case Demographics 
           </ChartTitle>
           <Bar
             options={options}
@@ -46,7 +48,7 @@ const CovidRaceChart = ( { indiana_data, covid_data, labels } ) => {
                 labels: labels,
                 datasets: [
                     {
-                        label: "Indiana Demographics",
+                        label: "Indiana Census Demographics",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,
@@ -55,7 +57,7 @@ const CovidRaceChart = ( { indiana_data, covid_data, labels } ) => {
                         data: indiana_data
                     },
                     {
-                        label: "COVID-19 Case Demographics",
+                        label: "Indiana COVID Cases by Race",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,

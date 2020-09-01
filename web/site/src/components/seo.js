@@ -81,7 +81,7 @@ function SEO({ description, lang, meta, title }) {
 
 SEO.defaultProps = {
   lang: `en`,
-  meta: 'Indiana COVID-19 & Health Inqeualities',
+  meta: 'Indiana COVID-19 & Health Equity',
   description: ``,
 }
 

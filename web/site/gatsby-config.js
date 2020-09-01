@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Indiana COVID-19 & Health Inqeualities`,
+    title: `Indiana COVID-19 & Health Equity`,
     description: `In this research, we take the time to analyze and invstigate how people from under-privileged communities are disproportionately affected by the COVID-19 pandemic.`,
     author: `Nathan LeRoy`,
   },
