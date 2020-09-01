@@ -7,8 +7,6 @@ import 'react-vertical-timeline-component/style.min.css';
 import { 
     Typography, Button,
  } from '@material-ui/core';
-import MoreInfoPage from '../pages/about-us';
-
 
 const StageIconWrapper = styled.div`
     border-radius: 50%;

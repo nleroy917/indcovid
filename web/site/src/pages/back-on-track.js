@@ -30,8 +30,6 @@ const SectionContent = styled(Typography)`
 const BackOnTrack = () => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
-    const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
-    const iPadPro = useMediaQuery('(max-device-width:1024px)', { noSsr: true });
 
     return (
     <>

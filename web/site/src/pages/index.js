@@ -5,14 +5,11 @@ import Loader from '../components/loader';
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Landing from '../components/landing';
-import DisparitiesMap from '../components/disparitiesmap';
 import SectionTitle from '../components/sectiontitle';
 import SectionSubTitle from '../components/sectionsubtitle';
 import SectionContent from '../components/sectioncontent';
 
-import InfoTip from '../components/infotip';
 import PageFooter from '../components/footer';
-import RaceChart from '../components/racechart';
 import CovidRaceChart from '../components/casesracechart';
 import CovidEthnicityChart from '../components/ethnicitycasechart';
 import RaceAgeChart from '../components/raceagechart';

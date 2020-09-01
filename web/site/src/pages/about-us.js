@@ -1,10 +1,8 @@
 import React from "react"
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { Placeholder } from "../components/placeholder-div";
 import InfoSection from '../components/moreinfosection';
 import Nav from '../components/nav';
 
@@ -14,34 +12,12 @@ import mph_logo from '../images/mph-logo.svg';
 import ind_gov from '../images/ind-gov.png';
 
 import {
-  Button,
   useMediaQuery,
   Grid
 } from '@material-ui/core';
 
-const SquareButton = styled(Button)`
-  border-radius: 0px !important;
-  padding: 5px !important;
-  margin-bottom: 15px !important;
-`
-
 const InlineLink = styled.a`
     color: rgba(75,192,192,0.9);
-`
-
-const ALink = styled(Link)`
-  color: inherit;
-  font-size: 0.75rem;
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
-  &:active {
-    text-decoration: none;
-  }
-  &:focus {
-    text-decoration: none;
-  }
 `
 
 const MediaWrapper = styled.div`
@@ -91,8 +67,6 @@ const LogoImg = styled.img`
 const MoreInfoPage = () => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
-    const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
-    const iPadPro = useMediaQuery('(max-device-width:1024px)', { noSsr: true });
 
     return (
     <Layout>

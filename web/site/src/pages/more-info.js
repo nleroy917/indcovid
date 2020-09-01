@@ -75,6 +75,21 @@ const MoreInfoPage = () => {
               <ListItem>Does your destination have requirements or restrictions for travelers?</ListItem>
             </List>
           </SectionContent>
+          <SquareButton 
+              variant="outlined" 
+              color="inherit"
+              href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/travel-in-the-us.html?s_cid=bb-coronavirus-2019-ncov-NCIRD6"
+          >
+            Domestic Travel Updates
+          </SquareButton>
+          <SquareButton 
+              variant="outlined" 
+              color="inherit"
+              href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/index.html?s_cid=bb-coronavirus-2019-ncov-NCIRD7"
+          >
+            International Travel Updates
+          </SquareButton>
+          <br></br>
           <br></br>
           <SectionTitle 
             variant="h4" 

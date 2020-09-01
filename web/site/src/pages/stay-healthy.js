@@ -1,17 +1,14 @@
 import React from "react"
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { Placeholder } from "../components/placeholder-div";
 
 import {
   Button,
   Grid,
   useMediaQuery,
   Typography,
-  Paper
 } from '@material-ui/core';
 
 import Nav from '../components/nav';
@@ -54,21 +51,6 @@ const SectionContent = styled(Typography)`
     font-weight: 300 !important;
 `
 
-const ALink = styled(Link)`
-  color: inherit;
-  font-size: 0.75rem;
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
-  &:active {
-    text-decoration: none;
-  }
-  &:focus {
-    text-decoration: none;
-  }
-`
-
 const Img = styled.img`
     height: 40px;
     width: auto;
@@ -88,8 +70,7 @@ const ListItem = styled.li`
 const StayHealthyPage = () => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
-    const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
-    const iPadPro = useMediaQuery('(max-device-width:1024px)', { noSsr: true });
+
     console.log('Mobile:', mobile)
     return(
     <Layout>
