@@ -24,7 +24,9 @@ const CovidRaceChart = ( { indiana_data, covid_data, labels } ) => {
          },
          legend: {
             display: true,
-            fontColor: 'white'
+            labels: {
+                fontColor: 'white'
+            }
          },
         height: "100%",
         width: "100%",

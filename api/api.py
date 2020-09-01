@@ -425,6 +425,7 @@ def get_case_demographics_3():
 @app.route('/data/covid/access-to-care', methods=['GET'])
 def access_to_care():
     """
+    Endpoint to get the health-care access data from the CDC. Data-URL: https://data.cdc.gov/resource/xb3p-q62w
     """
     uri = "https://data.cdc.gov/resource/xb3p-q62w.json?state=Indiana"
     res = requests.get(uri)

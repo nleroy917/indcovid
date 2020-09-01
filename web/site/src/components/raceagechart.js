@@ -6,6 +6,8 @@ import {
     useMediaQuery
 } from '@material-ui/core';
 
+import InfoTip from '../components/infotip';
+
 const ChartWrapper = styled.div`
     height: 100%;
 `
@@ -28,7 +30,9 @@ const RaceAgeChart = ( { data, labels } ) => {
          },
         legend: {
             display: true,
-            fontColor: 'white'
+            labels: {
+                fontColor: 'white'
+            }
          },
         height: "100%",
         width: "80%",
@@ -42,6 +46,9 @@ const RaceAgeChart = ( { data, labels } ) => {
     return(
         <>
         <ChartWrapper>
+        <InfoTip
+          moreInfo="Death counts for each reported race are shown on the chart below."
+        />
           <ChartTitle variant="body1" gutterBottom>
             Covid-19 Deaths By Age and Race
           </ChartTitle>

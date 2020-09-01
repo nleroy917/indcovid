@@ -6,6 +6,8 @@ import {
     useMediaQuery
 } from '@material-ui/core';
 
+import InfoTip from './infotip';
+
 const ChartWrapper = styled.div`
     height: 100%;
 `
@@ -28,7 +30,9 @@ const HealthCareAccess = ( { weeks, delayed, didNotGet, both } ) => {
          },
         legend: {
             display: true,
-            fontColor: 'white'
+            labels: {
+                fontColor: 'white'
+            }
          },
         height: "100%",
         width: "80%",
@@ -36,12 +40,15 @@ const HealthCareAccess = ( { weeks, delayed, didNotGet, both } ) => {
         maintainAspectRatio: false,
         scales: {
             xAxes: [{scaleLabel: { display: true, labelString: 'Week', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white', fontSize: '12'}}],
-            yAxes: [{scaleLabel: { display: true, labelString: 'Count', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
+            yAxes: [{scaleLabel: { display: true, labelString: '% Population', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
         }
     })
     return(
         <>
         <ChartWrapper>
+        <InfoTip
+          moreInfo="Access to health care is reported in three metrics. 1.) Delayed Health Care, 2.) Did not Get Health Care, or 3.) Delayed or Did Not Get Health Care. Housing units linked to one or more email addresses or cell phone numbers were randomly selected to participate, and one respondent from each housing unit was selected to respond for him or herself. Estimates are weighted to adjust for nonresponse and to match Census Bureau estimates of the population by age, gender, race and ethnicity, and educational attainment."
+        />
           <ChartTitle variant="body1" gutterBottom>
             Access to Health Care During COVID-19 Pandemic
           </ChartTitle>
@@ -51,22 +58,28 @@ const HealthCareAccess = ( { weeks, delayed, didNotGet, both } ) => {
                 labels: weeks,
                 datasets: [
                     {
-                        label: "Delayed Health Care",
-                        borderWidth: 1,
-                        borderColor: '#78c2ff',
-                        data: delayed
-                   },
-                   {
                         label: "Did Not Get Health Care",
                         borderWidth: 1,
                         borderColor: '#ffa28f',
-                        data: didNotGet
+                        backgroundColor: '#ffa28f',
+                        data: didNotGet,
+                        pointRadius: 0
+                   },
+                    {
+                        label: "Delayed Health Care",
+                        borderWidth: 1,
+                        borderColor: '#78c2ff',
+                        backgroundColor: '#78c2ff',
+                        data: delayed,
+                        pointRadius: 0
                    },
                    {
                         label: "Delayed or Did Not Get",
                         borderWidth: 1,
                         borderColor: '#bef794',
-                        data: both
+                        backgroundColor: '#bef794',
+                        data: both,
+                        pointRadius: 0
                    },
 
                 ]
