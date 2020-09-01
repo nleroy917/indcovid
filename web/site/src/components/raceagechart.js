@@ -10,6 +10,7 @@ import InfoTip from '../components/infotip';
 
 const ChartWrapper = styled.div`
     height: 100%;
+    margin: 20px;
 `
 
 const ChartTitle = styled(Typography)`

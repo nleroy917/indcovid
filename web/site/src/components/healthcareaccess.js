@@ -58,7 +58,7 @@ const HealthCareAccess = ( { weeks, delayed, didNotGet, both } ) => {
                 labels: weeks,
                 datasets: [
                     {
-                        label: "Did Not Get Health Care",
+                        label: "Did Not Get Medical Care",
                         borderWidth: 1,
                         borderColor: '#ffa28f',
                         backgroundColor: '#ffa28f',
@@ -66,7 +66,7 @@ const HealthCareAccess = ( { weeks, delayed, didNotGet, both } ) => {
                         pointRadius: 0
                    },
                     {
-                        label: "Delayed Health Care",
+                        label: "Delayed Medical Care",
                         borderWidth: 1,
                         borderColor: '#78c2ff',
                         backgroundColor: '#78c2ff',
@@ -74,7 +74,7 @@ const HealthCareAccess = ( { weeks, delayed, didNotGet, both } ) => {
                         pointRadius: 0
                    },
                    {
-                        label: "Delayed or Did Not Get",
+                        label: "Delayed or Did Not Get Medical Care",
                         borderWidth: 1,
                         borderColor: '#bef794',
                         backgroundColor: '#bef794',

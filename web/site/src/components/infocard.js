@@ -64,7 +64,7 @@ const DailyData = styled(Typography)`
   text-align: center;
 `
 
-const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
+const InfoCard = ( { children, color, title, data, moreInfo, daily, units }) => {
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
     const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -140,10 +140,19 @@ const InfoCard = ( { children, color, title, data, moreInfo, daily }) => {
           </Grid>
           </Grid>
           <InfoData variant="h4" style={{textAlign: 'center'}}>
-            {numberWithCommas(data)}
+
+            {units ?
+              `${numberWithCommas(data)} ${units}`
+              :
+              numberWithCommas(data)
+            }
           </InfoData>
           <DailyData variant="h6">
-            {`+ ${numberWithCommas(daily)}`}
+            {daily ? 
+              `+ ${numberWithCommas(daily)}`
+              :
+              ''
+            }
           </DailyData>
             {children}
           </Wrapper>

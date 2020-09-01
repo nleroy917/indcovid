@@ -18,6 +18,7 @@ import CovidEthnicityChart from '../components/ethnicitycasechart';
 import RaceAgeChart from '../components/raceagechart';
 import HealthCareAccess from '../components/healthcareaccess';
 import MentalHealthGraph from '../components/mentalhealthgraph';
+import InfoCard from '../components/infocard';
 
 import {
   Grid,
@@ -44,6 +45,11 @@ const Img = styled.img`
     margin-left: 10px;
     margin-right: 10px;
     padding: 20px;
+`
+
+const MoreInfo = styled.span`
+  font-size: 0.8rem;
+  padding: 4px;
 `
 
 const scrollToHealth = (ref) => window.scrollTo(0, ref.current.offsetTop)
@@ -353,9 +359,10 @@ const IndexPage = () => {
           style={{width: '100%'}}
           >
             <Grid item lg={6} md={6}  xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-              
-            <Img src={balance} />
-
+            {
+              mobile ?  '' :
+              <Img src={balance} />
+            }
             </Grid>
             <Grid item lg={6} md={6}  xs={12}>
             <SectionSubTitle
@@ -424,7 +431,7 @@ const IndexPage = () => {
           justify={mobile ? "center" : "center"}
           style={{width: '100%', height: '100%'}}
           >
-          <Grid item xs={12} lg={12} md={12} style={{height: '50vh'}}>
+          <Grid item xs={12} lg={12} md={12} style={{minHeight: '50vh'}}>
             <RaceAgeChart
               data={covidRaceAgeData}
               labels={covidRaceAgeLabels}
@@ -436,7 +443,7 @@ const IndexPage = () => {
           <SectionTitle
             textAlign="center"  
           >
-          Access to Health Care
+          Access to Healthcare
         </SectionTitle>
         <SectionContent>
                 loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est. loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
@@ -445,7 +452,7 @@ const IndexPage = () => {
         <Grid container
           direction="row"
           alignItems="center"
-          justify={mobile ? "center" : "flex-start"}
+          justify={mobile ? "center" : "space-between"}
           style={{width: '100%'}}
           >
             <Grid item lg={6} md={6} xs={12}>
@@ -456,8 +463,20 @@ const IndexPage = () => {
                 both={both}
               />
             </Grid>
-            <Grid item lg={6} md={6} xs={12}>
-
+            <Grid item lg={4} md={4} xs={12}> 
+              <InfoCard
+                title="Delayed Medical Care"
+                units="%"
+                data={delayed[delayed.length - 1]}
+                moreInfo={<MoreInfo>Delayed or Did Not Get Health Care. Housing units linked to one or more email addresses or cell phone numbers were randomly selected to participate, and one respondent from each housing unit was selected to respond for him or herself. Estimates are weighted to adjust for nonresponse and to match Census Bureau estimates of the population by age, gender, race and ethnicity, and educational attainment.</MoreInfo>}
+              />
+              <br></br>
+              <InfoCard
+                title="Did Not Get Medical Care"
+                units="%"
+                data={didNotGet[didNotGet.length - 1]}
+                moreInfo={<MoreInfo>Delayed or Did Not Get Health Care. Housing units linked to one or more email addresses or cell phone numbers were randomly selected to participate, and one respondent from each housing unit was selected to respond for him or herself. Estimates are weighted to adjust for nonresponse and to match Census Bureau estimates of the population by age, gender, race and ethnicity, and educational attainment.</MoreInfo>}
+              />
             </Grid>
             </Grid>
             <br></br>
@@ -476,11 +495,23 @@ const IndexPage = () => {
           <Grid container
           direction="row"
           alignItems="center"
-          justify={mobile ? "center" : "flex-start"}
+          justify={mobile ? "center" : "space-between"}
           style={{width: '100%'}}
           >
-            <Grid item lg={6} md={6} xs={12}>
-
+            <Grid item lg={4} md={4} xs={12}>
+            <InfoCard
+                title="Experiencing Anxiety"
+                units="%"
+                data={anxiety[anxiety.length - 1]}
+                moreInfo={<MoreInfo>Housing units linked to one or more email addresses or cell phone numbers were randomly selected to participate, and one respondent from each housing unit was selected to respond for him or herself. Estimates are weighted to adjust for nonresponse and to match Census Bureau estimates of the population by age, gender, race and ethnicity, and educational attainment.</MoreInfo>}
+              />
+              <br></br>
+              <InfoCard
+                title="Experiencing Depression"
+                units="%"
+                data={depression[depression.length - 1]}
+                moreInfo={<MoreInfo>Housing units linked to one or more email addresses or cell phone numbers were randomly selected to participate, and one respondent from each housing unit was selected to respond for him or herself. Estimates are weighted to adjust for nonresponse and to match Census Bureau estimates of the population by age, gender, race and ethnicity, and educational attainment.</MoreInfo>}
+              />
             </Grid>
             <Grid item lg={6} md={6} xs={12}>
               <MentalHealthGraph
