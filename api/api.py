@@ -391,7 +391,7 @@ def get_case_demographics_3():
     # organize the data
     for obj in data:
         if 'total_deaths' in obj:
-            race_age_data[obj['age_group']][obj['race_and_hispanic_origin']] += int(obj['total_deaths'])
+            race_age_data[obj['age_group_new']][obj['race_and_hispanic_origin']] += int(obj['total_deaths'])
         else:
             pass
 

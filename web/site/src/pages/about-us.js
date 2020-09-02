@@ -79,7 +79,7 @@ const MoreInfoPage = () => {
       {mobile ? '' : <Nav />}
       <InfoSection
         title="Developers"
-        content="This site was developed by Nathan LeRoy and Barnabas Obeng-Gyasi. Both graduates of Purdue University, Nathan now works for the Indiana Biosciences Research Institute as an Assistant Research Associate. Barnabas currently works as a Senior Research Assistant at Duke University and is preparing for medical school. Most of the web design and system architecture was developed by Nathan, while Barnabas worked to incorporate visual map data with ArcGIS and developed the Python back-end for calculating our various metrics within the lens of health equity."
+        content="This site was developed by Nathan LeRoy and Barnabas Obeng-Gyasi. Both graduates of Purdue University, Nathan now works for the Indiana Biosciences Research Institute as an Assistant Research Associate. Barnabas currently works as a Senior Research Assistant at Duke University and is preparing for medical school."
         media={
             <>
               <MediaWrapper>

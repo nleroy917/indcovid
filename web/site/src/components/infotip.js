@@ -17,10 +17,15 @@ const TooltipInfo = styled(Tooltip)`
 `
 
 const PopoverWrapper = styled(Paper)`
-  background-color: #5a5a5a !important;
+  background-color: #4a4949 !important;
   color: white !important;
   padding: 4px !important;
   font-size: 1.5rem !important;
+`
+
+const MoreInfo = styled.p`
+  font-size: 0.8rem;
+  margin: 2px;
 `
 
 
@@ -72,7 +77,9 @@ const InfoTip = ( { moreInfo } ) => {
               }}
               >
             <PopoverWrapper>
-              {moreInfo}
+                <MoreInfo>
+                  {moreInfo}
+                </MoreInfo>
             </PopoverWrapper>
             </Popover>
         </>

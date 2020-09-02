@@ -201,6 +201,7 @@ const IndexPage = () => {
         recovered: [],
         hospitalized: [],
         tests: [],
+        positivity: [],
         casesToday: data[data.length-1].positiveIncrease,
         testedToday: data[data.length-1].totalTestResultsIncrease,
         deathToday: data[data.length-1].deathIncrease,
@@ -225,10 +226,13 @@ const IndexPage = () => {
           data_point.recovered
         )
         historic_data_full.hospitalized.push(
-          data_point.hospitalizedIncrease
+          data_point.hospitalizedIncrease < 0 ? 0 : data_point.hospitalizedIncrease
         )
         historic_data_full.tests.push(
           data_point.totalTestResultsIncrease
+        )
+        historic_data_full.positivity.push(
+          (data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100
         )
       }
       historic_data_full.hospitalized = removeOutliers(historic_data_full.hospitalized)
@@ -431,7 +435,7 @@ const IndexPage = () => {
           <Grid item lg={12} md={12} xs={12}>
           <SectionContent>
                 loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
-                </SectionContent>
+          </SectionContent>
           </Grid>
           </Grid>
           <br></br>
