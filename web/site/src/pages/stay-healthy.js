@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 
 import Nav from '../components/nav';
-import RSSItem from '../components/rssitem';
+import RSSItem from '../components/rssitem':
 
 import wash_hands from '../images/hand-wash.png';
 import covid_test from '../images/covid-test.png';
