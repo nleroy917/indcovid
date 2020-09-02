@@ -20,7 +20,6 @@ import mask from '../images/mask.png';
 import symptoms from '../images/symptoms.png';
 
 import axios from 'axios';
-import XMLParser from 'react-xml-parser';
 
 const SquareButton = styled(Button)`
   border-radius: 0px !important;
