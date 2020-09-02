@@ -263,7 +263,7 @@ def get_case_demographics_3():
     res = requests.get(uri)
     data = res.json()
     races = [
-        'White', 'Black', 'American Indian', 'Asian', 'Pacific Islander', 'More than one race', 'Unknown', 'Hispanic'
+        'White', 'Black', 'American Indian', 'Pacific Islander', 'Asian',  'More than one race', 'Unknown', 'Hispanic'
     ]
     ages = [
          "Under 1 year", "1-4 years", "5-14 years", "15-24 years", "25-34 years", "35-44 years", "45-54 years", "55-64 years", "65-74 years", "75-84 years", "85 years and over"
@@ -281,117 +281,120 @@ def get_case_demographics_3():
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
       "1-4 years": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
     "5-14 years": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
       "15-24 years": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
       "25-34 years": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
       "35-44 years": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
       "45-54 years": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
       "55-64 years": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
       "65-74 years": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
       "75-84 years": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       },
       "85 years and over": {
           'Non-Hispanic White': 0,
           'Non-Hispanic Black': 0,
           'Non-Hispanic American Indian or Alaska Native': 0,
-          'Non-Hispanic Asian': 0,
           'Non-Hispanic Native Hawaiian or Other Pacific Islander': 0,
+          'Non-Hispanic Asian or Pacific Islander': 0,
           'Non-Hispanic More than one race': 0,
-          'Hispanic or Latino': 0,
+          'Hispanic': 0,
           'Unknown': 0
       }
     }
     # organize the data
     for obj in data:
         if 'total_deaths' in obj:
-            race_age_data[obj['age_group_new']][obj['race_and_hispanic_origin']] += int(obj['total_deaths'])
+            if obj['age_group_new'] in race_age_data:
+                race_age_data[obj['age_group_new']][obj['race_and_hispanic_origin']] += int(obj['total_deaths'])
+            else:
+                pass
         else:
             pass
 
@@ -399,10 +402,10 @@ def get_case_demographics_3():
           White.append(race_age_data[age_group]['Non-Hispanic White'])
           Black.append(race_age_data[age_group]['Non-Hispanic Black'])
           AmericanIndian.append(race_age_data[age_group]['Non-Hispanic American Indian or Alaska Native'])
-          Asian.append(race_age_data[age_group]['Non-Hispanic Asian'])
+          Asian.append(race_age_data[age_group]['Non-Hispanic Asian or Pacific Islander'])
           PacificIslander.append(race_age_data[age_group]['Non-Hispanic Native Hawaiian or Other Pacific Islander'])
           MoreThanOne.append(race_age_data[age_group]['Non-Hispanic More than one race'])
-          Hispanic.append(race_age_data[age_group]['Hispanic or Latino'])
+          Hispanic.append(race_age_data[age_group]['Hispanic'])
           Unknown.append(race_age_data[age_group]['Unknown'])
 
     return_package = {
