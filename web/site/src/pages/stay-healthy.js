@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 import styled from 'styled-components';
 
 import Layout from "../components/layout";
@@ -114,27 +114,15 @@ const RoundedButton = styled.a`
 const StayHealthyPage = () => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
-
-    const [rss, setRSS] = useState([]);
-
-    const fetchRSS = async () => {
-      let res = await axios.get('https://www.who.int/rss-feeds/news-english.xml')
-      if(res.status === 200) {
-        let data = res.data
-        var xml = new XMLParser().parseFromString(data);
-        //console.log(data)
-        console.log(xml.children[0].children)
-        setRSS(xml.children[0].children)
-      }
-    }
-
-    useEffect(() => {
-      fetchRSS()
-    }, [])
     
     return(
     <Layout>
-      <SEO title="Stay Healthy" />
+      <SEO 
+        title="Stay Healthy" 
+        description="In this research, we take the time to analyze and invstigate how people from under-privileged communities are disproportionately affected by the COVID-19 pandemic."
+        lang="en"
+        meta="Indiana COVID-19 & Health Equity"
+      />
       {mobile ? '' : <Nav />}
       <br></br>
       <PageTitle gutterBottom variant="h2">

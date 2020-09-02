@@ -80,7 +80,7 @@ const InfoCard = ( { children, color, title, data, moreInfo, daily, units }) => 
     };
 
     const numberWithCommas = (n) =>  {
-      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return n ? n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '';
     }
 
     const open = Boolean(anchorEl);
@@ -140,15 +140,16 @@ const InfoCard = ( { children, color, title, data, moreInfo, daily, units }) => 
           </Grid>
           </Grid>
           <InfoData variant="h4" style={{textAlign: 'center'}}>
-
-            {units ?
+            {
+              units ?
               `${numberWithCommas(data)} ${units}`
               :
               numberWithCommas(data)
             }
           </InfoData>
           <DailyData variant="h6">
-            {daily ? 
+            {
+              daily ? 
               `+ ${numberWithCommas(daily)}`
               :
               ''
