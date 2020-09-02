@@ -111,7 +111,7 @@ const RoundedButton = styled.a`
     background: #3b9090;
     border: none;
     color: white;
-    border: rgba(0,0,0,0) solid 1px;
+    border: white solid 1px;
     font-family: Roboto;
     font-size: 1.00rem;
     transition: ease-in 0.15s;
@@ -123,6 +123,7 @@ const RoundedButton = styled.a`
         color: #3b9090;
         border: #3b9090 solid 1px;
         cursor: pointer;
+        border: #3b9090 solid 1px;
     }
     &:active {
         background: #e6e6e6;
@@ -237,6 +238,10 @@ const Landing = ({dates, covidNow, covidHistoric, smoothScroll, equityRef}) => {
              </InfoCard>
           </Grid>
           </Grid>
+          {
+            mobile ? 
+            ''
+            :
           <ButtonWrapper>
             <RoundedButton
               onClick={smoothScroll}
@@ -244,6 +249,7 @@ const Landing = ({dates, covidNow, covidHistoric, smoothScroll, equityRef}) => {
               Learn More
             </RoundedButton>
           </ButtonWrapper>
+          }
         </Wrapper>
         </>
     )
