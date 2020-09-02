@@ -39,6 +39,41 @@ const List = styled.ul`
 const ListItem = styled.li`
 
 `
+const RoundedButton = styled.a`
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    margin: 5px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: white;
+    border: none;
+    color: #3b9090;
+    border: #3b9090 solid 2px;
+    font-family: Roboto;
+    font-size: 1.00rem;
+    transition: ease-in 0.15s;
+    border-radius: 30px;
+    
+    &:hover {
+        background: #3b9090;
+        color: white;
+        border: rgba(0,0,0,0) solid 2px;
+        cursor: pointer;
+    }
+    &:active {
+        background: #e6e6e6;
+        color: rgba(1,1,1,0.6);
+        border: rgba(1,1,1,0.6) solid 2px; 
+        transition: 0.4s;
+    }
+    &:focus {
+        outline: none;
+    }
+
+`
 
 const SquareButton = styled(Button)`
   border-radius: 0px !important;
@@ -75,20 +110,18 @@ const MoreInfoPage = () => {
               <ListItem>Does your destination have requirements or restrictions for travelers?</ListItem>
             </List>
           </SectionContent>
-          <SquareButton 
-              variant="outlined" 
-              color="inherit"
+          <RoundedButton 
+
               href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/travel-in-the-us.html?s_cid=bb-coronavirus-2019-ncov-NCIRD6"
           >
             Domestic Travel Updates
-          </SquareButton>
-          <SquareButton 
-              variant="outlined" 
-              color="inherit"
+          </RoundedButton>
+          <RoundedButton 
+
               href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/index.html?s_cid=bb-coronavirus-2019-ncov-NCIRD7"
           >
             International Travel Updates
-          </SquareButton>
+          </RoundedButton>
           <br></br>
           <br></br>
           <SectionTitle 

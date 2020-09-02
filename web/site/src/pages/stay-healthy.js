@@ -1,9 +1,9 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import styled from 'styled-components';
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-
+ 
 import {
   Button,
   Grid,
@@ -12,12 +12,16 @@ import {
 } from '@material-ui/core';
 
 import Nav from '../components/nav';
+import RSSItem from '../components/rssitem';
 
 import wash_hands from '../images/hand-wash.png';
 import covid_test from '../images/covid-test.png';
 import social_distance from '../images/social-distance.png';
 import mask from '../images/mask.png';
 import symptoms from '../images/symptoms.png';
+
+import axios from 'axios';
+import XMLParser from 'react-xml-parser';
 
 const SquareButton = styled(Button)`
   border-radius: 0px !important;
@@ -66,12 +70,76 @@ const List = styled.ul`
 const ListItem = styled.li`
 
 `
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+
+const RoundedButton = styled.a`
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    margin: 15px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: white;
+    border: none;
+    color: #3b9090;
+    border: #3b9090 solid 1px;
+    font-family: Roboto;
+    font-size: 1.00rem;
+    transition: ease-in 0.15s;
+    border-radius: 30px;
+    
+    &:hover {
+        background: #3b9090;
+        color: white;
+        border: rgba(0,0,0,0) solid 1px;
+        cursor: pointer;
+    }
+    &:active {
+        background: #e6e6e6;
+        color: rgba(1,1,1,0.6);
+        border: rgba(1,1,1,0.6) solid 2px; 
+        transition: 0.4s;
+    }
+    &:focus {
+        outline: none;
+    }
+
+`
+
+const RSSFeedWrapper = styled.div`
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+`
 
 const StayHealthyPage = () => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
 
-    console.log('Mobile:', mobile)
+    const [rss, setRSS] = useState([]);
+
+    const fetchRSS = async () => {
+      let res = await axios.get('https://www.who.int/rss-feeds/news-english.xml')
+      if(res.status === 200) {
+        let data = res.data
+        var xml = new XMLParser().parseFromString(data);
+        //console.log(data)
+        console.log(xml.children[0].children)
+        setRSS(xml.children[0].children)
+      }
+    }
+
+    useEffect(() => {
+      fetchRSS()
+    }, [])
+    
     return(
     <Layout>
       <SEO title="Stay Healthy" />
@@ -80,15 +148,29 @@ const StayHealthyPage = () => {
       <PageTitle gutterBottom variant="h2">
         Ways to Stay Healthy
       </PageTitle>
+      <ButtonWrapper>
+        <RoundedButton
+          href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
+        >
+          Current News
+        </RoundedButton>
+        <RoundedButton
+          href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
+        >
+          CDC Website
+        </RoundedButton>
+      </ButtonWrapper>
       <Grid container
         direction="row"
         justify="center"
         alignItems="stretch"
         spacing={4}
-        style={{width: '100%', margin: '10px'}}
+        style={{width: '100%'}}
       >
         <Grid item lg={12} md={12} xs={12}>
-        <SectionWrapper>
+        <SectionWrapper
+          mobile={mobile}
+        >
         <SectionTitle 
               gutterBottom 
               variant="h4"
@@ -120,12 +202,15 @@ const StayHealthyPage = () => {
           </SectionWrapper>
         </Grid>
       </Grid>
+      <br>
+      </br>
+      <br></br>
       <Grid container
         direction="row"
         justify={mobile ? "center" : "space-between"}
         alignItems="stretch"
         spacing={5}
-        style={{width: '100%', margin: '10px'}}
+        style={{width: '100%'}}
         >
         <Grid item lg={6} md={6} xs={12}>
         <SectionWrapper mobile={mobile}>
@@ -172,12 +257,14 @@ const StayHealthyPage = () => {
             </SectionWrapper>
         </Grid>
         </Grid>
+        <br></br>
+        <br></br>
         <Grid container
         direction="row"
-        justify={mobile ? "center" : "flex-start"}
+        justify={mobile ? "center" : "center"}
         alignItems="stretch"
         spacing={4}
-        style={{width: '100%', margin: '10px'}}
+        style={{width: '100%'}}
         >
         <Grid item lg={6} md={6} xs={12}>
             <SectionWrapper mobile={mobile}>
@@ -212,6 +299,26 @@ const StayHealthyPage = () => {
           </SectionWrapper>
         </Grid>
         </Grid>
+        <br>
+      </br>
+      <br></br>
+        <RSSFeedWrapper>
+          {
+            rss.map((rss, i) => {
+              console.log(rss)
+              return(
+                rss.name === 'item' ?
+                <RSSItem
+                  key={i}
+                  title={rss.children[3].value}
+                  square={true}
+                />
+                :
+                ''
+              )
+            })
+          }
+        </RSSFeedWrapper>
     </Layout>
     )
   }
