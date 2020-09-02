@@ -50,6 +50,49 @@ const MoreInfo = styled.span`
   padding: 4px;
 `
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+
+const RoundedButton = styled.a`
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    margin: 15px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: white;
+    border: none;
+    color: #3b9090;
+    border: #3b9090 solid 1px;
+    font-family: Roboto;
+    font-size: 1.00rem;
+    transition: ease-in 0.15s;
+    border-radius: 30px;
+    
+    &:hover {
+        background: #3b9090;
+        color: white;
+        border: rgba(0,0,0,0) solid 1px;
+        cursor: pointer;
+    }
+    &:active {
+        background: #e6e6e6;
+        color: rgba(1,1,1,0.6);
+        border: rgba(1,1,1,0.6) solid 2px; 
+        transition: 0.4s;
+    }
+    &:focus {
+        outline: none;
+    }
+
+`
+
 const scrollToHealth = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
 const IndexPage = () => {
@@ -294,6 +337,7 @@ const IndexPage = () => {
           covidNow={covidNow}
           covidHistoric={covidHistoric}
           smoothScroll={executeScroll}
+          equityRef={healthRef}
         />
         <br></br>
         <div

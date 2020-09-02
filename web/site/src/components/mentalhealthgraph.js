@@ -59,24 +59,24 @@ const MentalHealthGraph = ( { weeks, anxiety, depression, both } ) => {
                     {
                         label: "Depression",
                         borderWidth: 1,
-                        borderColor: '#df3dff',
-                        backgroundColor: '#df3dff',
+                        borderColor: '#ffe277',
+                        backgroundColor: '#ffe277',
                         data: depression,
                         pointRadius: 0
                    },
                    {
                         label: "Anxiety",
                         borderWidth: 1,
-                        borderColor: '#03fcf0',
-                        backgroundColor: '#03fcf0',
+                        borderColor: '#c577ff',
+                        backgroundColor: '#c577ff',
                         data: anxiety,
                         pointRadius: 0
                    },
                     {
                         label: "Both",
                         borderWidth: 1,
-                        borderColor: '#ff6f3b',
-                        backgroundColor: '#ff6f3b',
+                        borderColor: '#77ffe7',
+                        backgroundColor: '#77ffe7',
                         data: both,
                         pointRadius: 0
                    },

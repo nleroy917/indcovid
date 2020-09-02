@@ -92,12 +92,56 @@ const LandingTitle = styled(Typography)`
 
 `
 
-const Landing = ({dates, covidNow, covidHistoric, yeetedData, smoothScroll}) => {
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+
+const RoundedButton = styled.a`
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    margin: 5px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: #3b9090;
+    border: none;
+    color: white;
+    border: rgba(0,0,0,0) solid 1px;
+    font-family: Roboto;
+    font-size: 1.00rem;
+    transition: ease-in 0.15s;
+    border-radius: 30px;
+    
+    &:hover {
+
+        background: white;
+        color: #3b9090;
+        border: #3b9090 solid 1px;
+        cursor: pointer;
+    }
+    &:active {
+        background: #e6e6e6;
+        color: rgba(1,1,1,0.6);
+        border: rgba(1,1,1,0.6) solid 2px; 
+        transition: 0.4s;
+    }
+    &:focus {
+        outline: none;
+    }
+
+`
+
+const Landing = ({dates, covidNow, covidHistoric, smoothScroll, equityRef}) => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
     const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
     const iPadPro = useMediaQuery('(max-device-width:1024px)', { noSsr: true });
-
+    
     return(
         <>
         <Wrapper
@@ -114,18 +158,18 @@ const Landing = ({dates, covidNow, covidHistoric, yeetedData, smoothScroll}) => 
             The Implications of the COVID-19 Pandemic in Indiana
           </LandingTitle>
           {mobile ? '' : <Nav smoothScroll={smoothScroll}/>}
-          <br></br>
           {
           /* 
             LANDING CHART AND MAP | SET TO BE 60% OF THE VIEW HEIGHT
           */
           }
+          <br></br>
           <Grid container
             direction="row"
             alignItems={mobile? "flex-start" : "stretch"}
             justify={mobile || iPad ? "center" : "center"}
             spacing={mobile ? 2 : 4}
-            style={{height: mobile ? '' : iPad ? '' : iPadPro ? '45vh' : '60vh', paddingBottom: mobile || iPad ? '10px' : 0}}
+            style={{height: mobile ? '' : iPad ? '' : iPadPro ? '45vh' : '55vh', paddingBottom: mobile || iPad ? '10px' : 0}}
             >
           <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
             <LandingChart
@@ -193,6 +237,13 @@ const Landing = ({dates, covidNow, covidHistoric, yeetedData, smoothScroll}) => 
              </InfoCard>
           </Grid>
           </Grid>
+          <ButtonWrapper>
+            <RoundedButton
+              onClick={smoothScroll}
+            >
+              Learn More
+            </RoundedButton>
+          </ButtonWrapper>
         </Wrapper>
         </>
     )
