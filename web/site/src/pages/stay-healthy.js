@@ -12,7 +12,6 @@ import {
 } from '@material-ui/core';
 
 import Nav from '../components/nav';
-import RSSItem from '../components/RSSitem';
 
 import wash_hands from '../images/hand-wash.png';
 import covid_test from '../images/covid-test.png';
@@ -111,12 +110,6 @@ const RoundedButton = styled.a`
         outline: none;
     }
 
-`
-
-const RSSFeedWrapper = styled.div`
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
 `
 
 const StayHealthyPage = () => {
@@ -299,26 +292,6 @@ const StayHealthyPage = () => {
           </SectionWrapper>
         </Grid>
         </Grid>
-        <br>
-      </br>
-      <br></br>
-        <RSSFeedWrapper>
-          {
-            rss.map((rss, i) => {
-              console.log(rss)
-              return(
-                rss.name === 'item' ?
-                <RSSItem
-                  key={i}
-                  title={rss.children[3].value}
-                  square={true}
-                />
-                :
-                ''
-              )
-            })
-          }
-        </RSSFeedWrapper>
     </Layout>
     )
   }
