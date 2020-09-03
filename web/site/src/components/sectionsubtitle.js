@@ -6,13 +6,13 @@ import {
  } from '@material-ui/core';
 
 const SubTitle = styled(Typography)`
-    font-weight: 400 !important;
+    font-weight: ${props => props.fontWeight ? props.fontWeight : 400} !important;
     font-size: ${props => props.mobile ? '1.0rem !important' : '1.75rem !important'};
     text-align: ${props => props.textAlign ? props.textAlign : ''};
     color: inherit;
 `
 
-const SectionSubTitle = ( { children, textAlign } ) => {
+const SectionSubTitle = ( { children, textAlign, fontWeight } ) => {
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
     return(
         <>
@@ -20,6 +20,7 @@ const SectionSubTitle = ( { children, textAlign } ) => {
           mobile={mobile} 
           variant="h3"
           textAlign={textAlign}
+          fontWeight={fontWeight}
         >
             {children}
         </SubTitle>

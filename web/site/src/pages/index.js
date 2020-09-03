@@ -508,11 +508,12 @@ const IndexPage = () => {
           >
             Social Vulnerability Index
           </SectionTitle>
-          <SectionTitle
+          <SectionSubTitle
+            fontWeight={300}
             textAlign="center"
           >
             Total Covid-19 Cases Per County
-          </SectionTitle>
+          </SectionSubTitle>
           <SectionContent>
           The Social Vulnerability Index (SVI) uses U.S. Census data to determine the social vulnerability of every county and tract. CDC SVI ranks each county and tract on 15 social factors, including poverty, lack of vehicle access, and crowded housing, and groups them into four related themes:
           {
