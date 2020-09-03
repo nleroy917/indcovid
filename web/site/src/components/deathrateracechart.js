@@ -12,7 +12,7 @@ const ChartTitle = styled(Typography)`
     text-align: center;
 `;
 
-const CovidEthnicityChart = ( { indiana_data, covid_data, labels } ) => {
+const DeathRateChart = ( { indiana_data, covid_data, labels } ) => {
     const [options, setOptions] = useState({
         tooltips: {
             mode: 'index',
@@ -37,14 +37,15 @@ const CovidEthnicityChart = ( { indiana_data, covid_data, labels } ) => {
             yAxes: [{scaleLabel: { display: true, labelString: '% Population', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
         }
     })
+    console.log(covid_data)
     return(
         <>
         <ChartWrapper>
         <br></br>
         <br></br>
           <ChartTitle variant="body1" gutterBottom>
-            COVID-19 Case Demographics (Ethnicity)
-            <InfoTip moreInfo="Due to the nature of the COVID-19 testing, only select ethnicity data is acquired. Sometimes it is not taken at all. Thus, the Indiana Census data was consolidated to fit this." />
+            COVID-19 Death Rate Demographics
+            <InfoTip moreInfo="Due to the nature of the COVID-19 testing, only select race data is acquired. Sometimes it is not taken at all. Thus, the Indiana Census data was consolidated to fit this." />
           </ChartTitle>
           <Bar
             options={options}
@@ -52,7 +53,7 @@ const CovidEthnicityChart = ( { indiana_data, covid_data, labels } ) => {
                 labels: labels,
                 datasets: [
                     {
-                        label: "Indiana Demographics",
+                        label: "Indiana Census Demographics",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,
@@ -61,11 +62,11 @@ const CovidEthnicityChart = ( { indiana_data, covid_data, labels } ) => {
                         data: indiana_data
                     },
                     {
-                        label: "COVID-19 Case Demographics (Ethnicities)",
+                        label: "Indiana COVID Date Rate by Race",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,
-                        backgroundColor: '#97ff85',
+                        backgroundColor: '#ff8578',
                         borderWidth: 1,
                         data: covid_data
                     }
@@ -77,4 +78,4 @@ const CovidEthnicityChart = ( { indiana_data, covid_data, labels } ) => {
     )
 }
 
-export default CovidEthnicityChart;
+export default DeathRateChart;

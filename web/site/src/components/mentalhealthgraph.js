@@ -45,11 +45,13 @@ const MentalHealthGraph = ( { weeks, anxiety, depression, both } ) => {
     return(
         <>
         <ChartWrapper>
-        <InfoTip
-            moreInfo="Three metrics were reported. 1.) Anxiety, 2.) Depression, 3.) Anxiety and Depression. Housing units linked to one or more email addresses or cell phone numbers were randomly selected to participate, and one respondent from each housing unit was selected to respond for him or herself. Estimates are weighted to adjust for nonresponse and to match Census Bureau estimates of the population by age, gender, race and ethnicity, and educational attainment."
-        />
+        <br></br>
+        <br></br>
           <ChartTitle variant="body1" gutterBottom>
             Mental Health in Indiana
+            <InfoTip
+            moreInfo="Three metrics were reported. 1.) Anxiety, 2.) Depression, 3.) Anxiety and Depression. Housing units linked to one or more email addresses or cell phone numbers were randomly selected to participate, and one respondent from each housing unit was selected to respond for him or herself. Estimates are weighted to adjust for nonresponse and to match Census Bureau estimates of the population by age, gender, race and ethnicity, and educational attainment."
+        />
           </ChartTitle>
           <Line
             options={options}

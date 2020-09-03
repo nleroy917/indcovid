@@ -47,11 +47,13 @@ const HealthCareAccess = ( { weeks, delayed, didNotGet, both } ) => {
     return(
         <>
         <ChartWrapper>
-        <InfoTip
-          moreInfo="Access to health care is reported in three metrics. 1.) Delayed Health Care, 2.) Did not Get Health Care, or 3.) Delayed or Did Not Get Health Care. Housing units linked to one or more email addresses or cell phone numbers were randomly selected to participate, and one respondent from each housing unit was selected to respond for him or herself. Estimates are weighted to adjust for nonresponse and to match Census Bureau estimates of the population by age, gender, race and ethnicity, and educational attainment."
-        />
+        <br></br>
+        <br></br>
           <ChartTitle variant="body1" gutterBottom>
             Access to Health Care During COVID-19 Pandemic
+            <InfoTip
+          moreInfo="Access to health care is reported in three metrics. 1.) Delayed Health Care, 2.) Did not Get Health Care, or 3.) Delayed or Did Not Get Health Care. Housing units linked to one or more email addresses or cell phone numbers were randomly selected to participate, and one respondent from each housing unit was selected to respond for him or herself. Estimates are weighted to adjust for nonresponse and to match Census Bureau estimates of the population by age, gender, race and ethnicity, and educational attainment."
+        />
           </ChartTitle>
           <Line
             options={options}

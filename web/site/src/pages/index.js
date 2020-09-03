@@ -11,12 +11,15 @@ import SectionContent from '../components/sectioncontent';
 
 import PageFooter from '../components/footer';
 import CovidRaceChart from '../components/casesracechart';
+import DeathRateRaceChart from '../components/deathrateracechart';
 import CovidEthnicityChart from '../components/ethnicitycasechart';
+import DeathRateEthnicityChart from '../components/deathrateethnicitychart';
 import RaceAgeChart from '../components/raceagechart';
 import HealthCareAccess from '../components/healthcareaccess';
 import MentalHealthGraph from '../components/mentalhealthgraph';
 import InfoCard from '../components/infocard';
 import RaceMap from '../components/racemap';
+import SocialVulnerabilityMap from "../components/socialvulnerabilitymap";
 
 import {
   Grid,
@@ -87,7 +90,10 @@ const RoundedButton = styled.a`
     &:focus {
         outline: none;
     }
+`
 
+const SocialVulnerabilityMapWrapper = styled.div`
+width: 50%;
 `
 
 const scrollToHealth = (ref) => window.scrollTo(0, ref.current.offsetTop)
@@ -113,6 +119,8 @@ const IndexPage = () => {
     const [covidEthnicityPct, setCovidEthnicityPct] = useState([]);
     const [covidEthnicityLabels, setCovidEthnicityLabels] = useState([]);
     const [covidRacePct, setCovidRacePct] = useState([]);
+    const [covidDeathRateRace, setCovidDeathRateRace] = useState([]);
+    const [covidDeathRateEthnicity, setCovidDeathRateEthnicity] = useState([]);
     const [covidRaceLabels, setCovidRaceLabels] = useState([]);
     const [covidRaceAgeData, setCovidRaceAgeData] = useState([]);
     const [covidRaceAgeLabels, setCovidRaceAgeLabels] = useState([]);
@@ -274,10 +282,12 @@ const IndexPage = () => {
     const res = await axios.get(`${API_URL}/data/covid/demographics`)
     if(res.status === 200) {
       let data = res.data
-      // console.log(data)
+      console.log(data)
       setCovidRacePct(data.COVID_COUNT_PCT_RACE)
       setCovidRaceLabels(data.race_labels)
+      setCovidDeathRateRace(data.COVID_DEATHS_PCT_RACE)
       setCovidEthnicityPct(data.COVID_COUNT_PCT_ETHNICITY)
+      setCovidDeathRateEthnicity(data.COVID_DEATHS_PCT_ETHNICITY)
       setCovidEthnicityLabels(data.ethnicity_labels)
     }
   }
@@ -419,15 +429,15 @@ const IndexPage = () => {
           </Grid>
           <br></br>
           <SectionTitle
-          textAlign="center"  
-        >
-          Race
-        </SectionTitle>
-        <Grid container
-          direction="row"
-          alignItems="center"
-          justify={mobile ? "center" : "flex-start"}
-          style={{width: '100%'}}
+            textAlign="center"  
+          >
+            Race
+          </SectionTitle>
+          <Grid container
+            direction="row"
+            alignItems="center"
+            justify={mobile ? "center" : "flex-start"}
+            style={{width: '100%'}}
           >
           <Grid item lg={12} md={12} xs={12}>
           <SectionContent>
@@ -467,15 +477,45 @@ const IndexPage = () => {
           direction="row"
           alignItems="center"
           justify={mobile ? "center" : "center"}
-          style={{width: '100%', height: '100%'}}
+          style={{width: '100%'}}
           >
-          <Grid item xs={12} lg={12} md={12} style={{minHeight: '50vh'}}>
-            <RaceAgeChart
-              data={covidRaceAgeData}
-              labels={covidRaceAgeLabels}
-            />
+            <Grid item lg={10} md={10} xs={12}>
+            <DeathRateRaceChart
+                indiana_data={racePct}
+                covid_data={covidDeathRateRace}
+                labels={covidRaceLabels}
+              />
+            </Grid>
           </Grid>
-          </Grid>
+          </div>
+          <br></br>
+          <SectionTitle
+            textAlign="center"
+          >
+            Social Vulnerability Index
+          </SectionTitle>
+          <SectionTitle
+            textAlign="center"
+          >
+            Total Covid-19 Cases Per County
+          </SectionTitle>
+          <SectionContent>
+          The Social Vulnerability Index (SVI) uses U.S. Census data to determine the social vulnerability of every county and tract. CDC SVI ranks each county and tract on 15 social factors, including poverty, lack of vehicle access, and crowded housing, and groups them into four related themes:
+          {
+          <ul>
+            <li>Socioeconomic</li>
+            <li>Housing Composition and Disability</li>
+            <li>Minority Status and Language</li>
+            <li>Housing and Transportation </li>
+          </ul>
+          }
+          The CDC ranked counties and tracts for the entire United States against one another. . Percentile ranking values range from 0 to 1, with higher values  indicating greater vulnerability. For each county and tract, the CDC generated its percentile rank among all counties and tracts for 1) the fifteen  individual variables, 2) the four themes, and 3) its overall position.   
+          </SectionContent>
+          <br></br>
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+          <SocialVulnerabilityMapWrapper>
+            <SocialVulnerabilityMap />
+            </SocialVulnerabilityMapWrapper>
           </div>
           <br></br>
           <SectionTitle

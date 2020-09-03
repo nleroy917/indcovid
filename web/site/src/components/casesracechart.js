@@ -40,9 +40,11 @@ const CovidRaceChart = ( { indiana_data, covid_data, labels } ) => {
     return(
         <>
         <ChartWrapper>
-        <InfoTip moreInfo="Due to the nature of the COVID-19 testing, only select race data is acquired. Sometimes it is not taken at all. Thus, the Indiana Census data was consolidated to fit this." />
+        <br></br>
+        <br></br>
           <ChartTitle variant="body1" gutterBottom>
             COVID-19 Case Demographics 
+            <InfoTip moreInfo="Due to the nature of the COVID-19 testing, only select race data is acquired. Sometimes it is not taken at all. Thus, the Indiana Census data was consolidated to fit this." />
           </ChartTitle>
           <Bar
             options={options}

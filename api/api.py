@@ -205,12 +205,14 @@ def get_case_demographics():
             race_labels.append('Black')
         else:
             race_labels.append(obj['Race'])
+
     COVID_TEST_RACE = [obj['COVID_TEST'] for obj in demographics_race]
     COVID_COUNT_RACE = [obj['COVID_COUNT'] for obj in demographics_race]
     COVID_DEATHS_RACE = [obj['COVID_DEATHS'] for obj in demographics_race]
     COVID_TEST_PCT_RACE = [obj['COVID_TEST_PCT'] for obj in demographics_race]
     COVID_COUNT_PCT_RACE = [obj['COVID_COUNT_PCT'] for obj in demographics_race]
     COVID_DEATHS_PCT_RACE = [obj['COVID_DEATHS_PCT'] for obj in demographics_race]
+    COVID_DEATH_RATE_RACE = [obj['COVID_DEATHS']/obj['COVID_COUNT']*100 for obj in demographics_race]
 
     for obj in demographics_ethnicity:
         ethnicity_labels.append(obj['Race'])
@@ -221,6 +223,8 @@ def get_case_demographics():
     COVID_TEST_PCT_ETHNICITY = [obj['COVID_TEST_PCT'] for obj in demographics_ethnicity]
     COVID_COUNT_PCT_ETHNICITY = [obj['COVID_COUNT_PCT'] for obj in demographics_ethnicity]
     COVID_DEATHS_PCT_ETHNICITY = [obj['COVID_DEATHS_PCT'] for obj in demographics_ethnicity]
+    COVID_DEATH_RATE_ETHNICITY = [obj['COVID_DEATHS']/obj['COVID_COUNT']*100 for obj in demographics_ethnicity]
+
 
     return_package = {
         'race_data': demographics_race,
@@ -231,12 +235,14 @@ def get_case_demographics():
         'COVID_TEST_PCT_RACE': COVID_TEST_PCT_RACE,
         'COVID_COUNT_PCT_RACE': COVID_COUNT_PCT_RACE,
         'COVID_DEATHS_PCT_RACE': COVID_DEATHS_PCT_RACE,
+        'COVID_DEATH_RATE_RACE': COVID_DEATH_RATE_RACE,
         'COVID_TEST_ETHNICITY': COVID_TEST_ETHNICITY,
         'COVID_COUNT_ETHNICITY': COVID_COUNT_ETHNICITY,
         'COVID_DEATHS_ETHNICITY': COVID_DEATHS_ETHNICITY,
         'COVID_TEST_PCT_ETHNICITY': COVID_TEST_PCT_ETHNICITY,
         'COVID_COUNT_PCT_ETHNICITY': COVID_COUNT_PCT_ETHNICITY,
         'COVID_DEATHS_PCT_ETHNICITY': COVID_DEATHS_PCT_ETHNICITY,
+        'COVID_DEATH_RATE_ETHNICITY': COVID_DEATH_RATE_ETHNICITY,
         'race_labels': race_labels,
         'ethnicity_labels': ethnicity_labels
     }
@@ -255,7 +261,7 @@ def get_case_demographics_2():
     }
     return jsonify(return_package)
 
-@app.route('/data/covid/cdc-demographics-death', methods=['GET'])
+@app.route('/data/covid/cdc-demographics-death-deprecated', methods=['GET'])
 def get_case_demographics_3():
     """
     """
@@ -424,6 +430,7 @@ def get_case_demographics_3():
         }
     }
     return jsonify(return_package)
+
 
 @app.route('/data/covid/access-to-care', methods=['GET'])
 def access_to_care():
