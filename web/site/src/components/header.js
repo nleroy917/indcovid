@@ -23,7 +23,6 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import NavMobile from './navmobile';
 
 const HeaderWrapper = styled.header`
-  min-height: 10vh;
 `
 
 const SquareButton = styled(Button)`

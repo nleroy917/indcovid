@@ -42,7 +42,6 @@ const ALink = styled(Link)`
 `
 
 const Wrapper = styled.div`
-    height: ${props => props.mobile ? '' : '95vh'};
     @media (max-width: 768px) {
       height: none;
   }
@@ -170,7 +169,7 @@ const Landing = ({dates, covidNow, covidHistoric, smoothScroll, equityRef}) => {
             alignItems={mobile? "flex-start" : "stretch"}
             justify={mobile || iPad ? "center" : "center"}
             spacing={mobile ? 2 : 4}
-            style={{height: mobile ? '' : iPad ? '' : iPadPro ? '45vh' : '55vh', paddingBottom: mobile || iPad ? '10px' : 0}}
+            style={{height: '100%'}}
             >
           <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
             <LandingChart
@@ -192,7 +191,7 @@ const Landing = ({dates, covidNow, covidHistoric, smoothScroll, equityRef}) => {
             alignItems={mobile || iPad ? "flex-start" : "center"}
             justify={mobile || iPad ? "center" : "center"}
             spacing={mobile ? 3 : 4}
-            style={{width: mobile ? '100%' : '', height: mobile || iPad ? '' : '20vh'}}
+            style={{width: mobile ? '100%' : '', height: '100%'}}
           >
           <Grid item lg={3} md={3} s={3} xs={!mobile ? 5 : 12}>
           <InfoCard
@@ -238,6 +237,7 @@ const Landing = ({dates, covidNow, covidHistoric, smoothScroll, equityRef}) => {
              </InfoCard>
           </Grid>
           </Grid>
+          <br></br>
           {
             mobile ? 
             ''
