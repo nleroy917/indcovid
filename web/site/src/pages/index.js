@@ -57,8 +57,6 @@ const ButtonWrapper = styled.div`
 `
 
 const RoundedButton = styled.a`
-    -webkit-appearance: button;
-    -moz-appearance: button;
     appearance: button;
     text-decoration: none;
     margin: 15px;
@@ -69,7 +67,7 @@ const RoundedButton = styled.a`
     border: none;
     color: #3b9090;
     border: #3b9090 solid 1px;
-    font-family: Roboto;
+    font-family: inherit;
     font-size: 1.00rem;
     transition: ease-in 0.15s;
     border-radius: 30px;
@@ -231,7 +229,7 @@ const IndexPage = () => {
           data_point.totalTestResultsIncrease
         )
         historic_data_full.positivity.push(
-          (data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100
+          (data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100 === 100 ? 0 : ((data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100).toFixed(2)
         )
       }
       historic_data_full.hospitalized = removeOutliers(historic_data_full.hospitalized)

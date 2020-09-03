@@ -66,7 +66,7 @@ const LandingChart = ({ data, dates }) => {
             selectedBackgroundColor: "rgba(75,192,192,0.9)"
         },
         {
-            label: "Positivity",
+            label: "Positivity %",
             value: "positivity",
             selectedBackgroundColor: "rgba(75,192,192,0.9)"
         },

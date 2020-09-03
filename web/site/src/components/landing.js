@@ -8,7 +8,6 @@ Landing page component
 
 import React, {useState, useEffect} from "react";
 import styled from 'styled-components';
-import axios from 'axios';
 
 import {
     Typography,
@@ -99,9 +98,6 @@ const ButtonWrapper = styled.div`
 `
 
 const RoundedButton = styled.a`
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
     text-decoration: none;
     margin: 5px;
     padding: 10px;
@@ -111,7 +107,7 @@ const RoundedButton = styled.a`
     border: none;
     color: white;
     border: white solid 1px;
-    font-family: Roboto;
+    font-family: inherit;
     font-size: 1.00rem;
     transition: ease-in 0.15s;
     border-radius: 30px;
@@ -169,7 +165,7 @@ const Landing = ({dates, covidNow, covidHistoric, smoothScroll, equityRef}) => {
             alignItems={mobile? "flex-start" : "stretch"}
             justify={mobile || iPad ? "center" : "center"}
             spacing={mobile ? 2 : 4}
-            style={{height: '100%'}}
+            style={{height: '100%', paddingBottom: mobile || iPad ? '10px' : 0}}
             >
           <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
             <LandingChart
