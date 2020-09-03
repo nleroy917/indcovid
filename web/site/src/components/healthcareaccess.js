@@ -43,6 +43,7 @@ const HealthCareAccess = ( { weeks, delayed, didNotGet, both } ) => {
             yAxes: [{scaleLabel: { display: true, labelString: '% Population', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
         }
     })
+
     return(
         <>
         <ChartWrapper>
