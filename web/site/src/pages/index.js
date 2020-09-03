@@ -195,6 +195,19 @@ const IndexPage = () => {
       }
   }
 
+  const movingAverage = (someArray) => {
+    let movingAverageArray = []
+    for(let i = 0; i < someArray.length; i++) {
+
+      if (i < 7) {
+        movingAverageArray.push(0)
+      } else {
+        movingAverageArray.push(((someArray[i] + someArray[i-1] + someArray[i-2] + someArray[i-3] + someArray[i-4] + someArray[i-5] + someArray[i-6]) / 7).toFixed(2))
+      }
+    }
+    return movingAverageArray
+  }
+
   const fetchCovidHistoric = async () => {
     let res = await axios.get(COVID_19_API_HISTORIC)
     if(res.status === 200) {
@@ -237,11 +250,12 @@ const IndexPage = () => {
           data_point.totalTestResultsIncrease
         )
         historic_data_full.positivity.push(
-          (data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100 === 100 ? 0 : ((data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100).toFixed(2)
+          (data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100
         )
       }
       historic_data_full.hospitalized = removeOutliers(historic_data_full.hospitalized)
       historic_data_full.recovered = cumulativeToDaily(historic_data_full.recovered)
+      historic_data_full.positivity = movingAverage(historic_data_full.positivity)
       setCovidHistoric(historic_data_full)
     }
   }
@@ -509,7 +523,14 @@ const IndexPage = () => {
             <li>Housing and Transportation </li>
           </ul>
           }
-          The CDC ranked counties and tracts for the entire United States against one another. . Percentile ranking values range from 0 to 1, with higher values  indicating greater vulnerability. For each county and tract, the CDC generated its percentile rank among all counties and tracts for 1) the fifteen  individual variables, 2) the four themes, and 3) its overall position.   
+          The CDC ranked counties and tracts for the entire United States against one another. . Percentile ranking values range from 0 to 1, with higher values  indicating greater vulnerability. For each county and tract, the CDC generated its percentile rank among all counties and tracts for:
+          {
+          <ol>
+            <li>The fifteen  individual variables</li>
+            <li>The four themes</li>
+            <li>Its overall position.</li>
+          </ol>
+          }   
           </SectionContent>
           <br></br>
           <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -517,6 +538,7 @@ const IndexPage = () => {
             <SocialVulnerabilityMap />
             </SocialVulnerabilityMapWrapper>
           </div>
+          <br></br>
           <br></br>
           <SectionTitle
             textAlign="center"  
