@@ -327,7 +327,7 @@ const IndexPage = () => {
       fetchHealthCareAccess()
       fetchMentalHealth()
   }, [])
-  console.log(API_URL)
+  
   if (covidNow && yeetedData) {
     return(
     <Layout
