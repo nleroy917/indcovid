@@ -62,7 +62,7 @@ const DeathRateChart = ( { indiana_data, covid_data, labels } ) => {
                         data: indiana_data
                     },
                     {
-                        label: "Indiana COVID Date Rate by Race",
+                        label: "% of COVID Deaths by Race",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,

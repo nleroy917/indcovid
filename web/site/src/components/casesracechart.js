@@ -61,7 +61,7 @@ const CovidRaceChart = ( { indiana_data, covid_data, labels } ) => {
                         data: indiana_data
                     },
                     {
-                        label: "Indiana COVID Cases by Race",
+                        label: "Indiana COVID-19 Cases by Race",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,

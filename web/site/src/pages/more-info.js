@@ -79,6 +79,10 @@ const SquareButton = styled(Button)`
   border-radius: 0px !important;
   margin: 5px !important;
 `
+const SectionWrapper = styled.div`
+    border: solid white 1px;
+    padding: 15px;
+`
 
 const MoreInfoPage = () => {
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
@@ -93,6 +97,7 @@ const MoreInfoPage = () => {
          />
           {mobile ? '' : <Nav />}
           <br></br>
+          <SectionWrapper>
           <SectionTitle 
             variant="h4" 
             gutterBottom
@@ -127,8 +132,10 @@ const MoreInfoPage = () => {
           >
             International Travel Updates
           </RoundedButton>
+          </SectionWrapper>
           <br></br>
           <br></br>
+          <SectionWrapper>
           <SectionTitle 
             variant="h4" 
             gutterBottom
@@ -148,7 +155,9 @@ const MoreInfoPage = () => {
             <ListItem>Increased use of tobacco, and/or alcohol and other substances.</ListItem>
           </List>
           </SectionContent>
+          </SectionWrapper>
           <br></br>
+          <SectionWrapper>
           <SectionTitle 
             variant="h4" 
             gutterBottom
@@ -164,7 +173,9 @@ const MoreInfoPage = () => {
           <SectionContent gutterBottom>
           The virus that causes COVID-19 spreads mainly from person to person through respiratory droplets from coughing, sneezing, and talking. Recent studies show that people who are infected but do not have symptoms likely also play a role in the spread of COVID-19. At this time, there is no evidence that animals play a significant role in spreading the virus that causes COVID-19. Based on the limited information available to date, the risk of animals spreading COVID-19 to people is considered to be low. More studies are needed to understand if and how different animals could be affected by COVID-19.
           </SectionContent>
+          </SectionWrapper>
           <br></br>
+          <SectionWrapper>
           <SectionTitle 
             variant="h4" 
             gutterBottom
@@ -245,6 +256,7 @@ const MoreInfoPage = () => {
               </ListItem>
             </NumList>
           </SectionContent>
+          </SectionWrapper>
         </Layout>
         </>
     )

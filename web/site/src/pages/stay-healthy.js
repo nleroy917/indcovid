@@ -88,7 +88,7 @@ const RoundedButton = styled.a`
     border: none;
     color: #3b9090;
     border: #3b9090 solid 1px;
-    font-family: Roboto;
+    font-family: inherit;
     font-size: 1.00rem;
     transition: ease-in 0.15s;
     border-radius: 30px;
@@ -128,18 +128,13 @@ const StayHealthyPage = () => {
       <PageTitle gutterBottom variant="h2">
         Ways to Stay Healthy
       </PageTitle>
-      <ButtonWrapper>
-        <RoundedButton
-          href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
-        >
-          Current News
-        </RoundedButton>
+      {/* <ButtonWrapper>
         <RoundedButton
           href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
         >
           CDC Website
         </RoundedButton>
-      </ButtonWrapper>
+      </ButtonWrapper> */}
       <Grid container
         direction="row"
         justify="center"
@@ -178,6 +173,13 @@ const StayHealthyPage = () => {
               <ListItem>Nausea or vomiting</ListItem>
               <ListItem>Diarrhea</ListItem>
             </List>
+          </div>
+          <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+          <RoundedButton
+            href="https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/coronavirus-self-checker.html"
+          >
+            Have Symptoms?
+          </RoundedButton>
           </div>
           </SectionWrapper>
         </Grid>
@@ -227,13 +229,15 @@ const StayHealthyPage = () => {
             <SectionContent gutterBottom>
             If you think you have been exposed to COVID-19 and develop a fever and symptoms, such as cough or difficulty breathing, call your healthcare provider for medical advice. If you have a medical appointment, call your doctor’s office or emergency department, and tell them you have or may have COVID-19. This will help the office protect themselves and other patients. You can also consult a healthcare provider through telehealth, if that is an option.
             </SectionContent>
-            <SquareButton 
+            <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+            <RoundedButton 
               variant="outlined" 
               color="inherit"
               href="https://www.hhs.gov/coronavirus/community-based-testing-sites/index.html"
             >
                 Get Tested
-            </SquareButton>
+            </RoundedButton>
+          </div>
             </SectionWrapper>
         </Grid>
         </Grid>

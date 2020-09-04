@@ -203,6 +203,10 @@ def get_case_demographics():
         # case to change "Black or African American to Black"
         if obj['Race'] == 'Black or African American':
             race_labels.append('Black')
+        elif obj['Race'] == 'Unknown':
+            race_labels.append('Unknown/Not Reported')
+        elif obj['Race'] == 'Other Race':
+            race_labels.append('Other/Mixed race')
         else:
             race_labels.append(obj['Race'])
 
@@ -215,7 +219,15 @@ def get_case_demographics():
     COVID_DEATH_RATE_RACE = [obj['COVID_DEATHS']/obj['COVID_COUNT']*100 for obj in demographics_race]
 
     for obj in demographics_ethnicity:
-        ethnicity_labels.append(obj['Race'])
+        # case to change "Not Hispanic or Latino" to Not-Hispanic
+        if obj['Race'] == 'Not Hispanic or Latino':
+            ethnicity_labels.append('Not Hispanic or Latinx')
+        elif obj['Race'] == 'Unknown':
+            ethnicity_labels.append('Unknown/Not Reported')
+        elif obj['Race'] == 'Other Race':
+            ethnicity_labels.append('Other/Mixed race')
+        else:
+            ethnicity_labels.append(obj['Race'])
 
     COVID_TEST_ETHNICITY = [obj['COVID_TEST'] for obj in demographics_ethnicity]
     COVID_COUNT_ETHNICITY = [obj['COVID_COUNT'] for obj in demographics_ethnicity]
@@ -269,7 +281,7 @@ def get_case_demographics_3():
     res = requests.get(uri)
     data = res.json()
     races = [
-        'White', 'Black', 'American Indian', 'Pacific Islander', 'Asian',  'More than one race', 'Unknown', 'Hispanic'
+        'White', 'Black', 'American Indian', 'Pacific Islander', 'Asian',  'More than one race', 'Unknown/Not Reported', 'Hispanic'
     ]
     ages = [
          "Under 1 year", "1-4 years", "5-14 years", "15-24 years", "25-34 years", "35-44 years", "45-54 years", "55-64 years", "65-74 years", "75-84 years", "85 years and over"

@@ -173,7 +173,7 @@ const ReopeningTimeline = () =>  {
                    Stage 4.5 (Current Stage)
                </ElementTitle>
                <ElementSubTitle variant="h4">
-                 July 4th - August 27th
+                 July 4th - TBD
                </ElementSubTitle>
                <ElementContent>
                 Face coverings are required! Social gatherings up to 250 people are permitted. Dining room service may operate at 75% capacity. Retail stores and malls open at full capacity. Bars and nightclubs may open at 50% capacity. Cultural, entertainment, and tourism sites may open at 50% capacity. Continue remote work as needed. Hospital visits encouraged with precautions.
