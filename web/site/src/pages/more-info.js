@@ -134,7 +134,6 @@ const MoreInfoPage = () => {
           </RoundedButton>
           </SectionWrapper>
           <br></br>
-          <br></br>
           <SectionWrapper>
           <SectionTitle 
             variant="h4" 

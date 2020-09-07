@@ -18,6 +18,7 @@ import covid_test from '../images/covid-test.png';
 import social_distance from '../images/social-distance.png';
 import mask from '../images/mask.png';
 import symptoms from '../images/symptoms.png';
+import social_bubbles from '../images/social-bubbles.png'
 
 import axios from 'axios';
 
@@ -59,6 +60,15 @@ const Img = styled.img`
     overflow: cover;
     margin-left: 10px;
     margin-right: 10px;
+`
+
+const ImgLarge = styled.img`
+    height: 300px;
+    width: auto;
+    overflow: cover;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
 `
 
 const List = styled.ul`
@@ -135,14 +145,6 @@ const StayHealthyPage = () => {
           CDC Website
         </RoundedButton>
       </ButtonWrapper> */}
-      <Grid container
-        direction="row"
-        justify="center"
-        alignItems="stretch"
-        spacing={4}
-        style={{width: '100%'}}
-      >
-        <Grid item lg={12} md={12} xs={12}>
         <SectionWrapper
           mobile={mobile}
         >
@@ -182,19 +184,7 @@ const StayHealthyPage = () => {
           </RoundedButton>
           </div>
           </SectionWrapper>
-        </Grid>
-      </Grid>
-      <br>
-      </br>
       <br></br>
-      <Grid container
-        direction="row"
-        justify={mobile ? "center" : "space-between"}
-        alignItems="stretch"
-        spacing={5}
-        style={{width: '100%'}}
-        >
-        <Grid item lg={6} md={6} xs={12}>
         <SectionWrapper mobile={mobile}>
             <SectionTitle 
               gutterBottom 
@@ -216,10 +206,9 @@ const StayHealthyPage = () => {
               <ListItem>After caring for someone sick</ListItem>
               <ListItem>After touching animals or pets</ListItem>
             </List>
-            </SectionWrapper>
-        </Grid>
-        <Grid item lg={6} md={6} xs={12}>
-        <SectionWrapper mobile={mobile}>
+        </SectionWrapper>
+        <br></br>
+        <SectionWrapper>
         <SectionTitle 
               gutterBottom 
               variant="h4"
@@ -239,19 +228,8 @@ const StayHealthyPage = () => {
             </RoundedButton>
           </div>
             </SectionWrapper>
-        </Grid>
-        </Grid>
         <br></br>
-        <br></br>
-        <Grid container
-        direction="row"
-        justify={mobile ? "center" : "center"}
-        alignItems="stretch"
-        spacing={4}
-        style={{width: '100%'}}
-        >
-        <Grid item lg={6} md={6} xs={12}>
-            <SectionWrapper mobile={mobile}>
+          <SectionWrapper mobile={mobile}>
             <SectionTitle 
               gutterBottom 
               variant="h4"
@@ -259,14 +237,18 @@ const StayHealthyPage = () => {
                 Social Distancing <Img src={social_distance} /> 
             </SectionTitle>
             <SectionContent gutterBottom>
-            Social distancing, also called “physical distancing,” means keeping a safe space between yourself and other people who are not from your household.
+              Social distancing, also called “physical distancing,” means keeping a safe space between yourself and other people who are not from your household. To practice social or physical distancing, stay at least 6 feet (about 2 arms’ length) from other people who are not from your household in both indoor and outdoor spaces.
             </SectionContent>
             <SectionContent gutterBottom>
-            To practice social or physical distancing, stay at least 6 feet (about 2 arms’ length) from other people who are not from your household in both indoor and outdoor spaces.
+            {
+              <>
+                <b>UPDATE (09/02/2020):</b> The Indiana State Department of Health has <InlineLink href="https://www.coronavirus.in.gov/files/20_COVID-19-social%20bubbles%209.2.20.pdf">recommended</InlineLink> that citizens try to refrain from socializing outside a <em>Social Bubble</em>. A Social Bubble is a small group of people who socialize only with each other and gather only when sticking to the same prevention measures. While a social bubble can give you more in-person interactions, it doesn’t mean socializing with everyone you know. Even with steps to stay safe, meeting with others in your social bubble does increase your risk for getting COVID-19, so it’s important that everyone in your small group stays at least 6 feet apart, wears a mask (even when outdoors) and practices good hand hygiene.
+              </>
+            }
             </SectionContent>
-            </SectionWrapper>
-        </Grid>
-        <Grid item lg={6} md={6} xs={12}>
+            <ImgLarge src={social_bubbles} />
+          </SectionWrapper>
+          <br></br>
         <SectionWrapper mobile={mobile}>
           <SectionTitle
           gutterBottom
@@ -281,8 +263,6 @@ const StayHealthyPage = () => {
           }
           </SectionContent>
           </SectionWrapper>
-        </Grid>
-        </Grid>
     </Layout>
     )
   }

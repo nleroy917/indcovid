@@ -31,7 +31,7 @@ const SquareButton = styled(Button)`
 
 const ALink = styled.a`
   color: inherit;
-  font-size: 0.75rem;
+  font-size: ${props => props.mobile ? '0.3rem' : '0.75rem'};
   text-decoration: none;
   &:hover {
     text-decoration: none;
@@ -69,11 +69,11 @@ const Header = ({ siteTitle }) => {
       alignItems="center"
       justify={mobile ? "space-between" : "flex-end"}
       style={{width: '100%'}}
-      spacing={2}
+      spacing={1}
     >
     { mobile ? 
       <Grid item>
-        <IconButton onClick={toggleNav}>
+        <IconButton onClick={toggleNav} style={{padding: '5px'}}>
           <MenuIcon style={{fill:'white'}}/>
         </IconButton>
       </Grid>
@@ -81,17 +81,26 @@ const Header = ({ siteTitle }) => {
       ' '
     }
       <Grid item>
-      <ALink href="mailto:indianacovid@gmail.com">
+      <ALink 
+        href="mailto:indianacovid@gmail.com"
+        mobile={mobile}
+      >
           Contact Us ✉️
         </ALink>
       </Grid>
       <Grid item>
-      <ALink href="https://www.hhs.gov/coronavirus/community-based-testing-sites/index.html">
+      <ALink 
+        href="https://www.hhs.gov/coronavirus/community-based-testing-sites/index.html"
+        mobile={mobile}
+      >
           Find a testing location 🏥
         </ALink>
       </Grid>
       <Grid item>
-      <ALink href="https://github.com/NLeRoy917/indcovid/issues/new">
+      <ALink 
+        href="https://github.com/NLeRoy917/indcovid/issues/new"
+        mobile={mobile}
+      >
           Report an Issue ❗
         </ALink>
       </Grid>
