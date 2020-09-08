@@ -261,26 +261,6 @@ const IndexPage = () => {
     }
   }
 
-  const yeetCovidData = async () => {
-    let res = await axios.get(`${API_URL}/data/isdh/full`)
-    
-    if(res.status === 200) {
-      let data = await res.data
-      let icu_avail = data.metrics.data.m2b_hospitalized_icu_available
-      let icu_covid = data.metrics.data.m2b_hospitalized_icu_occupied_covid
-      let icu_else = data.metrics.data.m2b_hospitalized_icu_occupied_non_covid
-      let icu_total = icu_avail[icu_avail.length-1] + icu_covid[icu_covid.length-1] + icu_else[icu_else.length-1]
-      let yeeted_data = {
-        icu: {
-          available: (icu_avail[icu_avail.length-1]/icu_total)*100,
-          covid: (icu_covid[icu_covid.length-1]/icu_total)*100, 
-          other: (icu_else[icu_else.length-1]/icu_total)*100,
-        }
-      }
-      setYeetedData(yeeted_data)
-    }
-  }
-
   const fetchIndianaRace = async () => {
     const res = await axios.get(`${API_URL}/data/indiana/demographics`)
     if(res.status === 200) {
@@ -304,16 +284,6 @@ const IndexPage = () => {
       setCovidEthnicityPct(data.COVID_COUNT_PCT_ETHNICITY)
       setCovidDeathRateEthnicity(data.COVID_DEATHS_PCT_ETHNICITY)
       setCovidEthnicityLabels(data.ethnicity_labels)
-    }
-  }
-
-  const fetchCOVIDRaceAge = async () => {
-    const res = await axios.get(`${API_URL}/data/covid/cdc-demographics-death`)
-    if(res.status === 200) {
-      let data = res.data
-      // console.log(data)
-      setCovidRaceAgeData(data.race_age_data)
-      setCovidRaceAgeLabels(data.ages)
     }
   }
 
@@ -344,7 +314,6 @@ const IndexPage = () => {
   useEffect(() => {
       fetchCovidNow()
       fetchCovidHistoric()
-      yeetCovidData()
       fetchIndianaRace()
       fetchCOVIDRace()
       fetchCOVIDRaceAge()

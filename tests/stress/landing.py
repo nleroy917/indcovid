@@ -1,10 +1,11 @@
-from locust import HttpLocust, TaskSet, task, between
-x
-class UserBehaviour(TaskSet):
-    def on_start(self):
-        """ on_start is called when a Locust start before any task is scheduled """
-        pass
+import time
+from locust import HttpUser, task, between
 
-class WebsiteUser(HttpLocust):
-    task_set = UserBehaviour
-    wait_time = between(5, 9)
+class QuickstartUser(HttpUser):
+    wait_time = between(1, 2)
+
+    @task
+    def index_page(self):
+        self.client.get("/data/covid/demographics")
+        self.client.get("/data/covid/access-to-care")
+        self.client.get("/data/covid/mental-health")
