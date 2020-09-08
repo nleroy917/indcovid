@@ -246,7 +246,6 @@ const StayHealthyPage = () => {
               </>
             }
             </SectionContent>
-            <ImgLarge src={social_bubbles} />
           </SectionWrapper>
           <br></br>
         <SectionWrapper mobile={mobile}>
