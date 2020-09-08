@@ -27,10 +27,8 @@ const SquareButton = styled(Button)`
   margin: 5px !important;
 `
 const SectionWrapper = styled.div`
-  padding: ${props => props.mobile ? '' : '10px'};
-  border: ${props => props.mobile ? '' : 'solid white 1px'};
-  height: 100%;
-  width: 100%;
+  padding: 15px;
+  border: solid white 1px;
 `
 const PageTitle = styled(Typography)`
   font-weight: 400;
@@ -87,9 +85,6 @@ const ButtonWrapper = styled.div`
 `
 
 const RoundedButton = styled.a`
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
     text-decoration: none;
     margin: 15px;
     padding: 10px;
@@ -209,7 +204,7 @@ const StayHealthyPage = () => {
             </List>
         </SectionWrapper>
         <br></br>
-        <SectionWrapper>
+        <SectionWrapper mobile={mobile}>
         <SectionTitle 
               gutterBottom 
               variant="h4"

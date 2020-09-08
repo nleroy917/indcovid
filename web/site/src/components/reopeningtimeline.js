@@ -10,7 +10,7 @@ import {
 
 const StageIconWrapper = styled.div`
     border-radius: 50%;
-    border: white 4px solid;
+    border: ${props => props.color ? `${props.color} 4px solid` : 'white 4px solid'};
     background-color: ${props => props.color ? props.color : '#FFF'};
     display: flex;
     justify-content: center;

@@ -60,7 +60,6 @@ const ButtonWrapper = styled.div`
 `
 
 const RoundedButton = styled.a`
-    appearance: button;
     text-decoration: none;
     margin: 15px;
     padding: 10px;
@@ -93,7 +92,7 @@ const RoundedButton = styled.a`
 `
 
 const SocialVulnerabilityMapWrapper = styled.div`
-width: 50%;
+  width: ${props => props.mobile ? '100%' : '80%'};
 `
 
 const scrollToHealth = (ref) => window.scrollTo(0, ref.current.offsetTop)
@@ -507,7 +506,9 @@ const IndexPage = () => {
           </SectionContent>
           <br></br>
           <div style={{display: 'flex', justifyContent: 'center'}}>
-          <SocialVulnerabilityMapWrapper>
+          <SocialVulnerabilityMapWrapper
+            mobile={mobile}
+          >
             <SocialVulnerabilityMap />
           </SocialVulnerabilityMapWrapper>
           </div>

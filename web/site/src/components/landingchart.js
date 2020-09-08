@@ -12,12 +12,12 @@ import styled from 'styled-components';
 import { Bar } from 'react-chartjs-2';
 
 import {
-    Grid,
     Paper,
     useMediaQuery
 } from '@material-ui/core';
 
 import SwitchSelector from "react-switch-selector";
+import InfoTip from './infotip';
 
 const Wrapper = styled(Paper)`
     height: 85% !important;
@@ -26,6 +26,9 @@ const Wrapper = styled(Paper)`
 `
 
 const SelectorWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     height: 25px;
     margin: 10px;
     font-family: inherit;
@@ -99,6 +102,9 @@ const LandingChart = ({ data, dates }) => {
                optionBorderRadius={0}
                selectionIndicatorMargin={-2}
                style={{padding: '4px', borderRadius: '0px !important'}}
+            />
+            <InfoTip 
+              moreInfo="To keep inline with the State of Indiana's data reporting we present the postivity rate as a 7-day moving average."
             />
           </SelectorWrapper>
           <hr

@@ -41,9 +41,6 @@ const ListItem = styled.li`
 
 `
 const RoundedButton = styled.a`
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
     text-decoration: none;
     margin: 5px;
     padding: 10px;
@@ -53,8 +50,8 @@ const RoundedButton = styled.a`
     border: none;
     color: #3b9090;
     border: #3b9090 solid 2px;
-    font-family: Roboto;
-    font-size: 1.00rem;
+    font-family: inherit;
+    font-size: ${props => props.mobile ? '0.75rem' : '1.00rem'};
     transition: ease-in 0.15s;
     border-radius: 30px;
     
@@ -79,6 +76,7 @@ const RoundedButton = styled.a`
 const ButtonWrapper = styled.div`
     width: 100%;
     display: flex;
+    flex-direction: ${props => props.mobile ? 'column' : 'row'};
     justify-content: center;
     align-items: center;
 
@@ -129,15 +127,15 @@ const MoreInfoPage = () => {
               <ListItem>Does your destination have requirements or restrictions for travelers?</ListItem>
             </List>
           </SectionContent>
-          <ButtonWrapper>
+          <ButtonWrapper mobile={mobile}>
           <RoundedButton 
-
+              mobile={mobile}
               href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/travel-in-the-us.html?s_cid=bb-coronavirus-2019-ncov-NCIRD6"
           >
             Domestic Travel Updates
           </RoundedButton>
           <RoundedButton 
-
+              mobile={mobile}
               href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/index.html?s_cid=bb-coronavirus-2019-ncov-NCIRD7"
           >
             International Travel Updates
