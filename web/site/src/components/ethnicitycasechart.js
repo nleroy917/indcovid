@@ -52,7 +52,7 @@ const CovidEthnicityChart = ( { indiana_data, covid_data, labels } ) => {
                 labels: labels,
                 datasets: [
                     {
-                        label: "Indiana Demographics",
+                        label: "IN Census Demographics",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,
@@ -61,7 +61,7 @@ const CovidEthnicityChart = ( { indiana_data, covid_data, labels } ) => {
                         data: indiana_data
                     },
                     {
-                        label: "Indiana COVID-19 Case's by Ethnicity",
+                        label: "IN COVID-19 Cases by Ethnicity",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,

@@ -11,7 +11,7 @@ import {
 const StageIconWrapper = styled.div`
     border-radius: 50%;
     border: white 4px solid;
-    background-color: #FFF;
+    background-color: ${props => props.color ? props.color : '#FFF'};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ const StageIconWrapper = styled.div`
 const StageIconText = styled(Typography)`
     font-weight: 800 !important;
     font-size: ${props => props.size === "small" ? '24px !important' : '2.5rem !important'};
-    color: black;
+    color: ${props => props.color ? 'white' : 'black'};
 `
 const ElementTitle = styled(Typography)`
     color: inherit !important;
@@ -49,11 +49,13 @@ const MoreInfoButton = styled(Button)`
     display: flex;
 `
 
-const StageIcon = ( { stageNum, size } ) => {
+const StageIcon = ( { stageNum, size, stageColor } ) => {
     return (
         <>
-            <StageIconWrapper>
-                <StageIconText size={size} variant="h1">
+            <StageIconWrapper
+                color={stageColor}
+            >
+                <StageIconText color={stageColor} size={size} variant="h1">
                     {stageNum}
                 </StageIconText>
             </StageIconWrapper>
@@ -164,7 +166,7 @@ const ReopeningTimeline = () =>  {
             <VerticalTimelineElement
              style={{bodShadow: 'none'}}
              date=""
-             icon={<StageIcon stageNum={4.5} size="small"/>}
+             icon={<StageIcon stageNum={4.5} stageColor="green" size="small"/>}
              contentArrowStyle={{ borderRight: '7px solid  green' }}
              contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'green 2px solid', boxShadow: 'none'}}
              iconStyle={{ background: '#FFF' }}

@@ -15,6 +15,7 @@ const SectionTitle = styled(Typography)`
     font-weight: 400;
     color: inherit;
     font-size: 2.00rem !important;
+    text-align: center;
 `
 
 const SectionContent = styled(Typography)`
@@ -75,6 +76,14 @@ const RoundedButton = styled.a`
 
 `
 
+const ButtonWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+`
+
 const SquareButton = styled(Button)`
   border-radius: 0px !important;
   margin: 5px !important;
@@ -120,6 +129,7 @@ const MoreInfoPage = () => {
               <ListItem>Does your destination have requirements or restrictions for travelers?</ListItem>
             </List>
           </SectionContent>
+          <ButtonWrapper>
           <RoundedButton 
 
               href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/travel-in-the-us.html?s_cid=bb-coronavirus-2019-ncov-NCIRD6"
@@ -132,6 +142,7 @@ const MoreInfoPage = () => {
           >
             International Travel Updates
           </RoundedButton>
+          </ButtonWrapper>
           </SectionWrapper>
           <br></br>
           <SectionWrapper>

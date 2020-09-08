@@ -71,11 +71,6 @@ const LandingChart = ({ data, dates }) => {
             selectedBackgroundColor: "rgba(75,192,192,0.9)"
         },
         {
-            label: "Daily Hospitalized",
-            value: "hospitalized",
-            selectedBackgroundColor: "rgba(75,192,192,0.9)"
-        },
-        {
             label: "New Tests",
             value: "tests",
             selectedBackgroundColor: "rgba(75,192,192,0.9)"

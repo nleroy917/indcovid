@@ -6,10 +6,11 @@ import SEO from "../components/seo";
 import InfoSection from '../components/moreinfosection';
 import Nav from '../components/nav';
 
-import barnabas from '../images/barnabas.jpg';
+import barnabas from '../images/barnabas.png';
 import nathan from '../images/nathan.png';
 import mph_logo from '../images/mph-logo.svg';
 import ind_gov from '../images/ind-gov.png';
+import cdc_logo from '../images/cdc.png'
 
 import {
   useMediaQuery,
@@ -79,15 +80,15 @@ const MoreInfoPage = () => {
       {mobile ? '' : <Nav />}
       <InfoSection
         title="Developers"
-        content="This site was developed by Nathan LeRoy and Barnabas Obeng-Gyasi. Both graduates of Purdue University, Nathan now works for the Indiana Biosciences Research Institute as an Assistant Research Associate. Barnabas currently works as a Senior Research Assistant at Duke University and is preparing for medical school."
+        content="This site was developed by Barnabas Obeng-Gyasi and Nathan LeRoy. Both graduates of Purdue University, Nathan now works for the Indiana Biosciences Research Institute as an Assistant Research Associate. Barnabas currently works as a Senior Research Assistant at Duke University and is preparing for medical school."
         media={
             <>
               <MediaWrapper>
-                <ImgLink href="https://www.linkedin.com/in/nathanjleroy/">
-                   <Img src={nathan} />
-                </ImgLink>
                 <ImgLink href="https://www.linkedin.com/in/barnabas-obeng-gyasi-8baba3191/">
                    <Img src={barnabas} style={{backgroundSize: '200%'}}/>
+                </ImgLink>
+                <ImgLink href="https://www.linkedin.com/in/nathanjleroy/">
+                   <Img src={nathan} />
                 </ImgLink>
               </MediaWrapper>
             </>
@@ -97,7 +98,7 @@ const MoreInfoPage = () => {
       <InfoSection
         title="Data Sources"
         content={
-        <><div>Our data is pulled from <InlineLink href="https://hub.mph.in.gov/dataset?q=COVID">Indiana Data Hub's</InlineLink> daily updated statistics on coronavirus. This is then run through the program ArcGIS to create map data. Analysis takes this data and frames it within a <InlineLink href="https://www.graham-center.org/rgc/maps-data-tools/sdi/social-deprivation-index.html">Social Deprivation Index (SDI)</InlineLink> which gives us a set of societal domains to display the statistics. This allows us to identify the potential for different race-based and socioeconomic disparities in communities in indiana.</div>
+        <><div>Our data is pulled from <InlineLink href="https://hub.mph.in.gov/dataset?q=COVID">Indiana Data Hub's</InlineLink> daily updated statistics on coronavirus. This is then run through the program ArcGIS to create map data. Analysis takes this data and frames it within a <InlineLink href="https://svi.cdc.gov/">Social Vulnerability Index (SVI)</InlineLink> which gives us a set of societal domains to display the statistics. This allows us to identify the potential for different race-based and socioeconomic disparities in communities in indiana.</div>
         <br></br>
         <div>
         In addition, we turn to <InlineLink href="https://www.cdc.gov/coronavirus/2019-ncov/">the CDC</InlineLink> for all guidance on public health and safety recommendations and procedures.
@@ -117,10 +118,12 @@ const MoreInfoPage = () => {
                    <Grid item>
                     <LogoImg src={mph_logo} />
                    </Grid>
-                    <LogoImg src={ind_gov} />
                    <Grid item>
-
+                    <LogoImg src={cdc_logo} />
                    </Grid>
+                   <Grid item>
+                    <LogoImg src={ind_gov} />
+                  </Grid>
                  </Grid>
               </MediaWrapper>
             </>

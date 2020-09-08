@@ -128,6 +128,7 @@ const IndexPage = () => {
     const [depression, setDepression] = useState([]);
     const [anxiety_depression, setAnxietyDepression] = useState([]);
     const [weeks, setWeeks] = useState([]);
+    const [weekDates, setWeekDates] = useState([]);
     const [delayed, setDelayed] = useState([]);
     const [didNotGet, setDidNotGet] = useState([]);
     const [both, setBoth] = useState([]);
@@ -325,6 +326,7 @@ const IndexPage = () => {
       setDelayed(data.delayed)
       setDidNotGet(data.did_not_get)
       setBoth(data.both)
+      setWeekDates(data.week_dates)
     }
   }
 
@@ -380,11 +382,6 @@ const IndexPage = () => {
         </SectionTitle>
         </div>
         <br></br>
-        <SectionSubTitle
-          textAlign={mobile ? "center" : "left"}
-        >
-          What is a Health Disparity
-        </SectionSubTitle>
         <Grid container
           direction="row"
           alignItems="center"
@@ -392,19 +389,24 @@ const IndexPage = () => {
           style={{width: '100%', height: '100%'}}
           >
             <Grid item lg={6} md={12} xs={12}>
+            <SectionSubTitle
+              textAlign="center"
+            >
+              What is a Health Disparity
+            </SectionSubTitle>
               <SectionContent
                 textAlign="left"
               >
               {
                 <p>
-                  The Department of Health and Human Services(HHS)’s <InlineLink href="https://www.healthypeople.gov/2020/about/  %20%20foundation-health-measures/Disparities">Healthypeople2020.gov</InlineLink> defines a health disparity as “a particular type of  health difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect   groups of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion;   socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity;  geographic location; or other characteristics historically linked to discrimination or exclusion.”<sup><InlineLink href="http://www.minorityhealth.hhs.gov/npa/templates/browse.aspx?&lvl=2&lvlid=34.">1.</InlineLink></sup>
+                  The Department of Health and Human Services(HHS)’s <InlineLink href="https://health.gov/healthypeople">Health.gov</InlineLink> defines a health disparity as “a particular type of health difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect groups of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion; socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity; geographic location; or other characteristics historically linked to discrimination or exclusion.”<sup><InlineLink href="http://www.minorityhealth.hhs.gov/npa/templates/browse.aspx?&lvl=2&lvlid=34.">1.</InlineLink></sup>
                 </p>
               }
               </SectionContent>
               <SectionContent>
               {
               <p>
-                The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is affecting populations  that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social  determinants of health-especially in relation to institutional policies and practices. '' HHS believes that if we hope to achieve health equity it would require measuring these changes.
+                The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is affecting populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social determinants of health-especially in relation to institutional policies and practices. '' HHS believes that if we hope to achieve health equity it would require measuring these changes.
               </p>
               }
               </SectionContent>
@@ -435,7 +437,7 @@ const IndexPage = () => {
               <SectionContent>
               {
                 <p>
-                The Department of Health and Human Services Healthypeople2020.gov defines health equity as “attainment of the highest level of health for all people. Achieving health equity requires valuing everyone equally with focused and ongoing societal efforts to address avoidable inequalities, historical and contemporary injustices, and the elimination of health and health care disparities.”<sup><InlineLink href="http://www.healthypeople.gov/sites/default/files/PhaseI_0.pdf.">2.</InlineLink></sup>
+                The Department of Health and Human Services Healthypeople2020.gov defines health equity as “attainment of the highest level of health for all people. Achieving health equity requires valuing everyone equally with focused and ongoing societal efforts to address avoidable inequalities, historical and contemporary injustices, and the elimination of health and health care disparities.”<sup><InlineLink href="https://www.healthypeople.gov/2020/about/foundation-health-measures/Disparities#5">2.</InlineLink></sup>
                 </p>
               }
               </SectionContent>
@@ -445,7 +447,7 @@ const IndexPage = () => {
           <SectionTitle
             textAlign="center"  
           >
-            Race
+            Race & Ethnicity
           </SectionTitle>
           <Grid container
             direction="row"
@@ -455,7 +457,11 @@ const IndexPage = () => {
           >
           <Grid item lg={12} md={12} xs={12}>
           <SectionContent>
-                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
+          {
+            <>
+              Race and ethnicity are often a focus when attempting to bring health dipartites and achieve health equity. Race and ethnicity themselves are simply “socially constructed categories that have tangible effects on the lives of individuals who are defined by how one perceives one's self and how one is perceived by others.” Still, race and ethnicity serve an important role in understanding how large clusters of populations are being treated within the medical system. Racial and ethnic minorities suffer higher rates of “health disparities [which] take on many forms, including higher rates of chronic disease and premature death compared to the rates among whites.” <sup><InlineLink href="https://www.ncbi.nlm.nih.gov/books/NBK425844/">4.</InlineLink></sup> The following visuals help illustrate the current disparity in Covid-19 cases numbers and death rates in Indiana.
+            </>
+          }
           </SectionContent>
           </Grid>
           </Grid>
@@ -482,10 +488,7 @@ const IndexPage = () => {
             </Grid>
           </Grid>
           <br></br>
-          <SectionContent>
-                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
-          </SectionContent>
-          <br></br>
+
           <div>
           <Grid container
           direction="row"
@@ -514,8 +517,9 @@ const IndexPage = () => {
           >
             Total Covid-19 Cases Per County
           </SectionSubTitle>
+          <br></br>
           <SectionContent>
-          The Social Vulnerability Index (SVI) uses U.S. Census data to determine the social vulnerability of every county and tract. CDC SVI ranks each county and tract on 15 social factors, including poverty, lack of vehicle access, and crowded housing, and groups them into four related themes:
+          The <InlineLink href="https://svi.cdc.gov/">Social Vulnerability Index (SVI)</InlineLink> uses U.S. Census data to determine the social vulnerability of every county and tract. CDC SVI ranks each county and tract on 15 social factors, including poverty, lack of vehicle access, and crowded housing, and groups them into four related themes:
           {
           <ul>
             <li>Socioeconomic</li>
@@ -524,7 +528,7 @@ const IndexPage = () => {
             <li>Housing and Transportation </li>
           </ul>
           }
-          The CDC ranked counties and tracts for the entire United States against one another. . Percentile ranking values range from 0 to 1, with higher values  indicating greater vulnerability. For each county and tract, the CDC generated its percentile rank among all counties and tracts for:
+          The CDC ranked counties and tracts for the entire United States against one another. Percentile ranking values range from 0 to 1, with higher values indicating greater vulnerability. For each county and tract, the CDC generated its percentile rank among all counties and tracts for:
           {
           <ol>
             <li>The fifteen  individual variables</li>
@@ -537,8 +541,13 @@ const IndexPage = () => {
           <div style={{display: 'flex', justifyContent: 'center'}}>
           <SocialVulnerabilityMapWrapper>
             <SocialVulnerabilityMap />
-            </SocialVulnerabilityMapWrapper>
+          </SocialVulnerabilityMapWrapper>
           </div>
+          <br></br>
+          <br></br>
+          <SectionContent>
+            Evaluating the coronavirus cases versus the vulnerability index illustrates a dynamic picture how specific demographic population are facing the virus. When we see the role socioeconomic, racial & ethnic, as well as the 15 other social factors play correlated to covid-cases we can better understand who in fact is contracting the virus and other factors which could be influencing not only their likeliness to get the virus but their also their medical outcomes.
+          </SectionContent>
           <br></br>
           <br></br>
           <SectionTitle
@@ -547,7 +556,7 @@ const IndexPage = () => {
           Access to Healthcare
         </SectionTitle>
         <SectionContent>
-                loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est. loremAute Lorem ut id Lorem et ad deserunt aliqua eiusmod sit fugiat laboris culpa. Officia adipisicing ex do exercitation. Velit elit aliquip sint elit sit aliquip mollit quis culpa ut reprehenderit. Est Lorem labore adipisicing occaecat. Qui aliqua veniam tempor enim proident dolor duis reprehenderit elit deserunt sit minim qui do. Elit officia ut adipisicing nulla reprehenderit consequat non nostrud ullamco. Exercitation exercitation do mollit reprehenderit proident veniam eiusmod pariatur reprehenderit aliqua sint est.
+          General access to health care statistics help us paint a picture of how many people are getting treatment during the pandemic. Insights from this data can lead to further understanding in the future of what groups (racial & ethnic groups, persons with various insurance types…etc.) are within the people who didn’t get medical care or were delayed in getting care. Programs to expand the access to medical care like the <InlineLink href="https://www.in.gov/fssa/hip/">Healthy Indiana Plan</InlineLink> and evaluating the efficacy of such programs in the midst of a pandemic could serve as a “stress test” in understanding how to improve such programs in the future.
           </SectionContent>
           <br></br>
         <Grid container
@@ -559,6 +568,7 @@ const IndexPage = () => {
             <Grid item lg={6} md={6} xs={12}>
               <HealthCareAccess
                 weeks={weeks}
+                weekDates={weekDates}
                 delayed={delayed}
                 didNotGet={didNotGet}
                 both={both}
@@ -587,10 +597,11 @@ const IndexPage = () => {
           Mental Health
         </SectionTitle>
         <SectionContent>
-          During a global pandemic it is easy to focus all of our attention on our physical health. However, often forgotten is how our mental health may be affected by a global pandemic such as this. Fear and anxiety over a novel virus can cause a lot of overwhelming stress in both adults and adolescents. In addition, public health measures taken such as social distaning and isolation only further perpetuate these feelings of anxiety, depression, and lonliness. Taking care of one's mental health should be taken just as seriously as one's physical health in a time such as this.
+        During a global pandemic it is easy to focus all of our attention on our physical health. However, often forgotten is how our mental health may be affected by a global pandemic such as this. Fear and anxiety over a novel virus can cause a lot of overwhelming stress in both adults and adolescents. In addition, public health measures taken such as social distancing and isolation only further perpetuate these feelings of anxiety, depression, and loneliness. Taking care of one's mental health should be taken just as seriously as one's physical health in a time such as this.
         </SectionContent>
+        <br></br>
         <SectionContent>
-          Since the onset of the pandemic - especially in recent weeks - counts of depression and anxiety have steadily increased over time. As the country takes more and more time to socially distance, these problems will only get worse. In addition, health disparities we present on this site are present in the context of mental health as well. Historically marginalized groups who are systematically experiencing greater obstacles to health based on their racial or ethnic group are also experiencing these problems with mental health care. In 2001 the Federal Collaborative for Health Disparities Research chose mental health disparity as one of four topics warranting its immediate national research attention. Unequal access to resources like remote therapy, support groups, and counciling perpetuates the onset of mental and subsquent physical health inequities as well. 
+        Since the onset of the pandemic - especially in recent weeks - counts of depression and anxiety have steadily increased over time. As the country takes more and more time to socially distance, these problems will only get worse. In addition, health disparities we present on this site are present in the context of mental health as well. Historically marginalized groups who are systematically experiencing greater obstacles to health based on their racial or ethnic group are also experiencing these problems with mental health care. In 2001 the Federal Collaborative for Health Disparities Research chose mental health disparity as one of four topics warranting its immediate national research attention. Unequal access to resources like remote therapy, support groups, and counseling perpetuates the onset of mental and subsequent physical health inequities as well.
         </SectionContent>
           <br></br>
           <Grid container

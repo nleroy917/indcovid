@@ -39,7 +39,7 @@ const HealthCareAccess = ( { weeks, delayed, didNotGet, both } ) => {
         aspectRatio: 1,
         maintainAspectRatio: false,
         scales: {
-            xAxes: [{scaleLabel: { display: true, labelString: 'Week', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white', fontSize: '12'}}],
+            xAxes: [{scaleLabel: { display: true, labelString: 'Weeks Since April 23rd', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white', fontSize: '12'}}],
             yAxes: [{scaleLabel: { display: true, labelString: '% Population', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
         }
     })

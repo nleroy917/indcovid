@@ -46,6 +46,7 @@ const InlineLink = styled.a`
 const SectionTitle = styled(Typography)`
     color: inherit;
     font-size: 1.75rem;
+    text-align: center;
 `
 
 const SectionContent = styled(Typography)`
@@ -213,7 +214,7 @@ const StayHealthyPage = () => {
               gutterBottom 
               variant="h4"
             >
-                Get tested <Img src={covid_test} /> 
+                Get Tested <Img src={covid_test} /> 
             </SectionTitle>
             <SectionContent gutterBottom>
             If you think you have been exposed to COVID-19 and develop a fever and symptoms, such as cough or difficulty breathing, call your healthcare provider for medical advice. If you have a medical appointment, call your doctor’s office or emergency department, and tell them you have or may have COVID-19. This will help the office protect themselves and other patients. You can also consult a healthcare provider through telehealth, if that is an option.
@@ -253,7 +254,7 @@ const StayHealthyPage = () => {
           gutterBottom
           variant="h4"
           >
-            Wear A Mask <Img src={mask}/> 
+            Wear a Mask <Img src={mask}/> 
           </SectionTitle>
           <SectionContent gutterBottom>
           {

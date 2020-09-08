@@ -53,7 +53,7 @@ const DeathRateChart = ( { indiana_data, covid_data, labels } ) => {
                 labels: labels,
                 datasets: [
                     {
-                        label: "Indiana Census Demographics",
+                        label: "IN Census Demographics",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,
@@ -62,7 +62,7 @@ const DeathRateChart = ( { indiana_data, covid_data, labels } ) => {
                         data: indiana_data
                     },
                     {
-                        label: "% of COVID Deaths by Race",
+                        label: "% of IN COVID Deaths by Race",
                         barPercentage: 0.5,
                         barThickness: 25,
                         minBarLength: 5,

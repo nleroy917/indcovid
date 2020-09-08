@@ -113,6 +113,7 @@ def get_demographics():
     demographics_race = []
     demographics_ethnicities = []
     ethnicities = ['Hispanic', 'Not Hispanic or Latino']
+
     for row in data_raw:
         if row[0] not in ethnicities:
             demographics_race.append({
@@ -130,6 +131,7 @@ def get_demographics():
                 'ID': row[3]  
                 }
             )
+
     demographics_race_sorted = sorted(demographics_race, key=lambda k: k['Race']) 
     race_percentages = [obj['Percent'] for obj in demographics_race_sorted]
     race_labels = [obj['Race'] for obj in demographics_race_sorted]
@@ -218,16 +220,11 @@ def get_case_demographics():
     COVID_DEATHS_PCT_RACE = [obj['COVID_DEATHS_PCT'] for obj in demographics_race]
     COVID_DEATH_RATE_RACE = [obj['COVID_DEATHS']/obj['COVID_COUNT']*100 for obj in demographics_race]
 
-    for obj in demographics_ethnicity:
-        # case to change "Not Hispanic or Latino" to Not-Hispanic
-        if obj['Race'] == 'Not Hispanic or Latino':
-            ethnicity_labels.append('Not Hispanic or Latinx')
-        elif obj['Race'] == 'Unknown':
-            ethnicity_labels.append('Unknown/Not Reported')
-        elif obj['Race'] == 'Other Race':
-            ethnicity_labels.append('Other/Mixed race')
-        else:
-            ethnicity_labels.append(obj['Race'])
+    ethnicity_labels = [
+        'Hispanic or Latinx',
+        'Non-Hispanic or Latinx',
+        'Unknown/Not Reported'
+    ]
 
     COVID_TEST_ETHNICITY = [obj['COVID_TEST'] for obj in demographics_ethnicity]
     COVID_COUNT_ETHNICITY = [obj['COVID_COUNT'] for obj in demographics_ethnicity]
@@ -453,6 +450,7 @@ def access_to_care():
     res = requests.get(uri)
     data = res.json()
     weeks = []
+    week_dates = []
     delayed = []
     did_not_get = []
     both = []
