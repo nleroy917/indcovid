@@ -316,7 +316,6 @@ const IndexPage = () => {
       fetchCovidHistoric()
       fetchIndianaRace()
       fetchCOVIDRace()
-      fetchCOVIDRaceAge()
       fetchHealthCareAccess()
       fetchMentalHealth()
   }, [])
