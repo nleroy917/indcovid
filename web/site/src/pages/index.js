@@ -320,7 +320,7 @@ const IndexPage = () => {
       fetchMentalHealth()
   }, [])
   
-  if (covidNow && yeetedData) {
+  if (covidNow && covidHistoric) {
     return(
     <Layout
        smoothScroll={scrollToHealth}
