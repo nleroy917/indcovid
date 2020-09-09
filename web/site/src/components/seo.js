@@ -5,10 +5,11 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
+import og_image from '../images/landing-screenshot.png';
 
 function SEO({ description, lang, meta, title }) {
   const { site } = useStaticQuery(
@@ -71,9 +72,13 @@ function SEO({ description, lang, meta, title }) {
     >
     <meta
       name="description"
-      content="In this research, we take the time to analyze and invstigate how people from under-privileged communities are disproportionately affected by the COVID-19 pandemic."
+      content="On this site, we investigate how people from communities who historically face health disparities are disproportionately affected by the COVID-19 pandemic."
     />
     <meta name="author" content="Nathan LeRoy & Barnabas Obeng-Gyasi" />
+    <meta property="og:title" content="Indiana COVID-19 & Health Equity" />
+    <meta property='og:description' content="On this site, we investigate how people from communities who historically face health disparities are disproportionately affected by the COVID-19 pandemic." />
+    <meta property="og:url" content="https://indcovid.com" />
+    <meta property="og:image" content={og_image} />
     </Helmet>
 
   )
