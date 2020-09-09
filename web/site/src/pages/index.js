@@ -323,14 +323,14 @@ const IndexPage = () => {
               >
               {
                 <p>
-                  The Department of Health and Human Services(HHS)’s <InlineLink href="https://health.gov/healthypeople">Health.gov</InlineLink> defines a health disparity as “a particular type of health difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect groups of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion; socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity; geographic location; or other characteristics historically linked to discrimination or exclusion.”<sup><InlineLink href="http://www.minorityhealth.hhs.gov/npa/templates/browse.aspx?&lvl=2&lvlid=34.">1.</InlineLink></sup>
+                The Department of Health and Human Services(HHS)’s <InlineLink href="https://health.gov/healthypeople">Health.gov</InlineLink> defines a health disparity as “a particular type of health difference that is closely linked with social, economic, and/or environmental disadvantage. Health disparities adversely affect groups of people who have systematically experienced greater obstacles to health based on their racial or ethnic group; religion; socioeconomic status; gender; age; mental health; cognitive, sensory, or physical disability; sexual orientation or gender identity; geographic location; or other characteristics historically linked to discrimination or exclusion.”<sup><InlineLink href="http://www.minorityhealth.hhs.gov/npa/templates/browse.aspx?&lvl=2&lvlid=34.">1.</InlineLink></sup>
                 </p>
               }
               </SectionContent>
               <SectionContent>
               {
               <p>
-                The COVID-19 pandemic has presented a unique situation where we can see throughout Indiana how a widespread disease is affecting populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social determinants of health-especially in relation to institutional policies and practices." HHS believes that if we hope to achieve health equity it would require measuring these changes.
+                The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is affecting populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social determinants of health-especially in relation to institutional policies and practices. '' HHS believes that if we hope to achieve health equity it would require measuring these changes.
               </p>
               }
               </SectionContent>
@@ -383,7 +383,7 @@ const IndexPage = () => {
           <SectionContent>
           {
             <>
-              Race and ethnicity are often a focus when attempting to bring health dipartites and achieve health equity. Race and ethnicity themselves are simply “socially constructed categories that have tangible effects on the lives of individuals who are defined by how one perceives one's self and how one is perceived by others.” Still, race and ethnicity serve an important role in understanding how large clusters of populations are being treated within the medical system. Racial and ethnic minorities suffer higher rates of “health disparities [which] take on many forms, including higher rates of chronic disease and premature death compared to the rates among whites.” <sup><InlineLink href="https://www.ncbi.nlm.nih.gov/books/NBK425844/">3.</InlineLink></sup> The following visuals help illustrate the current disparity in Covid-19 cases numbers and death rates in Indiana.
+            Race and ethnicity are often a focus when attempting to understand health dipartites and achieve health equity. Race and ethnicity themselves are simply “socially constructed categories that have tangible effects on the lives of individuals who are defined by how one perceives one's self and how one is perceived by others.”<sup><InlineLink href="https://www.ncbi.nlm.nih.gov/books/NBK425844/">3.</InlineLink></sup>Still, race and ethnicity serve an important role in understanding how large clusters of populations are being treated within the medical system. Racial and ethnic minorities suffer higher rates of “health disparities [which] take on many forms, including higher rates of chronic disease and premature death compared to the rates among whites.”<sup><InlineLink href="https://www.ncbi.nlm.nih.gov/books/NBK425844">4.</InlineLink></sup> The following visuals help illustrate the current disparity in Covid-19 cases numbers and death rates in Indiana.
             </>
           }
           </SectionContent>
@@ -472,7 +472,7 @@ const IndexPage = () => {
           <br></br>
           <br></br>
           <SectionContent>
-            Evaluating the coronavirus cases versus the vulnerability index illustrates a dynamic picture how specific demographic population are facing the virus. When we see the role socioeconomic, racial & ethnic, as well as the 15 other social factors play correlated to covid-cases we can better understand who in fact is contracting the virus and other factors which could be influencing not only their likeliness to get the virus but their also their medical outcomes.
+            Evaluating the coronavirus cases in conjunction with the vulnerability index shows a dynamic picture of how the Coronavirus pandemic is adversely affecting certain demographic populations. The SVI provides an avenue to better understand the intersection between social vulnerability and health. 
           </SectionContent>
           <br></br>
           <br></br>
@@ -482,7 +482,7 @@ const IndexPage = () => {
           Access to Healthcare
         </SectionTitle>
         <SectionContent>
-          General access to health care statistics help us paint a picture of how many people are getting treatment during the pandemic. Insights from this data can lead to further understanding in the future of what groups (racial & ethnic groups, persons with various insurance types…etc.) are within the people who didn’t get medical care or were delayed in getting care. Programs to expand the access to medical care like the <InlineLink href="https://www.in.gov/fssa/hip/">Healthy Indiana Plan</InlineLink> and evaluating the efficacy of such programs in the midst of a pandemic could serve as a “stress test” in understanding how to improve such programs in the future.
+          Access to healthcare is an important social determinant of health.  It is influenced by factors such as insurance and geography (rural versus urban). In Indiana, the Healthy Indiana Plan is a state program to increase access to healthcare among low-income individuals.  In the midst of this pandemic, evaluation of these programs is necessary to identify and address gaps. 
           </SectionContent>
           <br></br>
         <Grid container
@@ -523,7 +523,7 @@ const IndexPage = () => {
           Mental Health
         </SectionTitle>
         <SectionContent>
-        During a global pandemic it is easy to focus all of our attention on our physical health. However, often forgotten is how our mental health may be affected by a global pandemic such as this. Fear and anxiety over a novel virus can cause a lot of overwhelming stress in both adults and adolescents. In addition, public health measures taken such as social distancing and isolation only further perpetuate these feelings of anxiety, depression, and loneliness. Taking care of one's mental health should be taken just as seriously as one's physical health in a time such as this.
+        During a global pandemic it is easy to focus all of our attention on our physical health. However, often forgotten is how our mental health may be affected by a global pandemic such as this. Fear and anxiety over a novel virus can cause a lot of overwhelming stress in both adults, adolescents and children. In addition, public health measures taken such as social distancing and isolation only further perpetuate these feelings of anxiety, depression, and loneliness. Taking care of one's mental health should be taken just as seriously as one's physical health in a time such as this.
         </SectionContent>
         <br></br>
         <SectionContent>
@@ -560,6 +560,28 @@ const IndexPage = () => {
               />
             </Grid>
           </Grid>
+          <br></br>
+          <SectionTitle
+            textAlign="center"  
+          >
+          Access to Food
+        </SectionTitle>
+        <SectionContent>
+        The pandemic caused a large surge of unemployment and homelessness that disproportionately <InlineLink href="https://www.feedingamerica.org/sites/default/files/2020-04/Brief_Impact%20of%20Covid%20on%20Food%20Insecurity%204.22%20%28002%29.pdf">affected-already-vulnerable populations.</InlineLink> Food banks have been overrun for several months across Indiana and the Country. Below is the Indiana Food Assistance Search Tool to find a local Food bank as well as a links to donate
+        </SectionContent>
+        <br></br>
+        <SectionSubTitle
+          textAlign="center"
+        >
+          Food Availability Resources:
+        </SectionSubTitle>
+        <SectionContent>
+          <ul>
+            <li>Food Assistance Availability Map: <InlineLink href="https://www.in.gov/fssa/dfr/food-assistance-availability-map/?utm_medium=email&utm_source=govdelivery">Visit here</InlineLink></li>
+            <li>Food banks to donate to: <InlineLink href="https://www.in.gov/fssa/dfr/donate-to-indianas-food-banks/">Donate to Indiana's food banks</InlineLink></li>
+            <li>More information about what hunger looks like in Indiana: <InlineLink href="https://www.feedingamerica.org/hunger-in-america/indiana">Feeding America</InlineLink></li>
+          </ul>
+        </SectionContent>
       <PageFooter />
     </Layout>
     )

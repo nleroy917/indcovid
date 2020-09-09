@@ -64,15 +64,16 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
-    <meta
-      name="description"
-      content="On this site, we investigate how people from communities who historically face health disparities are disproportionately affected by the COVID-19 pandemic."
-    />
-      <meta name="author" content="Nathan LeRoy & Barnabas Obeng-Gyasi" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Indiana COVID-19 & Health Equity" />
-      <meta prefix="og: http://ogp.me/ns#" property='og:description' content="On this site, we investigate how people from communities who historically face health disparities are disproportionately affected by the COVID-19 pandemic." />
-      <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://indcovid.com" />
-      <meta prefix="og: http://ogp.me/ns#" property="og:image" content={`${siteUrl}${og_image}`} />
+      <meta
+        name="description"
+        content="On this site, we investigate how people from communities who historically face health disparities are disproportionately affected by the   COVID-19 pandemic."
+        data-react-helmet="true"
+      />
+      <meta name="author" content="Nathan LeRoy & Barnabas Obeng-Gyasi" data-react-helmet="true"/>
+      <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Indiana COVID-19 & Health Equity" data-react-helmet="true"/>
+      <meta prefix="og: http://ogp.me/ns#" property='og:description' content="On this site, we investigate how people from communities who historically face health disparities are disproportionately affected by the COVID-19 pandemic." data-react-helmet="true"/>
+      <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://indcovid.com" data-react-helmet="true"/>
+      <meta prefix="og: http://ogp.me/ns#" property="og:image" content={`${siteUrl}${og_image}`} data-react-helmet="true"/>
     </Helmet>
 
   )

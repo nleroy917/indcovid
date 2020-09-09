@@ -4,7 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-// You can delete this file if you're not using it
 const React = require("react")
 const { Helmet } = require("react-helmet")
 
@@ -27,6 +26,7 @@ exports.onRenderBody = (
 
 exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
   const headComponents = getHeadComponents()
+
   headComponents.sort((x, y) => {
     if (x.props && x.props["data-react-helmet"]) {
       return -1
@@ -35,5 +35,6 @@ exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
     }
     return 0
   })
+
   replaceHeadComponents(headComponents)
 }
