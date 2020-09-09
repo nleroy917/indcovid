@@ -37,7 +37,7 @@ const DeathRateChart = ( { indiana_data, covid_data, labels } ) => {
             yAxes: [{scaleLabel: { display: true, labelString: '% Population', fontColor: 'white', fontSize: '15'}, gridLines: { zeroLineColor: "white", display: true, show: false}, ticks:{fontColor: 'white'}}]
         }
     })
-    console.log(covid_data)
+
     return(
         <>
         <ChartWrapper>

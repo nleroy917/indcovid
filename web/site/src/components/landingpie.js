@@ -44,7 +44,7 @@ const LandingPie = ({data}) => {
         maintainAspectRatio: true,
     })
     useEffect(() => {
-        console.log(data)
+
     },[])
     return(
         <>

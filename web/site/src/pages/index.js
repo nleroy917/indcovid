@@ -234,7 +234,7 @@ const IndexPage = () => {
     const res = await axios.get(`${API_URL}/data/covid/demographics`)
     if(res.status === 200) {
       let data = res.data
-      console.log(data)
+
       setCovidRacePct(data.COVID_COUNT_PCT_RACE)
       setCovidRaceLabels(data.race_labels)
       setCovidDeathRateRace(data.COVID_DEATHS_PCT_RACE)
