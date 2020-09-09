@@ -6,7 +6,7 @@ Copyright (c) 2020 indcovid.com
 Section component for /more-info page
 */
 
-import React, {useState, useEffect} from "react";
+import React from "react";
 import styled from 'styled-components';
 
 import {
@@ -29,8 +29,6 @@ const SectionContent = styled(Typography)`
 const InfoSection = ({title, content, media}) => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
-    const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
-    const iPadPro = useMediaQuery('(max-device-width:1024px)', { noSsr: true });
 
     return(
         <>

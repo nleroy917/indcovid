@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Line } from 'react-chartjs-2';
 import { Typography } from '@material-ui/core';
-import {
-    useMediaQuery
-} from '@material-ui/core';
+
 import InfoTip from './infotip';
 
 const ChartWrapper = styled.div`
@@ -16,7 +14,7 @@ const ChartTitle = styled(Typography)`
 `;
 
 const MentalHealthGraph = ( { weeks, anxiety, depression, both } ) => {
-    const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
+
     const [options, setOptions] = useState({
         responsive: true,
         tooltips: {

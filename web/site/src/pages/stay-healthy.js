@@ -5,8 +5,6 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
  
 import {
-  Button,
-  Grid,
   useMediaQuery,
   Typography,
 } from '@material-ui/core';
@@ -18,14 +16,7 @@ import covid_test from '../images/covid-test.png';
 import social_distance from '../images/social-distance.png';
 import mask from '../images/mask.png';
 import symptoms from '../images/symptoms.png';
-import social_bubbles from '../images/social-bubbles.png'
 
-import axios from 'axios';
-
-const SquareButton = styled(Button)`
-  border-radius: 0px !important;
-  margin: 5px !important;
-`
 const SectionWrapper = styled.div`
   padding: 15px;
   border: solid white 1px;
@@ -61,27 +52,12 @@ const Img = styled.img`
     margin-right: 10px;
 `
 
-const ImgLarge = styled.img`
-    height: 300px;
-    width: auto;
-    overflow: cover;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 10px;
-`
-
 const List = styled.ul`
     font-weight: 300;
 `
 
 const ListItem = styled.li`
 
-`
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 `
 
 const RoundedButton = styled.a`

@@ -4,3 +4,4 @@ aws/
 config/
 indcovid.db
 data/
+.DS_Store

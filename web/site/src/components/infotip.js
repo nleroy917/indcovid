@@ -60,6 +60,7 @@ const InfoTip = ( { moreInfo } ) => {
             <img
               src={IndianaIcon}
               style={{fill: '#e3e3e3',height: '20px', width: 'auto'}}
+              alt="Outline of Indiana"
             />
             </IconButton>
             </TooltipInfo>

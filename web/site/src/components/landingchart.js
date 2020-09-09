@@ -129,7 +129,6 @@ const LandingChart = ({ data, dates }) => {
                     }
                 ]
             }}
-            options={options}
           />
         </Wrapper>
         </>

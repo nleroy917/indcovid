@@ -13,8 +13,6 @@ import PageFooter from '../components/footer';
 import CovidRaceChart from '../components/casesracechart';
 import DeathRateRaceChart from '../components/deathrateracechart';
 import CovidEthnicityChart from '../components/ethnicitycasechart';
-import DeathRateEthnicityChart from '../components/deathrateethnicitychart';
-import RaceAgeChart from '../components/raceagechart';
 import HealthCareAccess from '../components/healthcareaccess';
 import MentalHealthGraph from '../components/mentalhealthgraph';
 import InfoCard from '../components/infocard';
@@ -52,45 +50,6 @@ const MoreInfo = styled.span`
   padding: 4px;
 `
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`
-
-const RoundedButton = styled.a`
-    text-decoration: none;
-    margin: 15px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background: white;
-    border: none;
-    color: #3b9090;
-    border: #3b9090 solid 1px;
-    font-family: inherit;
-    font-size: 1.00rem;
-    transition: ease-in 0.15s;
-    border-radius: 30px;
-    
-    &:hover {
-        background: #3b9090;
-        color: white;
-        border: rgba(0,0,0,0) solid 1px;
-        cursor: pointer;
-    }
-    &:active {
-        background: #e6e6e6;
-        color: rgba(1,1,1,0.6);
-        border: rgba(1,1,1,0.6) solid 2px; 
-        transition: 0.4s;
-    }
-    &:focus {
-        outline: none;
-    }
-`
-
 const SocialVulnerabilityMapWrapper = styled.div`
   width: ${props => props.mobile ? '100%' : '80%'};
 `
@@ -110,7 +69,6 @@ const IndexPage = () => {
     const [covidNow, setCovidNow] = useState(0);
     const [covidHistoric, setCovidHistoric] = useState([]);
     const [dates, setDates] = useState([]);
-    const [yeetedData, setYeetedData] = useState(null);
     const [racePct, setRacePct] = useState([]);
     const [raceLabels, setRaceLabels] = useState([]);
     const [ethnicityPct, setEthnicityPct] = useState([]);
@@ -332,7 +290,6 @@ const IndexPage = () => {
       />
         <Landing
           dates={dates}
-          yeetedData={yeetedData}
           covidNow={covidNow}
           covidHistoric={covidHistoric}
           smoothScroll={executeScroll}
@@ -373,7 +330,7 @@ const IndexPage = () => {
               <SectionContent>
               {
               <p>
-                The COVID-19 pandemic has presented a unique situation where can see throughout Indiana how a widespread disease is affecting populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social determinants of health-especially in relation to institutional policies and practices. '' HHS believes that if we hope to achieve health equity it would require measuring these changes.
+                The COVID-19 pandemic has presented a unique situation where we can see throughout Indiana how a widespread disease is affecting populations that are historically subject to disparities in healthcare. The Department of Health and Human Services believes one of the actionable methods we can use to close these disparities is first measuring the “disparities in health status, health care, and the physical and social determinants of health-especially in relation to institutional policies and practices." HHS believes that if we hope to achieve health equity it would require measuring these changes.
               </p>
               }
               </SectionContent>
@@ -426,7 +383,7 @@ const IndexPage = () => {
           <SectionContent>
           {
             <>
-              Race and ethnicity are often a focus when attempting to bring health dipartites and achieve health equity. Race and ethnicity themselves are simply “socially constructed categories that have tangible effects on the lives of individuals who are defined by how one perceives one's self and how one is perceived by others.” Still, race and ethnicity serve an important role in understanding how large clusters of populations are being treated within the medical system. Racial and ethnic minorities suffer higher rates of “health disparities [which] take on many forms, including higher rates of chronic disease and premature death compared to the rates among whites.” <sup><InlineLink href="https://www.ncbi.nlm.nih.gov/books/NBK425844/">4.</InlineLink></sup> The following visuals help illustrate the current disparity in Covid-19 cases numbers and death rates in Indiana.
+              Race and ethnicity are often a focus when attempting to bring health dipartites and achieve health equity. Race and ethnicity themselves are simply “socially constructed categories that have tangible effects on the lives of individuals who are defined by how one perceives one's self and how one is perceived by others.” Still, race and ethnicity serve an important role in understanding how large clusters of populations are being treated within the medical system. Racial and ethnic minorities suffer higher rates of “health disparities [which] take on many forms, including higher rates of chronic disease and premature death compared to the rates among whites.” <sup><InlineLink href="https://www.ncbi.nlm.nih.gov/books/NBK425844/">3.</InlineLink></sup> The following visuals help illustrate the current disparity in Covid-19 cases numbers and death rates in Indiana.
             </>
           }
           </SectionContent>

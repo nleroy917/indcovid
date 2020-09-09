@@ -8,8 +8,6 @@ import {
     Button
 } from '@material-ui/core';
 
-import IndianaIcon from '../images/Info-Thick.svg';
-
 const ALink = styled(Link)`
   color: inherit;
   font-size: 0.75rem;

@@ -8,7 +8,6 @@ import Nav from '../components/nav';
 import {
     useMediaQuery,
     Typography,
-    Button
 } from '@material-ui/core';
 
 const SectionTitle = styled(Typography)`
@@ -82,10 +81,6 @@ const ButtonWrapper = styled.div`
 
 `
 
-const SquareButton = styled(Button)`
-  border-radius: 0px !important;
-  margin: 5px !important;
-`
 const SectionWrapper = styled.div`
     border: solid white 1px;
     padding: 15px;

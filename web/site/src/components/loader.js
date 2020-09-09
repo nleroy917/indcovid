@@ -7,18 +7,6 @@ import {
     Grid
 } from '@material-ui/core';
 
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
-// // Or Create your Own theme:
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: {
-//         main: 'white'
-//       }
-//     }
-//   },
-// )
-
 const Wrapper = styled.div`
     display: flex;
     justify-content: center;

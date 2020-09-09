@@ -6,7 +6,7 @@ Copyright (c) 2020 indcovid.com
 Landing page component
 */
 
-import React, {useState, useEffect} from "react";
+import React from "react";
 import styled from 'styled-components';
 
 import {
@@ -22,60 +22,13 @@ import { Link } from 'gatsby';
 import Nav from '../components/nav';
 import InfoCard from '../components/infocard';
 import LandingChart from '../components/landingchart';
-import LandingPie from '../components/landingpie';
 import LandingMap from '../components/landingmap';
-
-const ALink = styled(Link)`
-  color: inherit;
-  font-size: 0.75rem;
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
-  &:active {
-    text-decoration: none;
-  }
-  &:focus {
-    text-decoration: none;
-  }
-`
 
 const Wrapper = styled.div`
     @media (max-width: 768px) {
       height: none;
   }
 
-`
-
-const LearnMoreWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin: 5px;
-`
-
-const SquareButton = styled(Button)`
-  border-radius: 0px !important;
-  margin: 5px !important;
-`
-
-const MapWrapper = styled.div`
-  position: relative; 
-  padding-bottom: 80%; 
-  height: 0; 
-  max-width: 100%;  
-  z-index: 40; 
-  bottom: 0; 
-  margin-bottom: -15px;
-`
-
-const IFrame = styled.iframe`
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
 `
 
 const MoreInfo = styled.span`
@@ -136,7 +89,6 @@ const Landing = ({dates, covidNow, covidHistoric, smoothScroll, equityRef}) => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
     const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
-    const iPadPro = useMediaQuery('(max-device-width:1024px)', { noSsr: true });
     
     return(
         <>
@@ -154,10 +106,16 @@ const Landing = ({dates, covidNow, covidHistoric, smoothScroll, equityRef}) => {
             The Implications of the COVID-19 Pandemic in Indiana
           </LandingTitle>
           {mobile ? '' : <Nav smoothScroll={smoothScroll}/>}
-          {
-          /* 
-            LANDING CHART AND MAP | SET TO BE 60% OF THE VIEW HEIGHT
-          */
+          { mobile ? 
+            <ButtonWrapper>
+            <RoundedButton
+              onClick={smoothScroll}
+            >
+              Learn More
+            </RoundedButton>
+          </ButtonWrapper>
+          :
+          ''
           }
           <br></br>
           <Grid container

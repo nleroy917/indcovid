@@ -1,11 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 import {
     Drawer,
-    Divider,
-    IconButton,
     List,
     ListItem
 } from '@material-ui/core';
@@ -73,6 +71,7 @@ const NavMobile = ({ open, setOpen}) => {
           </ListItem>
           <ListItem>
             <img
+              alt="Indiana outline"
               src={IndianaIcon}
               style={{fill: '#e3e3e3', height: '20px', width: 'auto', marginLeft: '11px', marginRight: '11px', marginTop: '5px', marginBottom: '5px'}}
             />

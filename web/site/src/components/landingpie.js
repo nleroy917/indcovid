@@ -9,10 +9,6 @@ Landing page pie/doughnut chart for ICU capacity
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
-import {
-    useMediaQuery
-} from '@material-ui/core'
-
 import { Doughnut } from 'react-chartjs-2';
 
 const Wrapper = styled.div`
@@ -23,7 +19,7 @@ const Wrapper = styled.div`
 `
 
 const LandingPie = ({data}) => {
-    const matches = useMediaQuery('(max-width:768px)');
+
     const [options, setOptions] = useState({
         legend: {
             position: "top",

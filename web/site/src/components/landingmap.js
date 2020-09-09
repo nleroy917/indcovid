@@ -10,7 +10,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {
     Paper,
-    Typography,
     useMediaQuery
 } from '@material-ui/core';
 
@@ -18,16 +17,6 @@ const Wrapper = styled(Paper)`
     height: 85% !important;
     padding: ${props => props.mobile || props.iPad ? '15px' : '20px'};
     background-color: #1d1d1d !important;
-`
-
-const MapTitleWrapper = styled.div`
-    height: 25px;
-    margin: 10px;
-    font-family: inherit;
-`
-
-const MapTitle = styled(Typography)`
-
 `
 
 const MapWrapper = styled.div`
