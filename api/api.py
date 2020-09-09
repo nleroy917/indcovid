@@ -487,8 +487,8 @@ def get_mental_health_data():
     depression_anxiety_values = []
 
     for obj in data:
-        if obj['week'] not in weeks:
-            weeks.append(obj['week'])
+        if obj['time_period'] not in weeks:
+            weeks.append(obj['time_period'])
 
         if obj['indicator'] == 'Symptoms of Depressive Disorder':
             depression_values.append(obj['value'])
