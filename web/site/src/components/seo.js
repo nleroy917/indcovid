@@ -79,7 +79,9 @@ function SEO({ description, lang, meta, title }) {
           content: `${siteUrl}${og_image}`
         }
       ].concat(meta)}
-    />
+    >
+    <meta name="og:image" content={`${siteUrl}${og_image}`}></meta>
+    </Helmet>
   )
 }
 

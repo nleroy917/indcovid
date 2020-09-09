@@ -126,6 +126,14 @@ const LandingChart = ({ data, dates }) => {
                         borderColor: "rgba(75,192,192,1)",
                         pointRadius: 0,
                         lineTension: 0
+                    },
+                    {
+                        label: 'Cases (7-Day Moving Average',
+                        data: metric === 'cases' ? data.cases_7_day_average : [],
+                        borderColor: "#ff6e6e",
+                        pointRadius: 0,
+                        lineTension: 0,
+                        type: 'line'
                     }
                 ]
             }}
