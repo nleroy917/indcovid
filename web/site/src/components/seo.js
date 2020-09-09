@@ -11,6 +11,8 @@ import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import og_image from '../images/landing-screenshot.png';
 
+const siteUrl = 'https://indcovid.com'
+
 function SEO({ description, lang, meta, title }) {
   const { site } = useStaticQuery(
     graphql`
@@ -78,7 +80,7 @@ function SEO({ description, lang, meta, title }) {
     <meta property="og:title" content="Indiana COVID-19 & Health Equity" />
     <meta property='og:description' content="On this site, we investigate how people from communities who historically face health disparities are disproportionately affected by the COVID-19 pandemic." />
     <meta property="og:url" content="https://indcovid.com" />
-    <meta property="og:image" content={og_image} />
+    <meta property="og:image" content={`${siteUrl}${og_image}`} />
     </Helmet>
 
   )
@@ -96,27 +98,5 @@ SEO.propTypes = {
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
 }
-
-exports.onPreRenderHTML = function onPreRenderHTML({
-  getHeadComponents,
-  replaceHeadComponents,
-}) {
-  const headComponents = getHeadComponents();
-  headComponents.sort((a, b) => {
-    if (a.type === b.type || (a.type !== 'style' && b.type !== 'style')) {
-      return 0;
-    }
-
-    if (a.type === 'style') {
-      return 1;
-    } else if (b.type === 'style') {
-      return -1;
-    }
-
-    return 0;
-  });
-
-  replaceHeadComponents(headComponents);
-};
 
 export default SEO
