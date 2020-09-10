@@ -30,7 +30,7 @@ import balance from '../images/balance-scale.png';
 
 const COVID_19_API_NOW = 'https://api.covidtracking.com/api/v1/states/in/current.json'
 const COVID_19_API_HISTORIC = 'https://api.covidtracking.com/api/v1/states/in/daily.json'
-const API_URL = process.env.GATSBY_API_URL
+const API_URL = process.env.REACT_APP_API_URL
 
 const InlineLink = styled.a`
     color: rgba(75,192,192,0.9);

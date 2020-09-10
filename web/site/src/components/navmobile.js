@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
 import {
     Drawer,
@@ -24,7 +23,7 @@ const InnerWrapper = styled.div`
     width: 100%
 `
 
-const ALink = styled(Link)`
+const ALink = styled.a`
   color: inherit;
   font-size: 1rem;
   text-decoration: none;
@@ -53,19 +52,19 @@ const NavMobile = ({ open, setOpen}) => {
         <List>
           <ListItem>
             <PeopleIcon fill='white'  style={{margin: '5px'}}/>
-              <ALink to="/">
+              <ALink href="/">
                 Health Equity
               </ALink>
           </ListItem>
           <ListItem>
               <LocalHospitalIcon fill='white' style={{margin: '5px'}}/>
-              <ALink to="/stay-healthy">
+              <ALink href="/stay-healthy">
                 Stay Healthy
               </ALink>
           </ListItem>
           <ListItem>
               <EventAvailableIcon fill="white" style={{margin: '5px'}} />
-              <ALink to="/back-on-track">
+              <ALink href="/back-on-track">
                   Back On Track
               </ALink>
           </ListItem>
@@ -75,13 +74,13 @@ const NavMobile = ({ open, setOpen}) => {
               src={IndianaIcon}
               style={{fill: '#e3e3e3', height: '20px', width: 'auto', marginLeft: '11px', marginRight: '11px', marginTop: '5px', marginBottom: '5px'}}
             />
-            <ALink to="/more-info">
+            <ALink href="/more-info">
               More Info
             </ALink>
           </ListItem>
           <ListItem>
             <CodeIcon fill='white'  style={{margin: '5px'}}/>
-            <ALink to="/about-us">
+            <ALink href="/about-us">
               About Us
             </ALink>
           </ListItem>

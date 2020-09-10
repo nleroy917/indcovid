@@ -65,7 +65,7 @@ const LogoImg = styled.img`
   margin: 10px;
 `
 
-const MoreInfoPage = () => {
+const AboutUsPage = () => {
 
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
 
@@ -133,5 +133,5 @@ const MoreInfoPage = () => {
   )
 }
   
-  export default MoreInfoPage;
+  export default AboutUsPage;
   

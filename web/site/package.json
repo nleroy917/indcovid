@@ -1,61 +1,42 @@
 {
-  "name": "gatsby-minimalist-default",
-  "private": false,
-  "description": "A minimalist starter with less boilerplate and more guidance for initial design and layout decisions.",
-  "version": "1.0.0",
-  "author": "Michael S. Caveney",
+  "name": "indcovid-cra",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.23",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
-    "axios": "^0.19.2",
-    "babel-plugin-styled-components": "^1.11.1",
-    "chart.js": "^2.9.3",
-    "gatsby": "^2.24.27",
-    "gatsby-image": "^2.4.14",
-    "gatsby-plugin-google-analytics": "^2.3.13",
-    "gatsby-plugin-google-fonts-v2": "0.0.6",
-    "gatsby-plugin-manifest": "^2.4.21",
-    "gatsby-plugin-offline": "^3.2.21",
-    "gatsby-plugin-playground": "^1.0.6",
-    "gatsby-plugin-react-helmet": "^3.3.10",
-    "gatsby-plugin-sharp": "^2.6.24",
-    "gatsby-plugin-styled-components": "^3.3.10",
-    "gatsby-source-filesystem": "^2.3.23",
-    "gatsby-transformer-sharp": "^2.5.12",
-    "prop-types": "^15.7.2",
-    "react": "^16.11.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.1",
     "react-chartjs-2": "^2.10.0",
-    "react-device-detect": "^1.13.1",
-    "react-dom": "^16.11.0",
-    "react-helmet": "^5.2.1",
-    "react-switch-selector": "^1.2.0",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "react-switch-selector": "^1.2.1",
     "react-vertical-timeline-component": "^3.0.2",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.2.0"
   },
-  "devDependencies": {
-    "gatsby-plugin-emotion": "^4.3.10",
-    "prettier": "^1.19.1"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "clean": "gatsby clean",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dylanesque/Gatsby-Minimalist-Starter"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "bugs": {
-    "url": "https://github.com/dylanesque/Gatsby-Minimalist-Starter/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
