@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
 import {
     Grid,
@@ -8,7 +7,7 @@ import {
     Button
 } from '@material-ui/core';
 
-const ALink = styled(Link)`
+const ALink = styled.a`
   color: inherit;
   font-size: 0.75rem;
   text-decoration: none;
@@ -43,7 +42,7 @@ const Nav = ({smoothScroll}) => {
             style={{width:'100%', height: '100%'}}
           >
             <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
-            <ALink to="/#disparities-map">
+            <ALink href="/">
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 
@@ -56,7 +55,7 @@ const Nav = ({smoothScroll}) => {
               </ALink>
             </Grid>
             <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
-            <ALink to="/stay-healthy">
+            <ALink href="/stay-healthy">
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 
@@ -68,7 +67,7 @@ const Nav = ({smoothScroll}) => {
               </ALink>
             </Grid>
             <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
-            <ALink to="/back-on-track">
+            <ALink href="/back-on-track">
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 
@@ -80,7 +79,7 @@ const Nav = ({smoothScroll}) => {
               </ALink>
             </Grid>
             <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
-            <ALink to="/more-info">
+            <ALink href="/more-info">
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 
@@ -92,7 +91,7 @@ const Nav = ({smoothScroll}) => {
               </ALink>
             </Grid>
             <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
-            <ALink to="/about-us">
+            <ALink href="/about-us">
               <SquareButton 
                 variant="outlined" 
                 color="inherit" 

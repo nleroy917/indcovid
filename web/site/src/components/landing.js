@@ -17,7 +17,6 @@ import {
     MobileStepper
 } from '@material-ui/core';
 
-import { Link } from 'gatsby';
 
 import Nav from '../components/nav';
 import InfoCard from '../components/infocard';

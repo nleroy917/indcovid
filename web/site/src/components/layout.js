@@ -1,40 +1,20 @@
 /*
 Copyright (c) 2020 indcovid.com
-@author: Nathan LeRoy & Gatsby JS
+@author: Nathan LeRoy
 @contact: NLeRoy917@gmail.com
-
-Layout component for each page - contains nav and margins/padding
 */
-
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
       <Header 
-         siteTitle={data.site.siteMetadata.title} 
+         siteTitle="Indiana COVID-19 & Health Equity" 
       
       />
       <div

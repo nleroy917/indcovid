@@ -9,7 +9,6 @@ Header for each page
 import PropTypes from "prop-types"
 import React, {useState} from "react"
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
 import { 
   IconButton,
