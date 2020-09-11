@@ -208,13 +208,13 @@ const IndexPage = () => {
           data_point.totalTestResultsIncrease
         )
         historic_data_full.positivity.push(
-          (data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100
+          ((data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100) === 100 ? 0 : ((data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100)
         )
       }
       historic_data_full.cases_7_day_average = movingAverage(historic_data_full.cases)
       historic_data_full.hospitalized = removeOutliers(historic_data_full.hospitalized)
       historic_data_full.recovered = cumulativeToDaily(historic_data_full.recovered)
-      historic_data_full.positivity = movingAverage(historic_data_full.positivity)
+      historic_data_full.positivity_7_day_average = movingAverage(historic_data_full.positivity)
       setCovidHistoric(historic_data_full)
     }
   }
