@@ -166,16 +166,15 @@ const ReopeningTimeline = () =>  {
             <VerticalTimelineElement
              style={{bodShadow: 'none'}}
              date=""
-             icon={<StageIcon stageNum={4.5} stageColor="green" size="small"/>}
-             contentArrowStyle={{ borderRight: '7px solid  green' }}
-             contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'green 2px solid', boxShadow: 'none'}}
+             icon={<StageIcon stageNum={4.5}/>}
+             contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'white 2px solid', boxShadow: 'none'}}
              iconStyle={{ background: '#FFF' }}
             >
                <ElementTitle variant="h2" gutterBottom>
-                   Stage 4.5 (Current Stage)
+                   Stage 4.5
                </ElementTitle>
                <ElementSubTitle variant="h4">
-                 July 4th - TBD
+                 July 4th - September 26th
                </ElementSubTitle>
                <ElementContent>
                 Face coverings are required! Social gatherings up to 250 people are permitted. Dining room service may operate at 75% capacity. Retail stores and malls open at full capacity. Bars and nightclubs may open at 50% capacity. Cultural, entertainment, and tourism sites may open at 50% capacity. Continue remote work as needed. Hospital visits encouraged with precautions.
@@ -191,18 +190,20 @@ const ReopeningTimeline = () =>  {
             </VerticalTimelineElement>
             <VerticalTimelineElement
              date=""
-             icon={<StageIcon stageNum={5} />}
-             contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'white 2px solid'}}
+             icon={<StageIcon stageNum={5} stageColor="green" size="small"/>}
+             contentArrowStyle={{ borderRight: '7px solid  green' }}
+             contentStyle={{ background: '#0e0e0e', color: '#fff', border: 'green 2px solid', boxShadow: 'none'}}
              iconStyle={{ background: '#FFF' }}
             >
                <ElementTitle variant="h2">
-                   Stage Five
+                   Stage Five (Current Stage)
                </ElementTitle>
                <ElementSubTitle variant="h4">
-                  Dates TBD
+                  September 26th - October 17th
                </ElementSubTitle>
                <ElementContent gutterBottom>
-                Restrictions TBD
+               In this stage, face coverings continue to be required for all Hoosiers per an executive order, and people still are being encouraged to maintain social distancing, wash their hands, and not go to work, school, or public if they are feeling sick.
+                During this stage, size limitations are removed for social gatherings and meetings. Organizers of events that will include more than 500 people, however, must submit a written plan to their local health department.
                </ElementContent>
                <MoreInfoButton 
                  variant="outlined" 
