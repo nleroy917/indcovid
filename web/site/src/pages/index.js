@@ -156,11 +156,11 @@ const IndexPage = () => {
   const movingAverage = (someArray) => {
     let movingAverageArray = []
     for(let i = 0; i < someArray.length; i++) {
-
       if (i < 7) {
         movingAverageArray.push(0)
       } else {
-        movingAverageArray.push(((someArray[i] + someArray[i-1] + someArray[i-2] + someArray[i-3] + someArray[i-4] + someArray[i-5] + someArray[i-6]) / 7).toFixed(2))
+        let average = (someArray[i] + someArray[i-1] + someArray[i-2] + someArray[i-3] + someArray[i-4] + someArray[i-5] + someArray[i-6]) / 7
+        movingAverageArray.push((average).toFixed(2))
       }
     }
     return movingAverageArray
@@ -208,7 +208,7 @@ const IndexPage = () => {
           data_point.totalTestResultsIncrease
         )
         historic_data_full.positivity.push(
-          ((data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100) === 100 ? 0 : ((data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100)
+          ((data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100) >= 100 ? historic_data_full.positivity[historic_data_full.positivity.length - 1] : ((data_point.positiveIncrease / data_point.totalTestResultsIncrease) * 100)
         )
       }
       historic_data_full.cases_7_day_average = movingAverage(historic_data_full.cases)
