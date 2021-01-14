@@ -28,6 +28,11 @@ const SquareButton = styled(Button)`
   height: 100%;
   width: 100%;
   font-size: ${props => props.mobile ? '0.5rem !important' : ''};
+  transition: all ease-in-out 0.1s;
+  &:hover {
+    background: white !important;
+    color: black;
+  }
 `
 
 const Nav = ({smoothScroll}) => {
@@ -99,6 +104,18 @@ const Nav = ({smoothScroll}) => {
                 mobile={mobile}
               >
                 About Us
+              </SquareButton>
+              </ALink>
+            </Grid>
+            <Grid item lg={2} md={2} xs={4} style={{height: '100%'}}>
+            <ALink href="/vaccine">
+              <SquareButton 
+                variant="outlined" 
+                color="inherit" 
+                size="small"
+                mobile={mobile}
+              >
+                Vaccine
               </SquareButton>
               </ALink>
             </Grid>

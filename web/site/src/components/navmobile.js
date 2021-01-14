@@ -84,6 +84,12 @@ const NavMobile = ({ open, setOpen}) => {
               About Us
             </ALink>
           </ListItem>
+          <ListItem>
+            <CodeIcon fill='white'  style={{margin: '5px'}}/>
+            <ALink href="/vaccine">
+              Vaccine
+            </ALink>
+          </ListItem>
         </List> 
         </InnerWrapper>   
         </DrawerContainer>

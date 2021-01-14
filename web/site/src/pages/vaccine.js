@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Nav from '../components/nav';
 
+import VaccineTotals from '../components/vaccinetotals';
+import VaccineTimeline from '../components/vaccinetimeline';
+
 import {
     useMediaQuery,
     Typography,
+    Grid
 } from '@material-ui/core';
+
+const API_URL = process.env.REACT_APP_API_URL
 
 const SectionTitle = styled(Typography)`
     font-weight: 400;
@@ -85,10 +92,70 @@ const SectionWrapper = styled.div`
     border: solid white 1px;
     padding: 15px;
 `
+
+const ChartsWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+`
 const VaccinePage = () => {
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
+    const iPad = useMediaQuery('(max-device-width:768px)', { noSsr: true });
+    const [vaccineData, setVaccineData] = useState(null)
+    const fetchData = async () => {
+        let res = await axios.get(`${API_URL}/data/covid/vaccines`)
+        if(res.status === 200) {
+            let data = res.data
+            setVaccineData(data)
+            console.log(data)
+        }
+    }
+    useEffect(()=>{
+        fetchData()
+    },[])
     return (
         <>
+        <Layout>
+          <SEO 
+            title="More Info" 
+            description="In this research, we take the time to analyze and invstigate how people from under-privileged communities are disproportionately affected by the COVID-19 pandemic."
+            lang="en"
+            meta="Indiana COVID-19 & Health Equity"
+         />
+          {mobile ? '' : <Nav />}
+          <br></br>
+          {
+          vaccineData ?
+          <>
+           <Grid container
+            direction="row"
+            alignItems={mobile ? "flex-start" : "stretch"}
+            justify={mobile || iPad ? "center" : "center"}
+            spacing={mobile ? 2 : 4}
+            style={{height: '100%', paddingBottom: mobile || iPad ? '10px' : 0}}
+            >
+            <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
+                <VaccineTotals
+                   first_dose_data={vaccineData.first_doses_to_date}
+                   second_dose_data={vaccineData.second_doses_to_date}
+                   labels={['Pfizer', 'Moderna', 'Total']}
+                  />
+            </Grid>
+            <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
+                <VaccineTimeline
+                  pfizer={vaccineData.pfizer_data}
+                  moderna={vaccineData.moderna_data}
+                  total={vaccineData.total_data}
+                  dates={vaccineData.pfizer_labels}
+                />
+            </Grid>
+          </Grid>
+          </>
+          : <div></div>
+          }
+        </Layout>
         </>
     )
 }

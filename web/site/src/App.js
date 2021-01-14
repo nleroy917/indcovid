@@ -6,6 +6,7 @@ import BackOnTrack from './pages/back-on-track';
 import IndexPage from './pages/index';
 import MoreInfoPage from './pages/more-info';
 import StayHealthyPage from './pages/stay-healthy';
+import VaccinePage from './pages/vaccine';
 
 import {
   BrowserRouter as Router,
@@ -18,6 +19,8 @@ function App() {
     <>
       <Router>
       <Switch>
+        <Route path="/vaccine/" component={VaccinePage}>
+        </Route>
         <Route path="/about-us/" component={AboutUsPage}>
         </Route>
         <Route path="/more-info/" component={MoreInfoPage}>
