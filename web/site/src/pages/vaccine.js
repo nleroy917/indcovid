@@ -127,7 +127,7 @@ const VaccinePage = () => {
         <>
         <Layout>
           <SEO 
-            title="More Info" 
+            title="Vaccine" 
             description="In this research, we take the time to analyze and invstigate how people from under-privileged communities are disproportionately affected by the COVID-19 pandemic."
             lang="en"
             meta="Indiana COVID-19 & Health Equity"
