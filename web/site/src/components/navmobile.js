@@ -10,6 +10,7 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import PeopleIcon from '@material-ui/icons/People';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import CodeIcon from '@material-ui/icons/Code';
+import ColorizeIcon from '@material-ui/icons/Colorize';
 import IndianaIcon from '../images/Info-Thick.svg';
 
 const DrawerContainer = styled(Drawer)`
@@ -85,7 +86,7 @@ const NavMobile = ({ open, setOpen}) => {
             </ALink>
           </ListItem>
           <ListItem>
-            <CodeIcon fill='white'  style={{margin: '5px'}}/>
+            <ColorizeIcon fill='white'  style={{margin: '5px'}}/>
             <ALink href="/vaccine">
               Vaccine
             </ALink>
