@@ -76,7 +76,7 @@ const VaccineTimeline = ( { dates, pfizer, moderna, total } ) => {
         <Wrapper>
         <ChartWrapper>
           <ChartTitle variant="h6" gutterBottom>
-            Vaccine Allocation Timeline
+           Indiana Vaccine Allocation Timeline
             <InfoTip
           moreInfo="This dataset lists the allocations of doses that will be made available for states and jurisdictions to order against. Weekly first-dose allocations are provided to states on Tuesdays; jurisdictions can begin placing orders on Thursdays. After doses are ordered by states, shipments begin the following Monday."
         />
