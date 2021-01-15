@@ -22,7 +22,7 @@ const ChartWrapper = styled.div`
 const ChartTitle = styled(Typography)`
     text-align: center;
     color: white;
-`;
+`
 
 const VaccineTimeline = ( { dates, pfizer, moderna, total } ) => {
     const mobile = useMediaQuery('(max-width:480px)', { noSsr: true });
@@ -42,10 +42,8 @@ const VaccineTimeline = ( { dates, pfizer, moderna, total } ) => {
                 fontColor: 'white'
             }
          },
-        height: "100%",
-        width: "80%",
         aspectRatio: 1,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         scales: {
             xAxes: [{
                 scaleLabel: { display: true, labelString: 'Date', fontColor: 'white', fontSize: '15'}, 
@@ -77,8 +75,6 @@ const VaccineTimeline = ( { dates, pfizer, moderna, total } ) => {
         <>
         <Wrapper>
         <ChartWrapper>
-        <br></br>
-        <br></br>
           <ChartTitle variant="h6" gutterBottom>
             Vaccine Allocation Timeline
             <InfoTip
@@ -86,6 +82,8 @@ const VaccineTimeline = ( { dates, pfizer, moderna, total } ) => {
         />
           </ChartTitle>
           <Line
+            height={null}
+            width={null}
             options={options}
             data={{
                 labels: dates,
