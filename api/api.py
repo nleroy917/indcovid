@@ -9,6 +9,7 @@ indcovid.com main api to interface the MySQL database and the UI
 import sys
 import os
 import requests
+import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 sys.path.append('../')
 
@@ -506,6 +507,102 @@ def get_mental_health_data():
     }
     return jsonify(return_package)
 
+@app.route('/data/covid/vaccines', methods=['GET'])
+def vaccine_data():
+    """
+    Endpoint to get the curent data for vaccine distribution
+    and rollout.
+    """
+    PFIZER_URL = 'https://data.cdc.gov/resource/saz5-9hgg.json?jurisdiction=Indiana'
+    MODERNA_URL = 'https://data.cdc.gov/resource/b7pe-5nws.json?jurisdiction=Indiana'
+    KEY_PHRASE = 'doses_allocated_week_'
+
+    res_p = requests.get(PFIZER_URL)
+    res_m = requests.get(MODERNA_URL)
+    
+    data_p = res_p.json()[0] # data comes as list for some reason
+    data_m = res_m.json()[0] # data comes as list for some reason
+    
+    #
+    # data oddly comes in with a new column for each new week of data -
+    # forcing me to search through for these specific columns and extract
+    # the date and data. search thru each column for key_phrase.
+    #
+    
+    dates_pfizer = []
+    dates_moderna = []
+    pfizer_timescale = []
+    moderna_timescale = []
+    total_timescale = []
+    
+    # parse pfizer data
+    for col_p, col_m in zip(data_p, data_m):
+        if KEY_PHRASE in col_p:
+            # get the data for that date
+            data = int(data_p[col_p].replace(',',""))
+            # extract month
+            month = col_p.split('_')[-2]
+            # figure out the year based on month
+            # if data is from dec. its from 2020, else 20201
+            if int(month) == 12:
+                year = 2020
+            else:
+                year = 2021
+            # extract day
+            day = col_p.split('_')[-1]
+            # append data
+            dates_pfizer.append(
+                datetime.datetime(year, int(month), int(day))
+            )
+            pfizer_timescale.append(data)
+            
+        if KEY_PHRASE in col_m:
+            # get the data for that date
+            data = int(data_m[col_m].replace(',',""))
+            # extract month
+            month = col_m.split('_')[-2]
+            # figure out the year based on month
+            if int(month) == 12:
+                year = 2020
+            else:
+                year = 2021
+            # extract day
+            day = col_m.split('_')[-1]
+            # append data
+            dates_moderna.append(
+                datetime.datetime(year, int(month), int(day))
+            )
+            moderna_timescale.append(data)
+    
+    #
+    # aggregate the data for totals
+    #
+    for n_p, n_m in zip(pfizer_timescale, moderna_timescale):
+        total_timescale.append(n_p + n_m)
+    
+    return_package = {
+        # "og_datam": data_m,
+        # "og_datap": data_p,
+        "pfizer_data": pfizer_timescale,
+        "moderna_data": moderna_timescale,
+        "total_data": total_timescale,
+        "pfizer_labels": dates_pfizer,
+        "moderna_labels": dates_pfizer,
+        "first_doses_to_date": 
+            [
+                int(data_p['total_pfizer_allocation_first_dose_shipments'].replace(',',"")),
+                int(data_m['total_moderna_allocation_first_dose_shipments'].replace(',',"")),
+                (int(data_p['total_pfizer_allocation_first_dose_shipments'].replace(',',"")) + int(data_m['total_moderna_allocation_first_dose_shipments'].replace(',',"")))
+            ],
+        "second_doses_to_date": [
+            int(data_p['total_allocation_pfizer_second_dose_shipments'].replace(',',"")),
+            int(data_m['total_allocation_moderna_second_dose_shipments'].replace(',',"")),
+            (int(data_p['total_allocation_pfizer_second_dose_shipments'].replace(',',"")) + int(data_m['total_allocation_moderna_second_dose_shipments'].replace(',',"")))
+        ]
+    }
+    
+    return jsonify(return_package)
+    
 
 if __name__ =='__main__':
     app.run()
