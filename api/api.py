@@ -456,8 +456,8 @@ def access_to_care():
     did_not_get = []
     both = []
     for obj in data:
-        if obj['week'] not in weeks:
-            weeks.append(obj['week'])
+        if obj['time_period'] not in weeks:
+            weeks.append(obj['time_period'])
         if obj["indicator"] == "Delayed Medical Care, Last 4 Weeks":
             delayed.append(obj['value'])
         elif obj["indicator"] == "Did Not Get Needed Care, Last 4 Weeks":
@@ -517,87 +517,70 @@ def vaccine_data():
     MODERNA_URL = 'https://data.cdc.gov/resource/b7pe-5nws.json?jurisdiction=Indiana'
     KEY_PHRASE = 'doses_allocated_week_'
 
-    res_p = requests.get(PFIZER_URL)
-    res_m = requests.get(MODERNA_URL)
+    res_p = requests.get(PFIZER_URL).json()
+    res_m = requests.get(MODERNA_URL).json()
     
-    data_p = res_p.json()[0] # data comes as list for some reason
-    data_m = res_m.json()[0] # data comes as list for some reason
+    dates = []
+    p_first_doses = []
+    p_second_doses = []
+    p_total_doses = []
+    p_first_cumulative = 0
+    p_second_cumulative = 0
+    p_total_cumulative = 0
+    m_first_doses = []
+    m_second_doses = []
+    m_total_doses = []
+    m_first_cumulative = 0
+    m_second_cumulative = 0
+    m_total_cumulative = 0
+    both_total_doses = []
     
-    #
-    # data oddly comes in with a new column for each new week of data -
-    # forcing me to search through for these specific columns and extract
-    # the date and data. search thru each column for key_phrase.
-    #
+    for row in res_p:
+        dates.append(row['week_of_allocations'])
+        p_first_doses.append(int(row['_1st_dose_allocations']))
+        p_second_doses.append(int(row['_2nd_dose_allocations']))
+        p_total_doses.append(int(row['_1st_dose_allocations']) + int(row['_2nd_dose_allocations']))
+        p_first_cumulative += int(row['_1st_dose_allocations'])
+        p_second_cumulative += int(row['_2nd_dose_allocations'])
+        p_total_cumulative += int(row['_1st_dose_allocations']) + int(row['_2nd_dose_allocations'])
     
-    dates_pfizer = []
-    dates_moderna = []
-    pfizer_timescale = []
-    moderna_timescale = []
-    total_timescale = []
+    for row in res_m:
+        dates.append(row['week_of_allocations'])
+        m_first_doses.append(int(row['_1st_dose_allocations']))
+        m_second_doses.append(int(row['_2nd_dose_allocations']))
+        m_total_doses.append(int(row['_1st_dose_allocations']) + int(row['_2nd_dose_allocations']))
+        m_first_cumulative += int(row['_1st_dose_allocations'])
+        m_second_cumulative += int(row['_2nd_dose_allocations'])
+        m_total_cumulative += int(row['_1st_dose_allocations']) + int(row['_2nd_dose_allocations'])
     
-    # parse pfizer data
-    for col_p, col_m in zip(data_p, data_m):
-        if KEY_PHRASE in col_p:
-            # get the data for that date
-            data = int(data_p[col_p].replace(',',""))
-            # extract month
-            month = col_p.split('_')[-2]
-            # figure out the year based on month
-            # if data is from dec. its from 2020, else 20201
-            if int(month) == 12:
-                year = 2020
-            else:
-                year = 2021
-            # extract day
-            day = col_p.split('_')[-1]
-            # append data
-            dates_pfizer.append(
-                datetime.datetime(year, int(month), int(day))
-            )
-            pfizer_timescale.append(data)
-            
-        if KEY_PHRASE in col_m:
-            # get the data for that date
-            data = int(data_m[col_m].replace(',',""))
-            # extract month
-            month = col_m.split('_')[-2]
-            # figure out the year based on month
-            if int(month) == 12:
-                year = 2020
-            else:
-                year = 2021
-            # extract day
-            day = col_m.split('_')[-1]
-            # append data
-            dates_moderna.append(
-                datetime.datetime(year, int(month), int(day))
-            )
-            moderna_timescale.append(data)
-    
-    #
-    # aggregate the data for totals
-    #
-    for n_p, n_m in zip(pfizer_timescale, moderna_timescale):
-        total_timescale.append(n_p + n_m)
+    for p, m in zip(p_total_doses, m_total_doses):
+        both_total_doses.append(p + m)
     
     return_package = {
-        # "og_datam": data_m,
-        # "og_datap": data_p,
-        "pfizer_data": pfizer_timescale,
-        "moderna_data": moderna_timescale,
-        "total_data": total_timescale,
-        "pfizer_labels": dates_pfizer,
-        "moderna_labels": dates_pfizer,
-        "first_doses_to_date": 
-            [
-                int(data_p['total_pfizer_allocation_first_dose_shipments'].replace(',',"")),
-                int(data_m['total_moderna_allocation_first_dose_shipments'].replace(',',"")),
-                (int(data_p['total_pfizer_allocation_first_dose_shipments'].replace(',',"")) + int(data_m['total_moderna_allocation_first_dose_shipments'].replace(',',"")))
-            ],
+        "dates": dates,
+        "pfizer_first_doses": p_first_doses,
+        "pfizer_second_doses": p_second_doses,
+        "pfizer_total_doses": p_total_doses,
+        "pfizer_first_cumulative": p_first_cumulative,
+        "pfizer_second_cumulative": p_second_cumulative,
+        "pfizer_total_cumulative": p_total_cumulative,
+        "moderna_first_doses": m_first_doses,
+        "moderna_second_doses": m_second_doses,
+        "moderna_total_doses": m_total_doses,
+        "moderna_first_cumulative": m_first_cumulative,
+        "moderna_second_cumulative": m_second_cumulative,
+        "m_total_cumulative": m_total_cumulative,
+        "both_total_doses": both_total_doses,
+        "first_doses_to_date": [
+            p_first_cumulative,
+            m_first_cumulative,
+            p_first_cumulative + m_first_cumulative
+        ],
         "second_doses_to_date": [
-            int(data_p['total_allocation_pfizer_second_dose_shipments'].replace(',',"")),
-            int(data_m['total_allocation_moderna_second_dose_shipments'].replace(',',"")),
-            (int(data_p['total_allocation_pfizer_second_dose_shipments'].replace(',',"")) + int(data_m['total_allocation_moderna_second_dose_shipments'].replace(',',"")))
+            p_second_cumulative,
+            m_second_cumulative,
+            p_second_cumulative + m_second_cumulative
+            
         ]
     }
     

@@ -196,7 +196,7 @@ const IndexPage = () => {
           data_point.positiveIncrease
         )
         historic_data_full.deaths.push(
-          data_point.deathIncrease
+          data_point.deathIncrease > 1000 ? 0 : data_point.deathIncrease
         )
         historic_data_full.recovered.push(
           data_point.recovered

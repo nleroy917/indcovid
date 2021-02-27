@@ -153,10 +153,10 @@ const VaccinePage = () => {
             </Grid>
             <Grid item lg={6} md={6} s={5} xs={!mobile ? 6 : 12}>
                 <VaccineTimeline
-                  pfizer={vaccineData.pfizer_data}
-                  moderna={vaccineData.moderna_data}
-                  total={vaccineData.total_data}
-                  dates={vaccineData.pfizer_labels}
+                  pfizer={vaccineData.pfizer_total_doses}
+                  moderna={vaccineData.moderna_total_doses}
+                  total={vaccineData.both_total_doses}
+                  dates={vaccineData.dates}
                 />
             </Grid>
           </Grid>
