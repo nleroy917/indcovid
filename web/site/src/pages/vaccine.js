@@ -170,7 +170,7 @@ const VaccinePage = () => {
           </SectionContent>
           <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <List>
-          <ListItem><b>Are you age 65 or older?</b></ListItem>
+          <ListItem><b>Are you age 60 or older?</b></ListItem>
           <ListItem>
             <b>Do you work or volunteer in healthcare and have (physical or close) contact or face to face interactions with patients? Examples include:</b>
             <List>
